@@ -27,6 +27,8 @@
     "id": "scale-model-supplies",
     "name": "Scale Model Supplies",
     "address": "458 Lexington Pkwy N, St Paul, MN 55104",
+    "lat": 44.954938,
+    "lng": -93.146313,
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
