@@ -78,6 +78,8 @@
     "id": "dreamers-vault-games-champlin",
     "name": "Dreamers Vault Games Champlin",
     "address": "11591 Theatre Dr N, Champlin, MN 55316",
+    "lat": 45.163938,
+    "lng": -93.393938,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
