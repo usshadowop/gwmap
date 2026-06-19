@@ -1,24 +1,29 @@
 [
   {
-    "id": "hey-hobby-richfield",
-    "name": "Hey Hobby Richfield",
+    "id": "hub-hobby-richfield",
+    "name": "Hub Hobby Richfield",
     "address": "6410 Penn Ave S, Richfield, MN 55423",
     "discount": "15% off Games Workshop products",
-    "category": "15"
+    "category": "15",
+    "newReleases": true,
+    "preorders": true
   },
   {
     "id": "hub-hobby-little-canada",
     "name": "Hub Hobby Little Canada",
     "address": "82 Minnesota Ave, Little Canada, MN 55117",
     "discount": "15% off Games Workshop products",
-    "category": "15"
+    "category": "15",
+    "newReleases": true,
+    "preorders": true
   },
   {
     "id": "scale-model-supplies",
     "name": "Scale Model Supplies",
     "address": "458 Lexington Pkwy N, St Paul, MN 55104",
     "discount": "15% off Games Workshop products",
-    "category": "15"
+    "category": "15",
+    "newReleases": true
   },
   {
     "id": "source-comics-and-games",
@@ -36,7 +41,9 @@
     "lat": 44.828755,
     "lng": -93.5974731,
     "discount": "10% off Games Workshop products (bumped to 15% with their Patreon membership)",
-    "category": "10"
+    "category": "10",
+    "newReleases": true,
+    "preorders": true
   },
   {
     "id": "dreamers-vault-games-eden-prairie",
