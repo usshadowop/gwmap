@@ -37,7 +37,7 @@ function buildPopupHtml(store) {
   }
   if (store.preorders) {
     const link = store.preorderUrl
-      ? ` — <a href="${store.preorderUrl}" target="_blank" rel="noopener">pre-order instructions</a>`
+      ? ` — <a href="${store.preorderUrl}" target="_blank" rel="noopener">${store.preorderLinkText || 'pre-order instructions'}</a>`
       : '';
     tags.push(`<li>✓ Discount applies to pre-orders${link}</li>`);
   }

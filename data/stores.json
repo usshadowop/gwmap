@@ -43,7 +43,9 @@
     "discount": "10% off Games Workshop products (bumped to 15% with their Patreon membership)",
     "category": "10",
     "newReleases": true,
-    "preorders": true
+    "preorders": true,
+    "preorderUrl": "https://www.theforgemn.com/request-products",
+    "preorderLinkText": "fill out pre-order form by 5:30 on Tuesday"
   },
   {
     "id": "dreamers-vault-games-eden-prairie",

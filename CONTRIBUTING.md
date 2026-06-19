@@ -45,12 +45,14 @@ Optional fields can be added to flag what a store carries:
 {
   "newReleases": true,
   "preorders": true,
-  "preorderUrl": "https://example.com/preorders"
+  "preorderUrl": "https://example.com/preorders",
+  "preorderLinkText": "fill out the pre-order form"
 }
 ```
 
 - `newReleases`: set `true` if the store carries new releases on launch day.
 - `preorders`: set `true` if the store takes pre-orders.
 - `preorderUrl`: optional link to pre-order instructions, only shown if `preorders` is `true`.
+- `preorderLinkText`: optional custom text for the `preorderUrl` link. Defaults to "pre-order instructions".
 
 Open a pull request with your addition.
