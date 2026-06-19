@@ -37,5 +37,14 @@
     "lng": -93.5974731,
     "discount": "10% off Games Workshop products (bumped to 15% with their Patreon membership)",
     "category": "10"
+  },
+  {
+    "id": "dreamers-vault-games-eden-prairie",
+    "name": "Dreamers Vault Games Eden Prairie",
+    "address": "574 Prairie Center Dr Suite 165, Eden Prairie, MN 55344",
+    "lat": 44.8524253,
+    "lng": -93.4306322,
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
   }
 ]
