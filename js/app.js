@@ -33,13 +33,13 @@ function createPinIcon(color) {
 function buildPopupHtml(store) {
   const tags = [];
   if (store.newReleases) {
-    tags.push('<li>✓ Carries new releases</li>');
+    tags.push('<li>✓ Discount applies to new releases</li>');
   }
   if (store.preorders) {
     const link = store.preorderUrl
       ? ` — <a href="${store.preorderUrl}" target="_blank" rel="noopener">pre-order instructions</a>`
       : '';
-    tags.push(`<li>✓ Takes pre-orders${link}</li>`);
+    tags.push(`<li>✓ Discount applies to pre-orders${link}</li>`);
   }
 
   return `
