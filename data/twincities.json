@@ -162,6 +162,8 @@
     "id": "games-workshop-eden-prairie",
     "name": "Games Workshop: Fountain Place",
     "address": "12557 Castlemoor Dr, Eden Prairie, MN 55344",
+    "lat": 44.851187,
+    "lng": -93.434313,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
