@@ -16,6 +16,20 @@ Edit `data/stores.json` and add a new entry to the array:
 
 `website` and `phone` are optional. The map geocodes `address` automatically in the browser (via OpenStreetMap Nominatim) — no need to look up coordinates.
 
+Optionally, set `lat`/`lng` directly (e.g. pulled from a Google Maps link) to skip geocoding entirely and use exact coordinates:
+
+```json
+{
+  "id": "unique-slug",
+  "name": "Store Name",
+  "address": "Street, City, State, Zip",
+  "lat": 44.8839,
+  "lng": -93.2882,
+  "discount": "Description of the GW discount offered",
+  "category": "15"
+}
+```
+
 `category` controls the pin color shown in the legend:
 
 | category  | color  | meaning                              |

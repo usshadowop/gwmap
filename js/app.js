@@ -69,7 +69,9 @@ async function loadStores(map) {
 
   for (const store of stores) {
     try {
-      const { lat, lng } = await geocode(store.address, cache);
+      const { lat, lng } = (store.lat != null && store.lng != null)
+        ? { lat: store.lat, lng: store.lng }
+        : await geocode(store.address, cache);
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
       const marker = L.marker([lat, lng], { icon: createPinIcon(color) }).addTo(map);
       marker.bindPopup(`
