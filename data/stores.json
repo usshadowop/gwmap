@@ -3,7 +3,7 @@
     "id": "hub-hobby-richfield",
     "name": "Hub Hobby Richfield",
     "address": "6410 Penn Ave S, Richfield, MN 55423",
-    "discount": "15% off Games Workshop products",
+    "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
     "preorders": true
@@ -12,7 +12,7 @@
     "id": "hub-hobby-little-canada",
     "name": "Hub Hobby Little Canada",
     "address": "82 Minnesota Ave, Little Canada, MN 55117",
-    "discount": "15% off Games Workshop products",
+    "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
     "preorders": true
@@ -21,7 +21,7 @@
     "id": "scale-model-supplies",
     "name": "Scale Model Supplies",
     "address": "458 Lexington Pkwy N, St Paul, MN 55104",
-    "discount": "15% off Games Workshop products",
+    "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true
   },
@@ -31,7 +31,7 @@
     "address": "2057 Snelling Ave N, Roseville, MN 55113",
     "lat": 45.0032039,
     "lng": -93.1675219,
-    "discount": "10% off Games Workshop products with $10/year loyalty membership",
+    "discount": "10% off Games Workshop models with $10/year loyalty membership",
     "category": "loyalty"
   },
   {
@@ -40,7 +40,7 @@
     "address": "230 Pioneer Trail, Chaska, MN 55318",
     "lat": 44.828755,
     "lng": -93.5974731,
-    "discount": "10% off Games Workshop products (bumped to 15% with their Patreon membership)",
+    "discount": "10% off Games Workshop models (bumped to 15% with their Patreon membership)",
     "category": "10",
     "newReleases": true,
     "preorders": true,
@@ -53,84 +53,84 @@
     "address": "574 Prairie Center Dr Suite 165, Eden Prairie, MN 55344",
     "lat": 44.8524253,
     "lng": -93.4306322,
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-burnsville",
     "name": "Dreamers Vault Games Burnsville",
     "address": "14332 Burnhaven Dr, Burnsville, MN 55306",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-champlin",
     "name": "Dreamers Vault Games Champlin",
     "address": "11591 Theatre Dr N, Champlin, MN 55316",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-minneapolis",
     "name": "Dreamers Vault Games Minneapolis",
     "address": "4701 Hiawatha Ave, Minneapolis, MN 55406",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-roseville",
     "name": "Dreamers Vault Games Roseville",
     "address": "1143 Larpenteur Ave W, Roseville, MN 55113",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-st-louis-park",
     "name": "Dreamers Vault Games St. Louis Park",
     "address": "3015 Utah Ave S Suite B, St. Louis Park, MN 55426",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "dreamers-vault-games-south-st-paul",
     "name": "Dreamers Vault Games South St. Paul",
     "address": "207 13th Ave S, South St. Paul, MN 55075",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "tower-games-minneapolis",
     "name": "Tower Games",
     "address": "3920 Nicollet Ave S Suite 150, Minneapolis, MN 55409",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "tower-games-bloomington",
     "name": "Tower Games - Bloomington",
     "address": "8645 Lyndale Ave S, Bloomington, MN 55420",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "gamezenter-roseville",
     "name": "GameZenter",
     "address": "1975 W County Rd B2, Roseville, MN 55113",
-    "discount": "No discount on Games Workshop products",
+    "discount": "No discount on Games Workshop models",
     "category": "none"
   },
   {
     "id": "lvl-up-games-minneapolis",
     "name": "Lvl Up Games",
     "address": "1425 Lasalle Ave, Minneapolis, MN 55403",
-    "discount": "10% off Games Workshop products",
+    "discount": "10% off Games Workshop models",
     "category": "10"
   },
   {
     "id": "battlegrounds-cafe-white-bear-lake",
     "name": "Battlegrounds Cafe",
     "address": "2008 County Road E East, White Bear Lake, MN 55110",
-    "discount": "10% off Games Workshop products (discount doesn't apply to rare or web exclusive items)",
+    "discount": "10% off Games Workshop models (discount doesn't apply to rare or web exclusive items)",
     "category": "10",
     "newReleases": true,
     "preorders": true

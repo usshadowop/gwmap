@@ -1,6 +1,6 @@
 # gwmap
 
-An interactive map of local hobby stores that offer discounts on Games Workshop products. Built with [Leaflet](https://leafletjs.com/) and OpenStreetMap, hosted on GitHub Pages.
+An interactive map of local hobby stores that offer discounts on Games Workshop models. Built with [Leaflet](https://leafletjs.com/) and OpenStreetMap, hosted on GitHub Pages.
 
 ## Running locally
 
