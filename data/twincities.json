@@ -69,6 +69,8 @@
     "id": "dreamers-vault-games-burnsville",
     "name": "Dreamers Vault Games Burnsville",
     "address": "14332 Burnhaven Dr, Burnsville, MN 55306",
+    "lat": 44.742062,
+    "lng": -93.294813,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
