@@ -1,32 +1,23 @@
 [
   {
-    "id": "sample-1",
-    "name": "Example Hobby Shop",
-    "address": "123 Main St, Springfield, IL",
-    "lat": 39.7817,
-    "lng": -89.6501,
-    "discount": "10% off all Games Workshop products",
-    "website": "https://example.com",
-    "phone": "(555) 123-4567"
+    "id": "hey-hobby-richfield",
+    "name": "Hey Hobby Richfield",
+    "address": "6410 Penn Ave S, Richfield, MN 55423",
+    "discount": "15% off Games Workshop products",
+    "category": "15"
   },
   {
-    "id": "sample-2",
-    "name": "Dice & Decals",
-    "address": "456 Oak Ave, Columbus, OH",
-    "lat": 39.9612,
-    "lng": -82.9988,
-    "discount": "15% off Warhammer 40k, 10% off Age of Sigmar",
-    "website": "https://example.com",
-    "phone": "(555) 987-6543"
+    "id": "hub-hobby-little-canada",
+    "name": "Hub Hobby Little Canada",
+    "address": "82 Minnesota Ave, Little Canada, MN 55117",
+    "discount": "15% off Games Workshop products",
+    "category": "15"
   },
   {
-    "id": "sample-3",
-    "name": "The Painted Mini",
-    "address": "789 Elm St, Austin, TX",
-    "lat": 30.2672,
-    "lng": -97.7431,
-    "discount": "20% off paints and tools, 10% off models",
-    "website": "https://example.com",
-    "phone": "(555) 246-8101"
+    "id": "scale-model-supplies",
+    "name": "Scale Model Supplies",
+    "address": "458 Lexington Pkwy N, St Paul, MN 55104",
+    "discount": "15% off Games Workshop products",
+    "category": "15"
   }
 ]
