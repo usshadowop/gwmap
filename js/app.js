@@ -59,6 +59,7 @@ function buildPopupHtml(store) {
       ${store.phone ? `<p>${store.phone}</p>` : ''}
       ${preorderBox}
       <p><a href="${mapsUrl}" target="_blank" rel="noopener">View on Google Maps</a></p>
+      ${store.note ? `<p class="popup-note">${store.note}</p>` : ''}
     </div>
   `;
 }
