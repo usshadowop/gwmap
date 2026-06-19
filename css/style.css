@@ -60,18 +60,6 @@ header p {
   width: 100%;
 }
 
-footer {
-  background: #1a1a1a;
-  color: #ccc;
-  text-align: center;
-  padding: 0.5rem;
-  font-size: 0.85rem;
-}
-
-footer a {
-  color: #ffcc00;
-}
-
 .popup-content h3 {
   margin: 0 0 0.25rem;
 }
