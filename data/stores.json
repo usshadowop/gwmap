@@ -97,6 +97,13 @@
     "category": "none"
   },
   {
+    "id": "tower-games-bloomington",
+    "name": "Tower Games - Bloomington",
+    "address": "8645 Lyndale Ave S, Bloomington, MN 55420",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
     "id": "gamezenter-roseville",
     "name": "GameZenter",
     "address": "1975 W County Rd B2, Roseville, MN 55113",
