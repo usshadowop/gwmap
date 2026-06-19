@@ -3,6 +3,8 @@
     "id": "hub-hobby-richfield",
     "name": "Hub Hobby Richfield",
     "address": "6410 Penn Ave S, Richfield, MN 55423",
+    "lat": 44.886687,
+    "lng": -93.309187,
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
