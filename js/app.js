@@ -1,8 +1,8 @@
 const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },
   { key: '10', color: '#f1c40f', label: '10% discount' },
-  { key: 'none', color: '#e74c3c', label: 'No discount' },
-  { key: 'loyalty', color: '#3498db', label: 'Discount with store loyalty program' }
+  { key: 'loyalty', color: '#3498db', label: 'Discount with store loyalty program' },
+  { key: 'none', color: '#e74c3c', label: 'No discount' }
 ];
 const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]));
 
@@ -47,6 +47,8 @@ function buildPopupHtml(store) {
       }</div>`
     : '';
 
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
+
   return `
     <div class="popup-content">
       <h3>${store.name}</h3>
@@ -56,6 +58,7 @@ function buildPopupHtml(store) {
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
       ${store.phone ? `<p>${store.phone}</p>` : ''}
       ${preorderBox}
+      <p><a href="${mapsUrl}" target="_blank" rel="noopener">View on Google Maps</a></p>
     </div>
   `;
 }
