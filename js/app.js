@@ -40,7 +40,7 @@ function buildPopupHtml(store) {
   }
 
   const preorderBox = store.preorders
-    ? `<div class="popup-preorder-box">${
+    ? `<div class="popup-preorder-box"><div class="popup-preorder-title">Pre-order instructions</div>${
         store.preorderUrl
           ? `<a href="${store.preorderUrl}" target="_blank" rel="noopener">${store.preorderLinkText || 'Pre-order instructions'}</a>`
           : (store.preorderLinkText || 'Pre-order instructions available in store')

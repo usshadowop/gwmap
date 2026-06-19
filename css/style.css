@@ -91,3 +91,8 @@ header p {
 .popup-preorder-box a {
   font-weight: 600;
 }
+
+.popup-preorder-title {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}

@@ -6,7 +6,8 @@
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
-    "preorders": true
+    "preorders": true,
+    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from."
   },
   {
     "id": "hub-hobby-little-canada",
@@ -15,7 +16,8 @@
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
-    "preorders": true
+    "preorders": true,
+    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from."
   },
   {
     "id": "scale-model-supplies",
@@ -133,7 +135,8 @@
     "discount": "10% off Games Workshop models (discount doesn't apply to rare or web exclusive items)",
     "category": "10",
     "newReleases": true,
-    "preorders": true
+    "preorders": true,
+    "preorderLinkText": "fill out a pre-order form in person on Tuesday"
   },
   {
     "id": "games-workshop-eden-prairie",
