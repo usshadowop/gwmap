@@ -96,7 +96,7 @@ async function geocode(address, cache) {
 }
 
 async function loadStores(map) {
-  const response = await fetch('data/stores.json');
+  const response = await fetch(window.GWMAP_DATA_URL || 'data/stores.json');
   const stores = await response.json();
   const cache = loadGeocodeCache();
   const bounds = [];

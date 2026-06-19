@@ -1,6 +1,6 @@
 # Adding a store
 
-Edit `data/stores.json` and add a new entry to the array:
+Edit `data/twincities.json` (or the relevant city's JSON file under `data/`) and add a new entry to the array:
 
 ```json
 {

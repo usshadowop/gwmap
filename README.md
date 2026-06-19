@@ -2,6 +2,8 @@
 
 An interactive map of local hobby stores that offer discounts on Games Workshop models. Built with [Leaflet](https://leafletjs.com/) and OpenStreetMap, hosted on GitHub Pages.
 
+The site root (`index.html`) is a landing page that links out to each region's map, e.g. `/twincities/` for the Twin Cities map. Each region has its own subdirectory with an `index.html` and a corresponding `data/<region>.json` file, sharing the same `css/style.css` and `js/app.js`.
+
 ## Running locally
 
 Serve the directory with any static file server, e.g.:
@@ -15,6 +17,12 @@ Then open http://localhost:8000.
 ## Adding a store
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Adding a new region
+
+1. Create a new subdirectory (e.g. `chicago/`) with an `index.html` modeled on `twincities/index.html`.
+2. Set `window.GWMAP_DATA_URL` in that page to point at a new `data/<region>.json` file.
+3. Add a link to the new region on the root `index.html` landing page.
 
 ## Deploying
 

@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - Hobby Stores with Games Workshop Discounts</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>GW Discount Map - Twin Cities Hobby Stores with Games Workshop Discounts</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header>
-    <h1>Games Workshop Discount Map</h1>
+    <h1>Games Workshop Discount Map — Twin Cities</h1>
     <p>Find local hobby stores selling Games Workshop models and see which ones offer persistent discounts.</p>
   </header>
-  <main class="city-list">
-    <h2>Choose a region</h2>
-    <ul>
-      <li><a href="twincities/">Twin Cities, MN</a></li>
-    </ul>
-  </main>
+  <div id="legend"></div>
+  <div id="map"></div>
   <footer class="footer-links">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka8Ua9pjBsVoRD4os_BnRg6IJbrZOrYtsi2p8AUp5AW1vvQ/viewform" target="_blank" rel="noopener">Suggest a store</a>
     &nbsp;|&nbsp;
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4jJEa7Iww6wZx45sWN8g3bTISwO5Ne_-A5txXhWhqDYFSmw/viewform" target="_blank" rel="noopener">Report an issue or suggestion</a>
   </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>window.GWMAP_DATA_URL = '../data/twincities.json';</script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

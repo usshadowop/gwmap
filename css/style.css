@@ -31,6 +31,36 @@ header p {
   font-size: 0.9rem;
 }
 
+.city-list {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.city-list h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.city-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.city-list li {
+  margin: 0.4rem 0;
+}
+
+.city-list a {
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.city-list a:hover {
+  text-decoration: underline;
+}
+
 .footer-links {
   background: #1a1a1a;
   color: #fff;
