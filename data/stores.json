@@ -28,5 +28,14 @@
     "lng": -93.1675219,
     "discount": "10% off Games Workshop products with $10/year loyalty membership",
     "category": "loyalty"
+  },
+  {
+    "id": "the-forge-chaska",
+    "name": "The Forge",
+    "address": "230 Pioneer Trail, Chaska, MN 55318",
+    "lat": 44.828755,
+    "lng": -93.5974731,
+    "discount": "10% off Games Workshop products (bumped to 15% with their Patreon membership)",
+    "category": "10"
   }
 ]
