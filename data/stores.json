@@ -148,5 +148,12 @@
     "address": "2701 39th Ave NE Ste E108, Saint Anthony, MN 55421",
     "discount": "No discount on Games Workshop models",
     "category": "none"
+  },
+  {
+    "id": "gamezenter-roseville",
+    "name": "Gamezenter",
+    "address": "1975 W County Rd B2, Roseville, MN 55113",
+    "discount": "No discount on Games Workshop models",
+    "category": "none"
   }
 ]
