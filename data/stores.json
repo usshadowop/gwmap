@@ -19,5 +19,14 @@
     "address": "458 Lexington Pkwy N, St Paul, MN 55104",
     "discount": "15% off Games Workshop products",
     "category": "15"
+  },
+  {
+    "id": "source-comics-and-games",
+    "name": "Source Comics & Games",
+    "address": "2057 Snelling Ave N, Roseville, MN 55113",
+    "lat": 45.0032039,
+    "lng": -93.1675219,
+    "discount": "10% off Games Workshop products with $10/year loyalty membership",
+    "category": "loyalty"
   }
 ]
