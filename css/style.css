@@ -31,16 +31,20 @@ header p {
   font-size: 0.9rem;
 }
 
-.header-links {
-  margin-top: 0.5rem;
+.footer-links {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.header-links a {
-  color: #6ab0f3;
+.footer-links a {
+  color: #fff;
   text-decoration: none;
 }
 
-.header-links a:hover {
+.footer-links a:hover {
   text-decoration: underline;
 }
 
