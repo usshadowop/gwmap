@@ -116,5 +116,21 @@
     "address": "1975 W County Rd B2, Roseville, MN 55113",
     "discount": "No discount on Games Workshop products",
     "category": "none"
+  },
+  {
+    "id": "lvl-up-games-minneapolis",
+    "name": "Lvl Up Games",
+    "address": "1425 Lasalle Ave, Minneapolis, MN 55403",
+    "discount": "10% off Games Workshop products",
+    "category": "10"
+  },
+  {
+    "id": "battlegrounds-cafe-white-bear-lake",
+    "name": "Battlegrounds Cafe",
+    "address": "2008 County Road E East, White Bear Lake, MN 55110",
+    "discount": "10% off Games Workshop products (discount doesn't apply to rare or web exclusive items)",
+    "category": "10",
+    "newReleases": true,
+    "preorders": true
   }
 ]
