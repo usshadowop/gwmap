@@ -15,6 +15,8 @@
     "id": "hub-hobby-little-canada",
     "name": "Hub Hobby Little Canada",
     "address": "82 Minnesota Ave, Little Canada, MN 55117",
+    "lat": 45.009563,
+    "lng": -93.103688,
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
