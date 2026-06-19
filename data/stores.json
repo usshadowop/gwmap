@@ -46,5 +46,47 @@
     "lng": -93.4306322,
     "discount": "No discount on Games Workshop products",
     "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-burnsville",
+    "name": "Dreamers Vault Games Burnsville",
+    "address": "14332 Burnhaven Dr, Burnsville, MN 55306",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-champlin",
+    "name": "Dreamers Vault Games Champlin",
+    "address": "11591 Theatre Dr N, Champlin, MN 55316",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-minneapolis",
+    "name": "Dreamers Vault Games Minneapolis",
+    "address": "4701 Hiawatha Ave, Minneapolis, MN 55406",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-roseville",
+    "name": "Dreamers Vault Games Roseville",
+    "address": "1143 Larpenteur Ave W, Roseville, MN 55113",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-st-louis-park",
+    "name": "Dreamers Vault Games St. Louis Park",
+    "address": "3015 Utah Ave S Suite B, St. Louis Park, MN 55426",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
+  },
+  {
+    "id": "dreamers-vault-games-south-st-paul",
+    "name": "Dreamers Vault Games South St. Paul",
+    "address": "207 13th Ave S, South St. Paul, MN 55075",
+    "discount": "No discount on Games Workshop products",
+    "category": "none"
   }
 ]
