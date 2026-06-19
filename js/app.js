@@ -36,11 +36,16 @@ function buildPopupHtml(store) {
     tags.push('<li>✓ Discount applies to new releases</li>');
   }
   if (store.preorders) {
-    const link = store.preorderUrl
-      ? ` — <a href="${store.preorderUrl}" target="_blank" rel="noopener">${store.preorderLinkText || 'pre-order instructions'}</a>`
-      : '';
-    tags.push(`<li>✓ Discount applies to pre-orders${link}</li>`);
+    tags.push('<li>✓ Discount applies to pre-orders</li>');
   }
+
+  const preorderBox = store.preorders
+    ? `<div class="popup-preorder-box">${
+        store.preorderUrl
+          ? `<a href="${store.preorderUrl}" target="_blank" rel="noopener">${store.preorderLinkText || 'Pre-order instructions'}</a>`
+          : (store.preorderLinkText || 'Pre-order instructions available in store')
+      }</div>`
+    : '';
 
   return `
     <div class="popup-content">
@@ -50,6 +55,7 @@ function buildPopupHtml(store) {
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
       ${store.phone ? `<p>${store.phone}</p>` : ''}
+      ${preorderBox}
     </div>
   `;
 }
