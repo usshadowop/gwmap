@@ -31,6 +31,19 @@ header p {
   font-size: 0.9rem;
 }
 
+.header-links {
+  margin-top: 0.5rem;
+}
+
+.header-links a {
+  color: #6ab0f3;
+  text-decoration: none;
+}
+
+.header-links a:hover {
+  text-decoration: underline;
+}
+
 #legend {
   display: flex;
   flex-direction: column;
