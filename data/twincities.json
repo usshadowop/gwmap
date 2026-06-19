@@ -171,6 +171,8 @@
     "id": "games-workshop-st-anthony",
     "name": "Warhammer Saint Anthony",
     "address": "2701 39th Ave NE Ste E108, Saint Anthony, MN 55421",
+    "lat": 45.038687,
+    "lng": -93.220688,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
