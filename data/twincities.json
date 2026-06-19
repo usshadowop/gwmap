@@ -87,6 +87,8 @@
     "id": "dreamers-vault-games-minneapolis",
     "name": "Dreamers Vault Games Minneapolis",
     "address": "4701 Hiawatha Ave, Minneapolis, MN 55406",
+    "lat": 44.918188,
+    "lng": -93.216313,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -94,6 +96,8 @@
     "id": "dreamers-vault-games-roseville",
     "name": "Dreamers Vault Games Roseville",
     "address": "1143 Larpenteur Ave W, Roseville, MN 55113",
+    "lat": 44.992562,
+    "lng": -93.148313,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -101,6 +105,8 @@
     "id": "dreamers-vault-games-st-louis-park",
     "name": "Dreamers Vault Games St. Louis Park",
     "address": "3015 Utah Ave S Suite B, St. Louis Park, MN 55426",
+    "lat": 44.948563,
+    "lng": -93.381938,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -108,6 +114,8 @@
     "id": "dreamers-vault-games-south-st-paul",
     "name": "Dreamers Vault Games South St. Paul",
     "address": "207 13th Ave S, South St. Paul, MN 55075",
+    "lat": 44.888687,
+    "lng": -93.049437,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -115,6 +123,8 @@
     "id": "tower-games-minneapolis",
     "name": "Tower Games",
     "address": "3920 Nicollet Ave S Suite 150, Minneapolis, MN 55409",
+    "lat": 44.931562,
+    "lng": -93.278063,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -122,6 +132,8 @@
     "id": "tower-games-bloomington",
     "name": "Tower Games - Bloomington",
     "address": "8645 Lyndale Ave S, Bloomington, MN 55420",
+    "lat": 44.846437,
+    "lng": -93.287812,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   },
@@ -129,6 +141,8 @@
     "id": "lvl-up-games-minneapolis",
     "name": "Lvl Up Games",
     "address": "1425 Lasalle Ave, Minneapolis, MN 55403",
+    "lat": 44.967812,
+    "lng": -93.279188,
     "discount": "10% off Games Workshop models",
     "category": "10"
   },
@@ -136,6 +150,8 @@
     "id": "battlegrounds-cafe-white-bear-lake",
     "name": "Battlegrounds Cafe",
     "address": "2008 County Road E East, White Bear Lake, MN 55110",
+    "lat": 45.049563,
+    "lng": -93.015687,
     "discount": "10% off Games Workshop models (discount doesn't apply to rare or web exclusive items)",
     "category": "10",
     "newReleases": true,
@@ -160,6 +176,8 @@
     "id": "gamezenter-roseville",
     "name": "Gamezenter",
     "address": "1975 W County Rd B2, Roseville, MN 55113",
+    "lat": 45.015187,
+    "lng": -93.184063,
     "discount": "No discount on Games Workshop models",
     "category": "none"
   }
