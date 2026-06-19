@@ -67,3 +67,14 @@ header p {
 .popup-content p {
   margin: 0.15rem 0;
 }
+
+.popup-tags {
+  margin: 0.3rem 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.popup-tags li {
+  margin: 0.1rem 0;
+}

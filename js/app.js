@@ -30,6 +30,30 @@ function createPinIcon(color) {
   });
 }
 
+function buildPopupHtml(store) {
+  const tags = [];
+  if (store.newReleases) {
+    tags.push('<li>✓ Carries new releases</li>');
+  }
+  if (store.preorders) {
+    const link = store.preorderUrl
+      ? ` — <a href="${store.preorderUrl}" target="_blank" rel="noopener">pre-order instructions</a>`
+      : '';
+    tags.push(`<li>✓ Takes pre-orders${link}</li>`);
+  }
+
+  return `
+    <div class="popup-content">
+      <h3>${store.name}</h3>
+      <p>${store.address}</p>
+      <p><strong>${store.discount}</strong></p>
+      ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
+      ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
+      ${store.phone ? `<p>${store.phone}</p>` : ''}
+    </div>
+  `;
+}
+
 const GEOCODE_CACHE_KEY = 'gwmap-geocode-cache';
 
 function loadGeocodeCache() {
@@ -74,15 +98,7 @@ async function loadStores(map) {
         : await geocode(store.address, cache);
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
       const marker = L.marker([lat, lng], { icon: createPinIcon(color) }).addTo(map);
-      marker.bindPopup(`
-        <div class="popup-content">
-          <h3>${store.name}</h3>
-          <p>${store.address}</p>
-          <p><strong>${store.discount}</strong></p>
-          ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
-          ${store.phone ? `<p>${store.phone}</p>` : ''}
-        </div>
-      `);
+      marker.bindPopup(buildPopupHtml(store));
       bounds.push([lat, lng]);
     } catch (err) {
       console.error(`Failed to place marker for ${store.name}:`, err);

@@ -39,4 +39,18 @@ Optionally, set `lat`/`lng` directly (e.g. pulled from a Google Maps link) to sk
 | `none`    | red    | No discount                           |
 | `loyalty` | blue   | Discount with store loyalty program   |
 
+Optional fields can be added to flag what a store carries:
+
+```json
+{
+  "newReleases": true,
+  "preorders": true,
+  "preorderUrl": "https://example.com/preorders"
+}
+```
+
+- `newReleases`: set `true` if the store carries new releases on launch day.
+- `preorders`: set `true` if the store takes pre-orders.
+- `preorderUrl`: optional link to pre-order instructions, only shown if `preorders` is `true`.
+
 Open a pull request with your addition.
