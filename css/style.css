@@ -215,3 +215,14 @@ header p {
 .store-entry .popup-content {
   padding: 0 0 0.75rem 1.5rem;
 }
+
+@media (max-width: 480px) {
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-content {
+    max-width: calc(100vw - 60px);
+  }
+
+  .leaflet-popup-content {
+    width: auto !important;
+  }
+}
