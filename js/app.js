@@ -47,7 +47,7 @@ function buildPopupHtml(store, { showName = true } = {}) {
       }</div>`
     : '';
 
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
+  const mapsUrl = store.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
 
   return `
     <div class="popup-content">

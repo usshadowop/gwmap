@@ -75,6 +75,17 @@
     "category": "none"
   },
   {
+    "id": "the-mana-dojo-burnsville",
+    "name": "The Mana Dojo",
+    "address": "1178 Burnsville Center #1071, Burnsville, MN 55306",
+    "lat": 44.743937,
+    "lng": -93.288812,
+    "discount": "15% off Games Workshop models",
+    "category": "15",
+    "mapsUrl": "https://maps.app.goo.gl/CubY4jKU4E1ctH8X6",
+    "note": "Pending store phone verification"
+  },
+  {
     "id": "dreamers-vault-games-champlin",
     "name": "Dreamers Vault Games Champlin",
     "address": "11591 Theatre Dr N, Champlin, MN 55316",
