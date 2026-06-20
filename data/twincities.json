@@ -184,5 +184,15 @@
     "lng": -93.184063,
     "discount": "No discount on Games Workshop models",
     "category": "none"
+  },
+  {
+    "id": "phoenix-games-fridley",
+    "name": "Phoenix Games",
+    "address": "1091 E Moore Lake Dr, Fridley, MN 55432",
+    "lat": 45.081313,
+    "lng": -93.240938,
+    "discount": "No discount on Games Workshop models",
+    "category": "none",
+    "note": "Sells used Games Workshop Models"
   }
 ]
