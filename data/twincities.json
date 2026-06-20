@@ -9,7 +9,8 @@
     "category": "15",
     "newReleases": true,
     "preorders": true,
-    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from."
+    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from.",
+    "mapsUrl": "https://maps.google.com/?cid=16374996747234973119"
   },
   {
     "id": "hub-hobby-little-canada",
@@ -21,7 +22,8 @@
     "category": "15",
     "newReleases": true,
     "preorders": true,
-    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from."
+    "preorderLinkText": "Contact Hub Hobby Little Canada (651-490-1675) and ask for Kevin the Warhammer ordering manager on Tuesday. Let him know what you'd like and which location you want to pickup from.",
+    "mapsUrl": "https://maps.google.com/?cid=6258887841374876196"
   },
   {
     "id": "scale-model-supplies",
@@ -32,7 +34,8 @@
     "discount": "15% off Games Workshop models",
     "category": "15",
     "newReleases": true,
-    "note": "Store will be closing in late August to move to its new location opening in November."
+    "note": "Store will be closing in late August to move to its new location opening in November.",
+    "mapsUrl": "https://maps.google.com/?cid=14551240458599937527"
   },
   {
     "id": "dumpster-cat-games-minneapolis",
@@ -40,10 +43,11 @@
     "address": "4357 Minnehaha Ave S, Minneapolis, MN 55406",
     "lat": 44.923563,
     "lng": -93.216563,
-    "discount": "15% off Games Workshop models",
-    "category": "15",
+    "discount": "No discount on Games Workshop models",
+    "category": "none",
     "mapsUrl": "https://maps.app.goo.gl/5M9bbvARjwRorfP3A",
-    "note": "Pending store phone verification"
+    "note": "15%+ discount on pre-orders, awaiting info on how to best pre-order.",
+    "preorders": true
   },
   {
     "id": "source-comics-and-games",
@@ -94,7 +98,8 @@
     "lat": 44.742062,
     "lng": -93.294813,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=11005984474388882813"
   },
   {
     "id": "the-mana-dojo-burnsville",
@@ -114,7 +119,8 @@
     "lat": 45.163938,
     "lng": -93.393938,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=9860397079633979325"
   },
   {
     "id": "dreamers-vault-games-minneapolis",
@@ -123,7 +129,8 @@
     "lat": 44.918188,
     "lng": -93.216313,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=11716615796512726606"
   },
   {
     "id": "dreamers-vault-games-roseville",
@@ -132,7 +139,8 @@
     "lat": 44.992562,
     "lng": -93.148313,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=7271551938613454343"
   },
   {
     "id": "dreamers-vault-games-st-louis-park",
@@ -141,7 +149,8 @@
     "lat": 44.948563,
     "lng": -93.381938,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=3985584376663808640"
   },
   {
     "id": "dreamers-vault-games-south-st-paul",
@@ -150,7 +159,8 @@
     "lat": 44.888687,
     "lng": -93.049437,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=16257823475859843162"
   },
   {
     "id": "tower-games-minneapolis",
@@ -159,7 +169,8 @@
     "lat": 44.931562,
     "lng": -93.278063,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=747436840793988384"
   },
   {
     "id": "tower-games-bloomington",
@@ -168,7 +179,8 @@
     "lat": 44.846437,
     "lng": -93.287812,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=6805083186918448995"
   },
   {
     "id": "lvl-up-games-minneapolis",
@@ -177,7 +189,8 @@
     "lat": 44.967812,
     "lng": -93.279188,
     "discount": "10% off Games Workshop models",
-    "category": "10"
+    "category": "10",
+    "mapsUrl": "https://maps.google.com/?cid=4656668068181049365"
   },
   {
     "id": "lvl-up-games-st-paul",
@@ -207,7 +220,8 @@
     "category": "10",
     "newReleases": true,
     "preorders": true,
-    "preorderLinkText": "fill out a pre-order form in person on Tuesday"
+    "preorderLinkText": "fill out a pre-order form in person on Tuesday",
+    "mapsUrl": "https://maps.google.com/?cid=16602328081638471648"
   },
   {
     "id": "games-workshop-eden-prairie",
@@ -216,7 +230,8 @@
     "lat": 44.851187,
     "lng": -93.434313,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=698378509500311520"
   },
   {
     "id": "games-workshop-st-anthony",
@@ -225,7 +240,8 @@
     "lat": 45.038687,
     "lng": -93.220688,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=9072392149107076224"
   },
   {
     "id": "gamezenter-roseville",
@@ -234,7 +250,8 @@
     "lat": 45.015187,
     "lng": -93.184063,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.google.com/?cid=1558443346310957433"
   },
   {
     "id": "phoenix-games-fridley",
