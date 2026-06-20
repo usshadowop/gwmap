@@ -150,3 +150,50 @@ header p {
   font-style: italic;
   color: #555;
 }
+
+.store-list-menu {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 1.5rem;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.store-list-menu summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.4rem 0;
+}
+
+.store-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.store-entry {
+  border-top: 1px solid #eee;
+}
+
+.store-entry summary {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  list-style: none;
+}
+
+.store-entry-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.store-entry .popup-content {
+  padding: 0 0 0.75rem 1.5rem;
+}

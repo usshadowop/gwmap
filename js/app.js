@@ -30,7 +30,7 @@ function createPinIcon(color) {
   });
 }
 
-function buildPopupHtml(store) {
+function buildPopupHtml(store, { showName = true } = {}) {
   const tags = [];
   if (store.newReleases) {
     tags.push('<li>✓ Discount applies to new releases</li>');
@@ -51,7 +51,7 @@ function buildPopupHtml(store) {
 
   return `
     <div class="popup-content">
-      <h3>${store.name}</h3>
+      ${showName ? `<h3>${store.name}</h3>` : ''}
       <p>${store.address}</p>
       <p><strong>${store.discount}</strong></p>
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
@@ -62,6 +62,40 @@ function buildPopupHtml(store) {
       ${store.note ? `<p class="popup-note">${store.note}</p>` : ''}
     </div>
   `;
+}
+
+const CATEGORY_RANK = Object.fromEntries(CATEGORIES.map((c, i) => [c.key, i]));
+
+function sortStores(stores) {
+  return [...stores].sort((a, b) => {
+    const rankA = CATEGORY_RANK[a.category] ?? CATEGORIES.length;
+    const rankB = CATEGORY_RANK[b.category] ?? CATEGORIES.length;
+    if (rankA !== rankB) {
+      return rankA - rankB;
+    }
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function renderStoreList(stores) {
+  const list = document.getElementById('store-list');
+  if (!list) {
+    return;
+  }
+  list.innerHTML = sortStores(stores).map(store => {
+    const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
+    return `
+      <li class="store-entry">
+        <details>
+          <summary>
+            <span class="store-entry-dot" style="background:${color}"></span>
+            <span class="store-entry-name">${store.name}</span>
+          </summary>
+          ${buildPopupHtml(store, { showName: false })}
+        </details>
+      </li>
+    `;
+  }).join('');
 }
 
 const GEOCODE_CACHE_KEY = 'gwmap-geocode-cache';
@@ -100,6 +134,8 @@ async function loadStores(map) {
   const stores = await response.json();
   const cache = loadGeocodeCache();
   const bounds = [];
+
+  renderStoreList(stores);
 
   for (const store of stores) {
     try {
