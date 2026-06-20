@@ -35,6 +35,17 @@
     "note": "Store will be closing in late August to move to its new location opening in November."
   },
   {
+    "id": "dumpster-cat-games-minneapolis",
+    "name": "Dumpster Cat Games",
+    "address": "4357 Minnehaha Ave S, Minneapolis, MN 55406",
+    "lat": 44.923563,
+    "lng": -93.216563,
+    "discount": "15% off Games Workshop models",
+    "category": "15",
+    "mapsUrl": "https://maps.app.goo.gl/5M9bbvARjwRorfP3A",
+    "note": "Pending store phone verification"
+  },
+  {
     "id": "source-comics-and-games",
     "name": "Source Comics & Games",
     "address": "2057 Snelling Ave N, Roseville, MN 55113",
