@@ -44,6 +44,17 @@
     "category": "loyalty"
   },
   {
+    "id": "lewis-game-shop-monticello",
+    "name": "Lewis Game Shop",
+    "address": "220 7th St W, Monticello, MN 55362",
+    "lat": 45.300438,
+    "lng": -93.800938,
+    "discount": "Discount on Games Workshop models with store loyalty program",
+    "category": "loyalty",
+    "mapsUrl": "https://maps.app.goo.gl/UNiekrZiapNtBrAG6",
+    "note": "Pending store phone verification"
+  },
+  {
     "id": "the-forge-chaska",
     "name": "The Forge",
     "address": "230 Pioneer Trail, Chaska, MN 55318",
