@@ -53,11 +53,12 @@
     "address": "4357 Minnehaha Ave S, Minneapolis, MN 55406",
     "lat": 44.923563,
     "lng": -93.216563,
-    "discount": "No discount on Games Workshop models",
-    "category": "none",
+    "discount": "15% off Games Workshop models",
+    "category": "15",
     "mapsUrl": "https://maps.app.goo.gl/5M9bbvARjwRorfP3A",
-    "note": "15%+ discount on pre-orders, awaiting info on how to best pre-order.",
-    "preorders": true
+    "newReleases": true,
+    "preorders": true,
+    "preorderLinkText": "Pre-orders receive an additional 5% discount"
   },
   {
     "id": "source-comics-and-games",
