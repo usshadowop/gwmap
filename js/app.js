@@ -64,17 +64,15 @@ function buildPopupHtml(store, { showName = true } = {}) {
   `;
 }
 
-const CATEGORY_RANK = Object.fromEntries(CATEGORIES.map((c, i) => [c.key, i]));
-
-function sortStores(stores) {
-  return [...stores].sort((a, b) => {
-    const rankA = CATEGORY_RANK[a.category] ?? CATEGORIES.length;
-    const rankB = CATEGORY_RANK[b.category] ?? CATEGORIES.length;
-    if (rankA !== rankB) {
-      return rankA - rankB;
-    }
-    return a.name.localeCompare(b.name);
-  });
+function groupStoresByCategory(stores) {
+  return CATEGORIES
+    .map(cat => ({
+      ...cat,
+      stores: stores
+        .filter(store => store.category === cat.key)
+        .sort((a, b) => a.name.localeCompare(b.name))
+    }))
+    .filter(group => group.stores.length > 0);
 }
 
 function renderStoreList(stores) {
@@ -82,20 +80,28 @@ function renderStoreList(stores) {
   if (!list) {
     return;
   }
-  list.innerHTML = sortStores(stores).map(store => {
-    const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
-    return `
-      <li class="store-entry">
-        <details>
-          <summary>
-            <span class="store-entry-dot" style="background:${color}"></span>
-            <span class="store-entry-name">${store.name}</span>
-          </summary>
-          ${buildPopupHtml(store, { showName: false })}
-        </details>
-      </li>
-    `;
-  }).join('');
+  list.innerHTML = groupStoresByCategory(stores).map(group => `
+    <li class="category-group">
+      <details>
+        <summary>
+          <span class="store-entry-dot" style="background:${group.color}"></span>
+          <span class="store-entry-name">${group.label} (${group.stores.length})</span>
+        </summary>
+        <ul class="store-list">
+          ${group.stores.map(store => `
+            <li class="store-entry">
+              <details>
+                <summary>
+                  <span class="store-entry-name">${store.name}</span>
+                </summary>
+                ${buildPopupHtml(store, { showName: false })}
+              </details>
+            </li>
+          `).join('')}
+        </ul>
+      </details>
+    </li>
+  `).join('');
 }
 
 const GEOCODE_CACHE_KEY = 'gwmap-geocode-cache';
