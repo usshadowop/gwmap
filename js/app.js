@@ -1,7 +1,7 @@
 const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },
-  { key: '10', color: '#f1c40f', label: '10% discount' },
-  { key: 'loyalty', color: '#3498db', label: 'Discount with store loyalty program' },
+  { key: '10', color: '#3498db', label: '10% discount' },
+  { key: 'loyalty', color: '#f1c40f', label: 'Discount with store loyalty program' },
   { key: 'none', color: '#e74c3c', label: 'No discount' }
 ];
 const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]));
