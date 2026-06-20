@@ -138,7 +138,7 @@ async function geocode(address, cache) {
   return coords;
 }
 
-async function loadStores(map) {
+async function loadStores(map, oms) {
   const response = await fetch(window.GWMAP_DATA_URL || 'data/stores.json');
   const stores = await response.json();
   const cache = loadGeocodeCache();
@@ -156,6 +156,10 @@ async function loadStores(map) {
       const marker = L.marker([lat, lng], { icon: createPinIcon(color), zIndexOffset }).addTo(map);
       const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
       marker.bindPopup(buildPopupHtml(store), { maxWidth: popupMaxWidth, autoPanPadding: [20, 20] });
+      if (oms) {
+        marker.off('click');
+        oms.addMarker(marker);
+      }
       bounds.push([lat, lng]);
     } catch (err) {
       console.error(`Failed to place marker for ${store.name}:`, err);
@@ -176,4 +180,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19
 }).addTo(map);
 
-loadStores(map);
+const oms = typeof OverlappingMarkerSpiderfier !== 'undefined'
+  ? new OverlappingMarkerSpiderfier(map, { keepSpiderfied: true, nearbyDistance: 20 })
+  : null;
+if (oms) {
+  oms.addListener('click', marker => marker.openPopup());
+}
+
+loadStores(map, oms);
