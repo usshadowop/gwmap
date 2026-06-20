@@ -150,7 +150,8 @@ async function loadStores(map) {
         : await geocode(store.address, cache);
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
       const marker = L.marker([lat, lng], { icon: createPinIcon(color) }).addTo(map);
-      marker.bindPopup(buildPopupHtml(store), { maxWidth: 260, autoPanPadding: [20, 20] });
+      const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
+      marker.bindPopup(buildPopupHtml(store), { maxWidth: popupMaxWidth, autoPanPadding: [20, 20] });
       bounds.push([lat, lng]);
     } catch (err) {
       console.error(`Failed to place marker for ${store.name}:`, err);
