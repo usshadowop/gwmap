@@ -5,6 +5,9 @@ const CATEGORIES = [
   { key: 'none', color: '#e74c3c', label: 'No discount' }
 ];
 const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]));
+const CATEGORY_Z_INDEX_OFFSET = Object.fromEntries(
+  CATEGORIES.map((c, i) => [c.key, (CATEGORIES.length - i) * 10000])
+);
 
 function renderLegend() {
   const legend = document.getElementById('legend');
@@ -149,7 +152,8 @@ async function loadStores(map) {
         ? { lat: store.lat, lng: store.lng }
         : await geocode(store.address, cache);
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
-      const marker = L.marker([lat, lng], { icon: createPinIcon(color) }).addTo(map);
+      const zIndexOffset = CATEGORY_Z_INDEX_OFFSET[store.category] ?? 0;
+      const marker = L.marker([lat, lng], { icon: createPinIcon(color), zIndexOffset }).addTo(map);
       const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
       marker.bindPopup(buildPopupHtml(store), { maxWidth: popupMaxWidth, autoPanPadding: [20, 20] });
       bounds.push([lat, lng]);
