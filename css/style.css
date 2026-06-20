@@ -245,6 +245,11 @@ header p {
   line-height: 1.4;
 }
 
+.modal-box .golden-rule {
+  color: #b8860b;
+  font-weight: 600;
+}
+
 .modal-box button {
   background: #1a1a1a;
   color: #fff;
