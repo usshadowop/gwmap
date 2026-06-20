@@ -92,7 +92,8 @@
     "newReleases": true,
     "preorders": true,
     "preorderUrl": "https://www.theforgemn.com/request-products",
-    "preorderLinkText": "fill out this pre-order form by 5:30 on Tuesday"
+    "preorderLinkText": "fill out this pre-order form by 5:30 on Tuesday",
+    "mapsUrl": "https://maps.app.goo.gl/rxVngGrzmr224Rky8"
   },
   {
     "id": "dreamers-vault-games-eden-prairie",
@@ -101,7 +102,8 @@
     "lat": 44.8524253,
     "lng": -93.4306322,
     "discount": "No discount on Games Workshop models",
-    "category": "none"
+    "category": "none",
+    "mapsUrl": "https://maps.app.goo.gl/cx97oEJHLXDDPQeL9"
   },
   {
     "id": "dreamers-vault-games-burnsville",
