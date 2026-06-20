@@ -38,6 +38,16 @@
     "mapsUrl": "https://maps.google.com/?cid=14551240458599937527"
   },
   {
+    "id": "brickmania-minneapolis",
+    "name": "Brickmania",
+    "address": "1618 Central Ave NE Suite 110, Minneapolis, MN 55413",
+    "lat": 45.004438,
+    "lng": -93.247563,
+    "discount": "No discount on Games Workshop models",
+    "category": "none",
+    "note": "No persistent GW discount, but frequent storewide holiday sales of 10-20% off everything in store."
+  },
+  {
     "id": "dumpster-cat-games-minneapolis",
     "name": "Dumpster Cat Games",
     "address": "4357 Minnehaha Ave S, Minneapolis, MN 55406",
