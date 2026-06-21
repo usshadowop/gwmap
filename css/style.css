@@ -78,13 +78,22 @@ header p {
   text-decoration: underline;
 }
 
+.legend-menu {
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.legend-menu summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+}
+
 #legend {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  padding: 0.5rem 1.5rem;
-  background: #f4f4f4;
-  border-bottom: 1px solid #ddd;
+  padding: 0 1.5rem 0.5rem;
   font-size: 0.85rem;
 }
 
