@@ -276,5 +276,17 @@
     "discount": "No discount on Games Workshop models",
     "category": "none",
     "note": "Sells used Games Workshop Models"
+  },
+  {
+    "id": "steamship-games-minneapolis",
+    "name": "Steamship Games",
+    "address": "711 W Lake St Ste 103, Minneapolis, MN 55408",
+    "lat": 44.948156,
+    "lng": -93.288849,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "phone": "+1 612 825 4066",
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJXyQrB4Yn9ocRjNTHKxLJgZo",
+    "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
   }
 ]
