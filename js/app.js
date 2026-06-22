@@ -2,7 +2,8 @@ const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },
   { key: '10', color: '#3498db', label: '10% discount' },
   { key: 'loyalty', color: '#f1c40f', label: 'Discount with store loyalty program' },
-  { key: 'none', color: '#e74c3c', label: 'No discount' }
+  { key: 'none', color: '#e74c3c', label: 'No discount' },
+  { key: 'unconfirmed', color: '#9b59b6', label: 'Unconfirmed stores' }
 ];
 const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]));
 const CATEGORY_Z_INDEX_OFFSET = Object.fromEntries(
@@ -14,6 +15,7 @@ function renderLegend() {
   legend.innerHTML = CATEGORIES.map(c => `
     <span class="legend-item">
       <span class="legend-dot" style="background:${c.color}"></span>${c.label}
+      ${c.key === 'unconfirmed' ? '<button type="button" id="toggle-unconfirmed" class="legend-toggle-btn" aria-pressed="false">Show unconfirmed stores</button>' : ''}
     </span>
   `).join('');
 }
@@ -138,7 +140,7 @@ async function geocode(address, cache) {
   return coords;
 }
 
-async function loadStores(map, oms) {
+async function loadStores(map, oms, unconfirmedLayer) {
   const response = await fetch(window.GWMAP_DATA_URL || 'data/stores.json');
   const stores = await response.json();
   const cache = loadGeocodeCache();
@@ -153,14 +155,19 @@ async function loadStores(map, oms) {
         : await geocode(store.address, cache);
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
       const zIndexOffset = CATEGORY_Z_INDEX_OFFSET[store.category] ?? 0;
-      const marker = L.marker([lat, lng], { icon: createPinIcon(color), zIndexOffset }).addTo(map);
+      const marker = L.marker([lat, lng], { icon: createPinIcon(color), zIndexOffset });
       const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
       marker.bindPopup(buildPopupHtml(store), { maxWidth: popupMaxWidth, autoPanPadding: [20, 20] });
       if (oms) {
         marker.off('click');
         oms.addMarker(marker);
       }
-      bounds.push([lat, lng]);
+      if (store.category === 'unconfirmed' && unconfirmedLayer) {
+        marker.addTo(unconfirmedLayer);
+      } else {
+        marker.addTo(map);
+        bounds.push([lat, lng]);
+      }
     } catch (err) {
       console.error(`Failed to place marker for ${store.name}:`, err);
     }
@@ -187,4 +194,22 @@ if (oms) {
   oms.addListener('click', marker => marker.openPopup());
 }
 
-loadStores(map, oms);
+const unconfirmedLayer = L.layerGroup();
+
+const toggleUnconfirmedBtn = document.getElementById('toggle-unconfirmed');
+if (toggleUnconfirmedBtn) {
+  toggleUnconfirmedBtn.addEventListener('click', () => {
+    const isShown = map.hasLayer(unconfirmedLayer);
+    if (isShown) {
+      map.removeLayer(unconfirmedLayer);
+      toggleUnconfirmedBtn.textContent = 'Show unconfirmed stores';
+      toggleUnconfirmedBtn.setAttribute('aria-pressed', 'false');
+    } else {
+      unconfirmedLayer.addTo(map);
+      toggleUnconfirmedBtn.textContent = 'Hide unconfirmed stores';
+      toggleUnconfirmedBtn.setAttribute('aria-pressed', 'true');
+    }
+  });
+}
+
+loadStores(map, oms, unconfirmedLayer);

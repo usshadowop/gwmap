@@ -117,6 +117,26 @@ header p {
   display: inline-block;
 }
 
+.legend-toggle-btn {
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.legend-toggle-btn:hover {
+  background: #eee;
+}
+
+.legend-toggle-btn[aria-pressed="true"] {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+
 #map {
   flex: 1;
   width: 100%;
