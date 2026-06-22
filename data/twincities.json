@@ -288,5 +288,52 @@
     "phone": "+1 612 825 4066",
     "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJXyQrB4Yn9ocRjNTHKxLJgZo",
     "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
+  },
+  {
+    "id": "rockhopper-comics-new-hope",
+    "name": "Rockhopper Comics",
+    "address": "8016 Medicine Lake Rd, New Hope, MN 55427",
+    "lat": 45.007692,
+    "lng": -93.382501,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "phone": "+1 763 710 4683",
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJGZs3Y1k1s1IROdQ9hmVo05s",
+    "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
+  },
+  {
+    "id": "games-by-james-mall-of-america",
+    "name": "Games By James - Mall of America",
+    "address": "358 East Broadway, Bloomington, MN 55425",
+    "lat": 44.854540,
+    "lng": -93.240660,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "phone": "+1 952 854 4747",
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJY2v23mwv9ocRkegyOIcSats",
+    "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
+  },
+  {
+    "id": "fox-den-board-game-cafe-burnsville",
+    "name": "Fox Den Board Game Cafe",
+    "address": "12450 River Ridge Ln #300, Burnsville, MN 55337",
+    "lat": 44.778403,
+    "lng": -93.280696,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "phone": "+1 952 952 5707",
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJx0eZRi079ocRdfc2HNnyQy0",
+    "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
+  },
+  {
+    "id": "midtown-hobby-shop-and-gaming-anoka",
+    "name": "Midtown Hobby Shop and Gaming",
+    "address": "1919 2nd Ave, Anoka, MN 55303",
+    "lat": 45.197418,
+    "lng": -93.389602,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJu_5QblM_s1IRY7R-i8qcvDU",
+    "note": "New listing — found on the official Warhammer Store Finder (warhammer.com), not yet verified."
   }
 ]
