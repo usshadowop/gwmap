@@ -1,0 +1,27 @@
+name: Validate store data
+
+on:
+  pull_request:
+    paths:
+      - 'data/**.json'
+      - 'scripts/validate-stores.js'
+      - '.github/workflows/validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/**.json'
+      - 'scripts/validate-stores.js'
+      - '.github/workflows/validate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate store data
+        run: node scripts/validate-stores.js
