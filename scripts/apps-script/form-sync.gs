@@ -120,23 +120,27 @@ function toGameSystems_(v) {
 }
 
 /**
- * Derive the map category + a meta flag from the Q5 answer and the % value.
- * Returns { category, offGrid } where offGrid is true when a "yes" store gave
- * a percentage that has no dedicated tier (anything other than 15 or 10).
+ * Derive the map category from the Q5 answer and the % value.
+ * Returns { category, snappedFrom } where snappedFrom is the original
+ * percentage when an off-grid value (not 15 or 10) was snapped to the
+ * nearest tier — null otherwise. The real percentage is still kept in the
+ * discount text; only the pin color/category snaps.
  */
 function deriveCategory_(q5, pctNum) {
   const a = String(q5).toLowerCase();
-  if (a.indexOf('loyalty') !== -1) return { category: 'loyalty', offGrid: false };
-  if (a === 'no' || a.indexOf('no discount') !== -1) return { category: 'none', offGrid: false };
+  if (a.indexOf('loyalty') !== -1) return { category: 'loyalty', snappedFrom: null };
+  if (a === 'no' || a.indexOf('no discount') !== -1) return { category: 'none', snappedFrom: null };
   if (a.indexOf('yes') !== -1) {
-    if (pctNum === 15) return { category: '15', offGrid: false };
-    if (pctNum === 10) return { category: '10', offGrid: false };
-    // Off-grid percentage (e.g. 20%): keep it honest as unconfirmed so it
-    // doesn't render as a confirmed tier. Flag it so the email calls it out.
-    return { category: 'unconfirmed', offGrid: true };
+    if (pctNum === 15 || pctNum === 10) return { category: String(pctNum), snappedFrom: null };
+    if (pctNum != null) {
+      // Snap to the nearer of the two confirmed tiers (midpoint 12.5).
+      const snapped = pctNum >= 12.5 ? '15' : '10';
+      return { category: snapped, snappedFrom: pctNum };
+    }
+    return { category: 'unconfirmed', snappedFrom: null }; // "yes" but no % given
   }
   // "Other" / blank → needs human classification.
-  return { category: 'unconfirmed', offGrid: false };
+  return { category: 'unconfirmed', snappedFrom: null };
 }
 
 // ---------- main entry point ----------
@@ -175,7 +179,7 @@ function onFormSubmit(e) {
     discount = loyaltyDetails || 'Discount with store loyalty program';
   } else if (cat.category === 'none') {
     discount = 'No discount on Games Workshop models';
-  } else if ((cat.category === '15' || cat.category === '10' || cat.offGrid) && pctNum != null) {
+  } else if ((cat.category === '15' || cat.category === '10') && pctNum != null) {
     discount = pctNum + '% off Games Workshop models' + (exclusions ? ' (' + exclusions + ')' : '');
   } else if (otherDiscount) {
     discount = otherDiscount;
@@ -290,7 +294,7 @@ function onFormSubmit(e) {
     title: prTitle,
     head: branch,
     base: MAIN_BRANCH,
-    body: buildPrBody_(entry, isUpdate, cat.offGrid)
+    body: buildPrBody_(entry, isUpdate, cat.snappedFrom)
   });
   if (prRes.code !== 201) {
     console.error("Failed to open PR: " + prRes.code + " " + prRes.text);
@@ -299,30 +303,30 @@ function onFormSubmit(e) {
   const pr = prRes.json;
   console.log("Opened PR #" + pr.number + ": " + pr.html_url);
 
-  sendApprovalEmail_(entry, isUpdate, cat.offGrid, pr);
+  sendApprovalEmail_(entry, isUpdate, cat.snappedFrom, pr);
 }
 
 // ---------- email + PR body ----------
 
-function buildPrBody_(entry, isUpdate, offGrid) {
+function buildPrBody_(entry, isUpdate, snappedFrom) {
   let body = (isUpdate ? 'Updating' : 'Adding') + ' **' + entry.name + '** from a form submission.\n\n';
-  if (offGrid) {
-    body += '> ⚠️ Discount % is not 15 or 10, so category was set to `unconfirmed`. ' +
-      'Adjust the category if it should be a confirmed tier.\n\n';
+  if (snappedFrom != null) {
+    body += '> ℹ️ Discount of ' + snappedFrom + '% was snapped to the `' + entry.category +
+      '` tier for the pin color. The exact percentage is preserved in the discount text.\n\n';
   }
   body += '```json\n' + JSON.stringify(entry, null, 2) + '\n```\n';
   return body;
 }
 
-function sendApprovalEmail_(entry, isUpdate, offGrid, pr) {
+function sendApprovalEmail_(entry, isUpdate, snappedFrom, pr) {
   const subject = (isUpdate ? '⚠️ gwmap: Review edits for ' : '✨ gwmap: New store — ') + entry.name;
   let html = '<div style="font-family:Arial,sans-serif;max-width:640px;color:#333;">';
   html += '<h2 style="color:' + (isUpdate ? '#d97706' : '#16a34a') + ';">' +
     (isUpdate ? 'Proposed edits to an existing store' : 'New store request') + '</h2>';
-  if (offGrid) {
-    html += '<p style="background:#fef3c7;border-left:4px solid #d97706;padding:8px 12px;">' +
-      'Discount % is not 15 or 10 — category was set to <b>unconfirmed</b>. ' +
-      'Edit the PR if it should be a confirmed tier.</p>';
+  if (snappedFrom != null) {
+    html += '<p style="background:#dbeafe;border-left:4px solid #2563eb;padding:8px 12px;">' +
+      'Discount of <b>' + snappedFrom + '%</b> was snapped to the <b>' + entry.category +
+      '</b> tier for the pin color. The exact percentage is kept in the discount text.</p>';
   }
   Object.keys(entry).forEach(function (k) {
     const v = Array.isArray(entry[k]) ? entry[k].join(', ') : entry[k];
