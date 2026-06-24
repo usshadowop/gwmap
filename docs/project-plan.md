@@ -53,8 +53,8 @@ worth automating.
 | Colorado Springs | 13 | ✅ done | not started — all 13 unconfirmed (seeded from the GW Store Finder) |
 | Denver | 26 | ✅ done | barely started — 2 confirmed no-discount, 24 unconfirmed |
 | Duluth | 4 | ✅ A+B+C | stockists confirmed 4/4; Phase C excluded Dungeon's End (closed 2022); discounts unverified |
-| Rochester | 1 | ✅ A+C (B pending) | Phase C: no off-list adds (NerdinOut no GW evidence); discounts unverified |
-| Mankato | 3 | ✅ A+C (B pending) | Phase C: no off-list adds (PULP no GW evidence); discounts unverified |
+| Rochester | 1 | ✅ A+B+C | Gamez & More confirmed GW stockist (first-party); discount unverified |
+| Mankato | 3 | ✅ A+B+C | Dork Den + Atlantis confirmed stockists (first-party); Mirth listing-only; discounts unverified |
 
 Counts reflect `data/<region>.json` at this pass; `unconfirmed` = listed on the
 official GW Store Finder and awaiting an outreach response (default-include

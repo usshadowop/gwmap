@@ -10,9 +10,11 @@ overlap with Owatonna/Northfield in this denser area). Process:
 their own buckets. See `data/rochester.json`.
 
 ## Phase B — verify + tier
-Not yet run rigorously. Incidental finding: gamezandmore.com describes itself as
-a "retailer for Magic the Gathering, Warhammer, and X-Wing," so GW stocking is
-effectively confirmed; the full B.3 checklist is still TODO. `category: unconfirmed`.
+- **Gamez & More** — confirmed GW stockist via first-party site: dedicated
+  Warhammer 40,000 and Warhammer shop categories and the full Citadel paint line
+  (surfaced by a domain-scoped `site:gamezandmore.com` search — the homepage
+  fetch was an empty JS shell, a capability gap, not a negative). No discount
+  sourced, so it stays `category: unconfirmed` pending an outreach call.
 
 ## Phase C — off-list (community-sourced) search
 - **NerdinOut** (Rochester MN) — comics / toys / cards; no Games Workshop
@@ -22,4 +24,4 @@ effectively confirmed; the full B.3 checklist is still TODO. `category: unconfir
 - **No additions.**
 
 ## Status
-A + C complete; B (full checklist) pending. Discounts unverified.
+A + B + C complete. Open item: discount unverified (needs an outreach call).

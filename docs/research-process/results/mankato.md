@@ -10,8 +10,18 @@ Owatonna/Northfield/Waconia). Process:
 `data/mankato.json`.
 
 ## Phase B — verify + tier
-Not yet run rigorously; all `category: unconfirmed`. Atlantis Hobby and The Dork
-Den are the well-known Mankato FLGS; full B.3 checklist is TODO.
+Run via domain-scoped `site:<domain>` searches (homepage fetches were empty JS
+shells — a capability gap, not a negative):
+- **Atlantis Hobby** — confirmed GW stockist: own site has a Table Top Games >
+  Warhammer > Age of Sigmar section stocking Games Workshop product.
+- **The Dork Den** — confirmed GW stockist: own site carries AoS starter sets,
+  GW product and Citadel paints; local press (Mankato Free Press / KEYC) confirms
+  Warhammer 40k + Citadel.
+- **Mirth Connection** (Mapleton) — listing-only (Tier B): on the Store Finder,
+  opened May 2025, Facebook-only presence (not fetchable), no first-party product
+  page found. Kept by default-include policy.
+
+No discount sourced for any, so all stay `category: unconfirmed` pending outreach.
 
 ## Phase C — off-list (community-sourced) search
 - **PULP Comics and Games** (633 S Front St, Mankato; formerly Double Play Cards
@@ -22,4 +32,4 @@ Den are the well-known Mankato FLGS; full B.3 checklist is TODO.
 - **No additions.**
 
 ## Status
-A + C complete; B (full checklist) pending. Discounts unverified.
+A + B + C complete. Open item: discounts unverified for all 3 (needs outreach calls).
