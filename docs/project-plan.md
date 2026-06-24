@@ -6,11 +6,13 @@ rigorous store-finding mechanics, this defers to
 [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md);
 this file is just the map of the moving parts.
 
-> Status as of 2026-06: the site architecture (per-region template + per-region
+> Status (2026-06-24): the site architecture (per-region template + per-region
 > JSON + shared `js/app.js`) is **built and multi-city** (Twin Cities, Colorado
-> Springs, Denver, plus the combined All Cities view). The Form → PR automation
-> is **built and deployed**. The remaining work is per-city store research and
-> outreach.
+> Springs, Denver, plus the combined All Cities view), and the Form → PR
+> automation is **built and deployed** — so setup Phases A & B are done. Per-city
+> store research has been run for all three cities; **outreach is underway in
+> Twin Cities** and **not yet started** in Colorado Springs and Denver. See the
+> per-city status table below.
 
 ## Tool legend
 
@@ -43,6 +45,18 @@ worth automating.
 
 ## Per-city workflow (repeats for each new city)
 
+**Per-city status (2026-06-24):**
+
+| Region | Stores | Discovery | Outreach / verification |
+|---|---|---|---|
+| Twin Cities | 45 | ✅ done | underway — 12 confirmed discounts (5×15%, 5×10%, 2×loyalty), 14 confirmed no-discount, 19 still unconfirmed |
+| Colorado Springs | 13 | ✅ done | not started — all 13 unconfirmed (seeded from the GW Store Finder) |
+| Denver | 26 | ✅ done | barely started — 2 confirmed no-discount, 24 unconfirmed |
+
+Counts reflect `data/<region>.json` at this pass; `unconfirmed` = listed on the
+official GW Store Finder and awaiting an outreach response (default-include
+policy). The workflow itself:
+
 1. **Discover stores** — pull the official GW Store Finder for the city and
    tier each candidate. Use the full process in
    [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md)
@@ -59,10 +73,13 @@ worth automating.
 
 ## Recommended order
 
-1. Run **per-city Phase 1 + 2** (discover + contacts) against the next target city.
-2. Generate + send outreach (Phases 3–4).
-3. Let Phase 5 (automation) publish responses.
-4. Build setup **Phase C** only once the manual region-add becomes a real annoyance.
+1. **Twin Cities:** work the 19 remaining unconfirmed stores via outreach
+   (Phases 3–4); responses publish themselves (Phase 5).
+2. **Colorado Springs & Denver:** discovery is done — run contacts + outreach
+   (Phases 2–4) against the existing lists.
+3. Let Phase 5 (automation) publish responses as they arrive.
+4. Reconsider setup **Phase C** (scaffolding helper) when adding city #4 — three
+   cities exist now, so the next region-add is the point where it may earn its keep.
 
 ## Notes
 
