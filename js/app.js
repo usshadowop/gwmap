@@ -141,8 +141,9 @@ async function geocode(address, cache) {
 }
 
 async function loadStores(map, oms, unconfirmedLayer) {
-  const response = await fetch(window.GWMAP_DATA_URL || 'data/stores.json');
-  const stores = await response.json();
+  const urls = window.GWMAP_DATA_URLS || [window.GWMAP_DATA_URL || 'data/stores.json'];
+  const responses = await Promise.all(urls.map(url => fetch(url)));
+  const stores = (await Promise.all(responses.map(r => r.json()))).flat();
   const cache = loadGeocodeCache();
   const bounds = [];
 
@@ -180,7 +181,7 @@ async function loadStores(map, oms, unconfirmedLayer) {
 
 renderLegend();
 
-const map = L.map('map').setView([44.95, -93.15], 10);
+const map = L.map('map').setView(window.GWMAP_CENTER || [44.95, -93.15], window.GWMAP_ZOOM || 10);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
