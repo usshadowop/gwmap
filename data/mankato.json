@@ -7,9 +7,9 @@
     "lng": -94.011053,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://atlantishobby.com",
     "phone": "(507) 594-9016",
-    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+    "note": "Confirmed Games Workshop stockist — own site has a Table Top Games > Warhammer > Age of Sigmar section stocking Games Workshop product (Start Collecting sets, AoS units, Citadel paints). Also on the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "dork-den-mankato",
@@ -19,9 +19,9 @@
     "lng": -93.99783,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://thedorkden.com",
     "phone": "(507) 386-1406",
-    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+    "note": "Confirmed Games Workshop stockist — own site (thedorkden.com) carries Warhammer Age of Sigmar starter sets, Games Workshop product and Citadel paints; local press (Mankato Free Press / KEYC) confirms Warhammer 40k + Citadel. Also on the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "mirth-connection-mapleton",
@@ -31,8 +31,8 @@
     "lng": -93.957103,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://www.facebook.com/p/Mirth-Connection-61575895511042/",
     "phone": "(507) 524-1116",
-    "note": "In Mapleton, MN (~16 mi south of Mankato). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+    "note": "On the official Warhammer Store Finder; a hobby/arts/games store in Mapleton (~16 mi south of Mankato) that opened May 2025. First-party GW product confirmation not found — Facebook-only presence, not fetchable (capability gap). Included by default-include policy as a listing-only candidate. Discount policy not yet verified — call to confirm."
   }
 ]
