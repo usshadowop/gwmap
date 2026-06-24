@@ -45,9 +45,10 @@ The site is a plain static front-end — no build step, no framework. Read
 
 ## Data
 
-- Validation: `node scripts/validate-stores.js` (also runs in CI on every PR).
-  It requires only `id`, `name` (non-empty strings), `category` ∈
-  `{15, 10, loyalty, none, unconfirmed}`, and `lat`/`lng` as number-or-null.
+- Validation: `node scripts/validate-stores.js` (also runs in CI, but only on
+  PRs that change `data/**`, the script, or its workflow — docs/UI-only PRs
+  don't trigger it). It requires only `id`, `name` (non-empty strings),
+  `category` ∈ `{15, 10, loyalty, none, unconfirmed}`, and `lat`/`lng` as number-or-null.
 - **Schema variance is intentional and allowed:** `data/twincities.json` uses a
   richer ~31-field flat schema (discount details, game systems, socials, play
   space, etc.); `data/coloradosprings.json` and `data/denver.json` use a minimal
