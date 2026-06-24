@@ -1,0 +1,38 @@
+[
+  {
+    "id": "atlantis-hobby-mankato",
+    "name": "Atlantis Hobby",
+    "address": "903 S Front St, Mankato, MN 56001",
+    "lat": 44.160538,
+    "lng": -94.011053,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(507) 594-9016",
+    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+  },
+  {
+    "id": "dork-den-mankato",
+    "name": "The Dork Den",
+    "address": "603 N Riverfront Dr, Mankato, MN 56001",
+    "lat": 44.172152,
+    "lng": -93.99783,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(507) 386-1406",
+    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+  },
+  {
+    "id": "mirth-connection-mapleton",
+    "name": "Mirth Connection",
+    "address": "201 Main St NE, Mapleton, MN 56065",
+    "lat": 43.928479,
+    "lng": -93.957103,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(507) 524-1116",
+    "note": "In Mapleton, MN (~16 mi south of Mankato). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+  }
+]
