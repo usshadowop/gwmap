@@ -67,6 +67,7 @@ with open("storefinder.json") as f:
     data = json.load(f)
 
 TARGET_LAT, TARGET_LNG = 38.8339, -104.8214  # swap for the target city's center point
+RADIUS_MI = 40                               # swap for the desired search radius
 
 def haversine(lat1, lng1, lat2, lng2):
     R = 3958.8  # miles
@@ -76,22 +77,33 @@ def haversine(lat1, lng1, lat2, lng2):
     a = math.sin(dp/2)**2 + math.cos(p1)*math.cos(p2)*math.sin(dl/2)**2
     return 2 * R * math.asin(math.sqrt(a))
 
-state = [s for s in data if s.get("region") == "CO"]  # filter by state/country code first
-for s in state:
-    g = s.get("_geoloc", {})
-    s["_dist"] = haversine(TARGET_LAT, TARGET_LNG, g.get("lat", 0), g.get("lng", 0))
-state.sort(key=lambda s: s["_dist"])
+# Compute distance for every store that has coordinates, then keep those
+# within the radius. Distance is the real filter — do NOT pre-filter by state,
+# or you'll silently drop stores just over a state line that are still in range.
+nearby = []
+for s in data:
+    g = s.get("_geoloc")
+    if not g or g.get("lat") is None or g.get("lng") is None:
+        continue  # skip listings with no usable coordinates rather than treating them as (0, 0)
+    s["_dist"] = haversine(TARGET_LAT, TARGET_LNG, g["lat"], g["lng"])
+    if s["_dist"] <= RADIUS_MI:
+        nearby.append(s)
+nearby.sort(key=lambda s: s["_dist"])
 
-for s in state[:15]:
+print(f"{len(nearby)} stores within {RADIUS_MI} mi:")
+for s in nearby:
     print(f"{s['_dist']:.1f} mi  {s.get('displayName') or s['name']}  -  "
           f"{s['addressLine1']}, {s['city']}, {s['region']} {s['postalCode']}  -  {s.get('phone')}")
 ```
 
 ### Reuse for any other city/region
-- Swap `TARGET_LAT, TARGET_LNG` for the new target (look up via any geocoder).
-- Swap the `region == "CO"` filter for the relevant state/country code, or
-  drop the filter entirely and sort the whole dataset by distance if near a
-  state border.
+- Swap `TARGET_LAT, TARGET_LNG` for the new target (look up via any geocoder)
+  and `RADIUS_MI` for the desired net.
+- The script scans the whole global dataset and filters by true distance, so
+  it works anywhere and correctly catches cross-state-line stores. If you want
+  to speed it up for a large run, you can pre-filter by `region`
+  (state/country code) first — but only when the target is comfortably inside
+  one region, never near a border.
 
 ### Key lesson
 Don't assume "page is CAPTCHA-gated" means "no data without solving the
