@@ -250,6 +250,11 @@ function onFormSubmit(e) {
   const isUpdate = idx !== -1;
   if (isUpdate) {
     entry.id = stores[idx].id; // keep the established id
+    // Preserve fields the form never collects so an update can't wipe them
+    // (most importantly lat/lng — losing those drops the store's map pin).
+    ['lat', 'lng', 'website', 'phone', 'preorderUrl', 'note'].forEach(function (k) {
+      entry[k] = stores[idx][k];
+    });
     stores[idx] = Object.assign({}, stores[idx], entry);
   } else {
     stores.push(entry);
