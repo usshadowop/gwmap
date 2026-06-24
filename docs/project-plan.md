@@ -52,7 +52,7 @@ worth automating.
 | Twin Cities | 45 | ✅ done | underway — 12 confirmed discounts (5×15%, 5×10%, 2×loyalty), 14 confirmed no-discount, 19 still unconfirmed |
 | Colorado Springs | 13 | ✅ done | not started — all 13 unconfirmed (seeded from the GW Store Finder) |
 | Denver | 26 | ✅ done | barely started — 2 confirmed no-discount, 24 unconfirmed |
-| Duluth | 4 | ✅ pull only | not started — all unconfirmed (no per-store Phase B yet) |
+| Duluth | 4 | ✅ verified | stockists confirmed 4/4 (first-party evidence); discounts unverified — outreach not started |
 | Rochester | 1 | ✅ pull only | not started — unconfirmed (no per-store Phase B yet) |
 | Mankato | 3 | ✅ pull only | not started — all unconfirmed (no per-store Phase B yet) |
 
