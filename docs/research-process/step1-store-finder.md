@@ -169,11 +169,27 @@ decision, fetch the source page directly and confirm the literal text exists.
 If the fetch fails (403, blocked, empty/JS shell), the claim is **unverified**
 — record that explicitly rather than treating it as evidence either way.
 
+**Never conclude "no mention" from the homepage alone.** A store's homepage
+is often just a hero image and nav links — the actual evidence (event
+listings, a shop/products page, an about page) lives on a subpage you won't
+guess by URL-guessing. Before ruling a store negative based on its own site,
+run a domain-scoped search using the same jargon term list as checklist item 1 below
+— `site:<storedomain.com> (Warhammer OR "Games Workshop" OR 40k OR "Age of
+Sigmar" OR Citadel OR "Combat Patrol" OR "Kill Team" OR Necromunda OR
+"Horus Heresy" OR "Space Marine" OR "Black Library" OR "Old World" OR
+"Space Hulk" OR 30k OR Warcry OR "Legions Imperialis" OR "Blood Bowl" OR
+"Middle-earth Strategy Battle Game" OR "Adeptus Titanicus" OR
+"Warhammer Underworlds" OR "Aeronautica Imperialis" OR
+miniatures OR wargaming)` — to let the search engine surface whichever
+indexed subpage actually contains a hit, then fetch *that* page directly to
+confirm the literal text. Only treat the site as checked once this
+domain-scoped pass comes back empty, not after the homepage alone does.
+
 ### B.3 The 8-item search checklist
 Run all 8 per store before concluding "not confirmed." Substitute the actual
 store name and city into `<Store>` / `<City>`.
 
-1. `"<Store>" "<City>" (Warhammer OR "Games Workshop" OR 40k OR "Age of Sigmar" OR Citadel OR "Nuln Oil" OR "Combat Patrol" OR FLGS)` — jargon-filtered general search; the specific product/jargon terms cut out generic toy-store noise that a plain "Warhammer" query lets through.
+1. `"<Store>" "<City>" (Warhammer OR "Games Workshop" OR 40k OR "Age of Sigmar" OR Citadel OR "Combat Patrol" OR "Kill Team" OR Necromunda OR "Horus Heresy" OR "Space Marine" OR "Black Library" OR "Old World" OR "Space Hulk" OR 30k OR Warcry OR "Legions Imperialis" OR "Blood Bowl" OR "Middle-earth Strategy Battle Game" OR "Adeptus Titanicus" OR "Warhammer Underworlds" OR "Aeronautica Imperialis" OR wargaming OR FLGS)` — jargon-filtered general search; the specific product/jargon terms cut out generic toy-store noise that a plain "Warhammer" query lets through.
 2. `site:reddit.com "<Store>"` and `site:reddit.com "<City>" Warhammer` — store-specific and city+hobby-general passes.
 3. `site:yelp.com "<Store>"` and `"<Store>" Yelp review Warhammer` — Yelp listing/review text.
 4. `"<Store>" Google review Warhammer OR Citadel OR 40k` — surfaces indexed Google review snippet text (not a substitute for browsing Maps directly, which most agents can't do).
