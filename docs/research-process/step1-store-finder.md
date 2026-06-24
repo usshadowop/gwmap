@@ -129,18 +129,41 @@ Phase B independently checks that, using public web sources only.
 - The target region's center point and radius (for distance filtering).
 
 ### B.1 Confidence tier definitions
+
+**Default-include policy: being on the official GW Store Finder is itself
+sufficient evidence to include a store.** Every candidate from Phase A goes
+into the dataset as `category: "unconfirmed"` by default — Phase B does not
+need to independently corroborate a listing to justify keeping it. Phase B's
+job is to (a) look for a sourced discount/category upgrade, and (b) look for
+**contradictory** evidence that the listing itself is wrong or stale.
+
 Classify every candidate store into exactly one tier:
 
 - **Tier A — Corroborated.** On the official GW Store Finder *and*
   independently corroborated by ≥1 outside source as actually selling GW
-  product.
-- **Tier B — Listing only.** On the official GW Store Finder, but no
-  independent corroboration found despite running the full checklist below.
+  product. Use this to justify a real `category` (`15`/`10`/`loyalty`/`none`)
+  instead of `unconfirmed`, when a discount is actually sourced.
+- **Tier B — Listing only (default).** On the official GW Store Finder; no
+  independent corroboration found, but also no contradicting evidence found.
+  **Include as `unconfirmed` — this is the default outcome for most
+  candidates, not a reason to exclude.**
 - **Tier C — Community-sourced.** Found via independent sources (web/Reddit/
-  forums/reviews) but **not** on the official GW Store Finder at all.
+  forums/reviews) but **not** on the official GW Store Finder at all. Unlike
+  Tier A/B, inclusion here *does* require real evidence the store sells GW
+  product, since there's no GW-side listing to default to.
+- **Excluded — Contradicted.** The *only* basis for leaving an official
+  Store Finder listing out of the dataset entirely. Requires a positive,
+  citable finding that the listing is wrong or stale — e.g. a confirmed
+  permanent closure (review text, news, "permanently closed" on a directory),
+  a verified address change to a location with no GW connection, the
+  business not existing under that name/address anymore, or it being a
+  duplicate of another store already listed. A plain absence of corroborating
+  evidence ("we searched and found nothing positive") is **not** grounds for
+  exclusion — that's Tier B, not Excluded.
 
 Do not invent a discount, GW-stocking claim, or tier upgrade without a
-citable source. When in doubt, leave the store as Tier B / `unconfirmed`.
+citable source. When in doubt, leave the store as Tier B / `unconfirmed` —
+do not leave it out of the dataset.
 
 ### B.2 Tool capability assessment (do this first, every session)
 Before running the checklist, identify what the *current* AI agent's tools
@@ -169,11 +192,32 @@ decision, fetch the source page directly and confirm the literal text exists.
 If the fetch fails (403, blocked, empty/JS shell), the claim is **unverified**
 — record that explicitly rather than treating it as evidence either way.
 
-### B.3 The 8-item search checklist
-Run all 8 per store before concluding "not confirmed." Substitute the actual
-store name and city into `<Store>` / `<City>`.
+**Never conclude "no mention" from the homepage alone.** A store's homepage
+is often just a hero image and nav links — the actual evidence (event
+listings, a shop/products page, an about page) lives on a subpage you won't
+guess by URL-guessing. Before ruling a store negative based on its own site,
+run a domain-scoped search using the same jargon term list as checklist item 1 below
+— `site:<storedomain.com> (Warhammer OR "Games Workshop" OR 40k OR "Age of
+Sigmar" OR Citadel OR "Combat Patrol" OR "Kill Team" OR Necromunda OR
+"Horus Heresy" OR "Space Marine" OR "Black Library" OR "Old World" OR
+"Space Hulk" OR 30k OR Warcry OR "Legions Imperialis" OR "Blood Bowl" OR
+"Middle-earth Strategy Battle Game" OR "Adeptus Titanicus" OR
+"Warhammer Underworlds" OR "Aeronautica Imperialis" OR
+miniatures OR wargaming)` — to let the search engine surface whichever
+indexed subpage actually contains a hit, then fetch *that* page directly to
+confirm the literal text. Only treat the site as checked once this
+domain-scoped pass comes back empty, not after the homepage alone does.
 
-1. `"<Store>" "<City>" (Warhammer OR "Games Workshop" OR 40k OR "Age of Sigmar" OR Citadel OR "Nuln Oil" OR "Combat Patrol" OR FLGS)` — jargon-filtered general search; the specific product/jargon terms cut out generic toy-store noise that a plain "Warhammer" query lets through.
+### B.3 The 8-item search checklist
+Every official Store Finder candidate is included by default (B.1) — this
+checklist is not a gate for inclusion. Run all 8 per store to look for (a)
+corroborating evidence that would upgrade it to Tier A, and (b) any
+contradicting evidence (closure, wrong address, etc.) that would move it to
+Excluded. Finding nothing in either direction just confirms Tier B — the
+store stays in the dataset as `unconfirmed`. Substitute the actual store
+name and city into `<Store>` / `<City>`.
+
+1. `"<Store>" "<City>" (Warhammer OR "Games Workshop" OR 40k OR "Age of Sigmar" OR Citadel OR "Combat Patrol" OR "Kill Team" OR Necromunda OR "Horus Heresy" OR "Space Marine" OR "Black Library" OR "Old World" OR "Space Hulk" OR 30k OR Warcry OR "Legions Imperialis" OR "Blood Bowl" OR "Middle-earth Strategy Battle Game" OR "Adeptus Titanicus" OR "Warhammer Underworlds" OR "Aeronautica Imperialis" OR wargaming OR FLGS)` — jargon-filtered general search; the specific product/jargon terms cut out generic toy-store noise that a plain "Warhammer" query lets through.
 2. `site:reddit.com "<Store>"` and `site:reddit.com "<City>" Warhammer` — store-specific and city+hobby-general passes.
 3. `site:yelp.com "<Store>"` and `"<Store>" Yelp review Warhammer` — Yelp listing/review text.
 4. `"<Store>" Google review Warhammer OR Citadel OR 40k` — surfaces indexed Google review snippet text (not a substitute for browsing Maps directly, which most agents can't do).
@@ -188,19 +232,32 @@ Facebook/Discord groups, Instagram/TikTok tag browsing.
 
 ### B.4 Recording results
 For each store, record in the region's results file:
-- Tier (A/B/C) and a one-line reason.
+- Tier (A/B/C/Excluded) and a one-line reason.
 - Which checklist items were actually run (not just "general web search").
 - The literal evidence (quoted text + source URL) for any Tier A promotion —
   not a paraphrase, and not an unverified search-summary claim.
-- For Tier B stores: which checklist items came back empty/blocked, and
-  whether that's a true negative or a tool-capability gap (e.g. "Yelp
-  returned 403" is a capability gap, not evidence the store doesn't sell GW).
+- For Tier B stores (the default outcome): which checklist items came back
+  empty/blocked, and whether that's a true negative or a tool-capability gap
+  (e.g. "Yelp returned 403" is a capability gap) — this is recorded for
+  completeness, not to justify exclusion. The store is included either way.
+- For any Excluded store: the specific contradicting evidence (closure
+  notice, address proof, etc.) that justified leaving it out — exclusion
+  always needs a citable reason, never just an absence of positive evidence.
 
 ### B.5 Repo data conventions (gwmap-specific, not GW-finder-specific)
 When emitting `data/<region>.json` (schema shared with `data/twincities.json`):
+- Every official Store Finder candidate is included by default, unless
+  Excluded per B.1/B.4 — do not drop a listing just because the checklist
+  came back empty.
 - Tier A, with a real sourced discount → real `category` (`15`/`10`/`loyalty`/`none`).
-- Tier A or B without a verified discount → `category: "unconfirmed"`,
+- Tier A (product-only, no discount) or Tier B (default) → `category: "unconfirmed"`,
   `discount: "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy."`
+- Tier C (community-sourced, not on the official list) still requires real
+  evidence before inclusion — same as before, unaffected by the default-include
+  policy above.
+- Excluded stores are left out of the JSON entirely, but the contradicting
+  evidence should still be recorded in the region's results file so a future
+  run doesn't waste time re-investigating the same listing.
 - `note` should cite the specific tier-justifying evidence (or its absence)
   per B.4 above, not a generic "not yet verified" placeholder once any real
   research has actually been attempted.
@@ -216,3 +273,9 @@ When emitting `data/<region>.json` (schema shared with `data/twincities.json`):
   session/tool environment**, not just once — tool access (browser vs.
   text-only, JS-rendering vs. not) varies between agents and sessions and
   directly determines which checklist items will actually produce evidence.
+- **Don't regress to excluding a store just because corroboration wasn't
+  found.** Per B.1, official Store Finder listings are included by default;
+  exclusion requires positive contradicting evidence (closure, wrong
+  address, etc.), not an absence of positive evidence. If you find yourself
+  writing "no Warhammer evidence found, excluded" without a closure/address
+  citation, that's the old policy — fix it to Tier B / `unconfirmed` instead.
