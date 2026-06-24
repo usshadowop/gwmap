@@ -16,7 +16,7 @@ how well its *Games-Workshop-selling status* is corroborated. Discounts are
 - **Center point**: downtown Colorado Springs (38.8339, -104.8214)
 - **Radius**: ~40 miles (straight-line)
 - **Output file**: `data/coloradosprings.json` (13 stores)
-- **Last run**: 2026-06
+- **Last run**: 2026-06 (Phase C re-run + Phase B refresh 2026-06-24)
 
 ---
 
@@ -43,12 +43,32 @@ how well its *Games-Workshop-selling status* is corroborated. Discounts are
 | **Kev J Art** | 6110 Martinez St, Fort Carson 80913 | 6.8 mi | No retail web presence found — possibly home-based/trade account | (Store Finder only) |
 | **Squatch Bros. Retro Arcade** | 246 E Bennett Ave, Cripple Creek 80813 | 20.1 mi | Retro pinball arcade — no GW mention found | pinballmap, Yelp |
 
-## Tier C — Mentioned online but NOT on the GW Store Finder (0)
+## Tier C / Phase C — Off-list discovery (re-run 2026-06-24, 0 added)
 
-No brick-and-mortar store selling Games Workshop in the region surfaced in
-web/Reddit/forum search that wasn't already on the official Store Finder.
-(Reddit is poorly indexed by the search engine, so this is "none found," not a
-hard zero — worth a manual Reddit pass later if desired.)
+Phase C (actively hunting for GW stockists **absent** from the official Store
+Finder) was re-run with named candidates so this is a recorded negative, not a
+silent skip. Discovery used general web roundups, jargon-filtered "where to buy
+Warhammer" searches, the Yelp "Top 10 Warhammer 40k in Colorado Springs" list
+(403, capability gap), and the `wargames.com` Colorado directory. Every
+discovery query returned only stores already on the Phase A list **except** the
+candidates below — none of which qualified for inclusion:
+
+- **HobbyTown USA – Colorado Springs** — two franchise locations surfaced via
+  `wargames.com`. The **7870 N Academy Blvd** location is **CLOSED** (Yelp,
+  updated June 2026). The **1726 E Woodmen Rd** location shows active directory
+  hours, but its own site (`hobbiescolorado.com`) is now a parked/for-sale
+  domain, it is **not** on the GW Store Finder, and the only GW evidence is
+  **chain-level** (the national hobbytown.com catalog stocks Games Workshop) —
+  no store-specific first-party confirmation obtainable (Yelp 403). Not added;
+  recorded as a phone-call lead.
+- **War Battle Games** (`warbattlegames.com`) — surfaced on a Warhammer query
+  but is an **online-only** retailer with no Colorado storefront. Excluded as
+  non-local.
+
+No independent brick-and-mortar store selling Games Workshop **models** in the
+region surfaced that wasn't already on the official Store Finder. (Reddit
+remains poorly indexed — `site:reddit.com` returned nothing, a capability gap,
+not a hard zero — worth a manual Reddit pass later if desired.)
 
 ---
 
@@ -63,7 +83,35 @@ multiple independent web sources agree on the correction:
 - **J & J Games N Hobbies** — Store Finder lists the address under the name **"J&J Pac N Ship"** (the pack-and-ship business at the same location); the game store trades as J & J Games N Hobbies.
 - **Van's** — Store Finder name "Van's Comics and Cards"; store trades as **Van's Comics Games Cards**.
 
+## Phase B refresh (2026-06-24)
+
+Re-verification pass over the 13 Phase A candidates, looking for closures and
+sourced category upgrades. **No data changes were needed** — the file was
+already current:
+
+- **No new closures.** Spot-checked the marginal Tier B stores: Theo's Toys &
+  Games (Manitou Springs) is open (Yelp, Nov 2025); Squatch Bros Retro Arcade
+  (Cripple Creek) shows no closure signal. Both stay `unconfirmed`.
+- **Hobby Smith** — its May 2026 move to **1839 S Academy Blvd** (already in the
+  data) re-confirmed via the Colorado Springs Gazette; specializes in Warhammer
+  40k & Bolt Action. Current.
+- **Theo's Toys** — a search summary again asserted the store "mentions
+  Warhammer products," but per the standing verify-don't-trust rule this could
+  not be confirmed against literal first-party text (Yelp 403, site not
+  fetchable), so it stays Tier B / `unconfirmed` — not upgraded.
+- The official **Warhammer – Colorado Springs** store and **Gamer's Haven**
+  (corrected address 5681 N Academy) remain open and current.
+
 ## Output
 
-- Repo data file written: `data/coloradosprings.json` (13 stores, schema matches `data/twincities.json`; 1 `none` for the official GW store, 12 `unconfirmed`).
-- Next step (separate): call/verify each store's actual Games Workshop discount policy and promote confirmed ones from `unconfirmed` to `15`/`10`/`loyalty`/`none`.
+- Repo data file: `data/coloradosprings.json` (13 stores, schema matches
+  `data/twincities.json`; all `unconfirmed`, incl. the official GW store, which
+  carries a full-retail / no-discount `discount` note). No stores added or
+  removed this pass.
+- **Definition of done:** Phase A ✅, Phase B ✅ (+ 2026-06-24 refresh), Phase C
+  ✅ (re-run 2026-06-24 with named candidates above), results file ✅. City is
+  fully researched per the step1 checklist.
+- Next step (separate): call/verify each store's actual Games Workshop discount
+  policy and promote confirmed ones from `unconfirmed` to
+  `15`/`10`/`loyalty`/`none`. The phone-call lead from Phase C (HobbyTown – 1726
+  E Woodmen Rd) can be checked at the same time.

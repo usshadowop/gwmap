@@ -102,7 +102,7 @@
     "category": "unconfirmed",
     "website": "https://www.atomicgoblingames.com/",
     "phone": "(720) 684-6074",
-    "note": "On the Warhammer Store Finder. Search-engine summaries describe \"a whole wall for Warhammer 40K\" and Citadel paints with weekly 40k play nights, but direct fetches of the store's homepage, feature page, and schedule page show no literal Warhammer mention (capability gap, not a confirmed negative — may be JS-rendered or on an unchecked subpage). GW stock and discount NOT independently confirmed — call to verify."
+    "note": "On the Warhammer Store Finder. A 2026-06 domain-scoped search (site:atomicgoblingames.com) surfaced the store's own schedule page indexing Warhammer play in its \"Minis Cave\" space, and search summaries describe \"a whole wall for Warhammer 40K\" / Citadel paints with weekly 40k play nights — but a direct (non-JS) fetch of that schedule page returned no literal Warhammer text, so the page content is JS-rendered and could not be confirmed verbatim (capability gap, not a confirmed negative). Soft-positive; GW stock and discount NOT independently confirmed — call to verify."
   },
   {
     "id": "heart-of-gold-games-longmont",
@@ -216,13 +216,13 @@
   {
     "id": "crit-castle-games-aurora",
     "name": "Crit Castle Games",
-    "address": "15382 E Alameda Pkwy, Aurora, CO 80017",
-    "lat": 39.707904,
-    "lng": -104.808673,
+    "address": "414 S Chambers Rd, Aurora, CO 80017",
+    "lat": 39.707531,
+    "lng": -104.809875,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
     "phone": "(303) 745-4140",
-    "note": "On the Warhammer Store Finder. Search-engine summaries suggest Warhammer stock, but the store's own site was unreachable (ECONNREFUSED) and Yelp returned 403 — a capability gap, not a confirmed negative. Included per default-include policy. Call to verify."
+    "note": "On the Warhammer Store Finder. Address corrected (2026-06): moved from 15382 E Alameda Pkwy to 414 S Chambers Rd, Aurora (City Center Marketplace) — corroborated by Yelp (updated June 2026, store open), the Flesh and Blood store locator, and multiple business directories; same phone (303) 745-4140; official site critcastle.com (unreachable from here, ECONNREFUSED — a capability gap). Directories describe Warhammer/miniature-wargames stock, but no literal first-party GW text could be fetched. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "advantage-games-northglenn",
@@ -289,5 +289,17 @@
     "website": "https://newcastlecomics.com",
     "phone": "(720) 731-2658",
     "note": "On the Warhammer Store Finder. Own site checked directly — only Comics/MTG/eBay sections, no Warhammer mention found. No closure or address discrepancy found — included per default-include policy. Call to verify."
+  },
+  {
+    "id": "retro-gaming-of-denver",
+    "name": "Retro Gaming of Denver",
+    "address": "4149 Gibraltar St, Denver, CO 80249",
+    "lat": 39.773381,
+    "lng": -104.755682,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": "https://retrogamingofdenver.com",
+    "phone": "(303) 625-7433",
+    "note": "Phase C find — NOT on the official Warhammer Store Finder. Primarily a retro video-game/consignment store, but its own webstore carries a Warhammer 40k collection selling new Games Workshop boxed sets in GW retail packaging (e.g. \"Warhammer 40K: T'au Empire – Pathfinder Team,\" $55.20) with in-store shopping / local pickup available (retrogamingofdenver.com/collections/warhammer-40k). Confirmed open (Yelp, updated May 2026). First-party GW-miniatures sales confirmed; selection may be sporadic/used-driven and discount policy not yet verified — call to confirm."
   }
 ]

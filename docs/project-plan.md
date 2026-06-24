@@ -50,8 +50,8 @@ worth automating.
 | Region | Stores | Discovery | Outreach / verification |
 |---|---|---|---|
 | Twin Cities | 45 | ✅ done | underway — 12 confirmed discounts (5×15%, 5×10%, 2×loyalty), 14 confirmed no-discount, 19 still unconfirmed |
-| Colorado Springs | 13 | ✅ done | not started — all 13 unconfirmed (seeded from the GW Store Finder) |
-| Denver | 26 | ✅ done | barely started — 2 confirmed no-discount, 24 unconfirmed |
+| Colorado Springs | 13 | ✅ A+B+C | not started — all 13 unconfirmed (seeded from the GW Store Finder); Phase C re-run 2026-06-24, no off-list adds |
+| Denver | 27 | ✅ A+B+C | barely started — 2 confirmed no-discount, 25 unconfirmed; Phase C run 2026-06-24 added Retro Gaming of Denver, Crit Castle address corrected |
 | Duluth | 4 | ✅ A+B+C | stockists confirmed 4/4; Phase C excluded Dungeon's End (closed 2022); discounts unverified |
 | Rochester | 1 | ✅ A+B+C | Gamez & More confirmed GW stockist (first-party); discount unverified |
 | Mankato | 3 | ✅ A+B+C | Dork Den + Atlantis confirmed stockists (first-party); Mirth listing-only; discounts unverified |
