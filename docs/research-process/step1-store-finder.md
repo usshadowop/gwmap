@@ -11,9 +11,9 @@ The process has two phases:
   public web sources, and assign a confidence tier.
 
 Both phases are city-agnostic — nothing below is specific to any one region.
-Pair this file with a region-specific results file (e.g. `<region>-summary.md`)
-that records the actual findings for a given city; this file only records
-*how* to find them.
+Pair this file with a region-specific results file (`results/<region>.md`, e.g.
+[`results/twincities.md`](results/twincities.md)) that records the actual
+findings for a given city; this file only records *how* to find them.
 
 ---
 
