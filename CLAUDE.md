@@ -15,6 +15,8 @@ See [`README.md`](README.md) for architecture and how to add a region.
 
 ## Standing rules
 
+- **Landing changes:** develop on the working branch, then open a PR into `main`
+  and merge it (direct push to `main` is branch-protected). No need to ask first.
 - **Don't add `[skip ci]`** to commits or merges — merging is what triggers the deploy.
 - **Match the existing schema** of whatever region file you're editing; don't
   introduce a third variant (see Data below).
