@@ -24,6 +24,10 @@ See [`README.md`](README.md) for architecture and how to add a region.
   assert a store carries Warhammer when the page text doesn't. Fetch the literal
   source and quote it before treating anything as confirmed. A blocked/empty
   fetch (403/503/login wall) is a capability gap, not a negative.
+- **A city isn't done until Phases A, B, *and* C all run.** Phase C — searching
+  for GW stockists *not* on the official Store Finder — is the easiest to skip; a
+  city with only A+B is partially researched, so say so. See
+  [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md).
 
 ## Data
 

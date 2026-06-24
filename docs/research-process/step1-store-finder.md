@@ -2,15 +2,19 @@
 
 Given any city, this is the full process to produce an authoritative list of
 stores that sell Games Workshop models, plus a confidence rating for each one.
-The process has two phases:
+The process has three phases:
 
 - **Phase A — Pull the official candidate list.** Get every store Games
   Workshop itself lists near the target city.
 - **Phase B — Verify and tier each candidate.** Independently confirm (or
   fail to confirm) that each candidate actually sells GW product, using
   public web sources, and assign a confidence tier.
+- **Phase C — Search for off-list stores (mandatory; easiest to forget).**
+  Actively hunt for stores that sell GW but are *missing* from GW's official
+  list, via independent web/Reddit/forum/review search. A city is not done
+  until this runs — see the definition-of-done checklist at the end.
 
-Both phases are city-agnostic — nothing below is specific to any one region.
+All three phases are city-agnostic — nothing below is specific to any one region.
 Pair this file with a region-specific results file (`results/<region>.md`, e.g.
 [`results/twincities.md`](results/twincities.md)) that records the actual
 findings for a given city; this file only records *how* to find them.
@@ -279,3 +283,56 @@ When emitting `data/<region>.json` (schema shared with `data/twincities.json`):
   address, etc.), not an absence of positive evidence. If you find yourself
   writing "no Warhammer evidence found, excluded" without a closure/address
   citation, that's the old policy — fix it to Tier B / `unconfirmed` instead.
+
+---
+
+## Phase C — Search for off-list (community-sourced) stores
+
+**Mandatory step, and the easiest one to forget.** Phases A–B only ever look at
+stores GW *already* lists. Phase C is the opposite: actively hunt for stores
+that sell GW product but are **absent** from the official Store Finder. GW drops
+stores that lapse the trade program, and brand-new or community-run shops may
+never have been listed — so skipping Phase C systematically misses exactly the
+independent FLGS this project exists to surface. Phases A and B can both "pass"
+while the city is still only half-researched; this is the step that completes it.
+
+### C.1 How to run it
+For the target city (and near neighbors within the same radius), run discovery
+searches aimed at surfacing store *names* not already in your Phase A list:
+- `"<City>" <state> game store OR hobby shop OR comic shop Warhammer 40k` (general)
+- `site:reddit.com "<City>" (Warhammer OR "Games Workshop" OR FLGS OR "game store")`
+- `best game store "<City>" <state>` and local "where to buy Warhammer" roundups
+- Third-party stockist directories (e.g. `wargames.com`) for the city — treat
+  these as **leads, not proof**: they go stale and keep closed stores listed.
+
+### C.2 Verify every candidate before including it
+A Tier C store has no GW-side listing to default to, so inclusion **requires
+real first-party evidence** it currently sells GW product (B.1, Tier C). Run the
+relevant B.3 checklist items on each candidate, and — critically — confirm it is
+**still open**. A third-party directory hit *plus* a "CLOSED" review tag, a
+dead/redirecting website, and absence from the current Store Finder together
+mean it has very likely closed (this is the Dungeon's End / Duluth pattern:
+wargames.com still listed it years after a confirmed 2022 closure). Confirm
+closure with a citable source and **Exclude** it, recording the evidence per B.4
+so a future run doesn't re-investigate the same stale listing.
+
+### C.3 Output (a silent skip is not acceptable)
+Phase C must end in one of two recorded outcomes in `results/<region>.md`:
+- New Tier C stores added to the JSON, each with cited first-party evidence; or
+- A recorded negative — "Phase C run; candidates X, Y checked; X excluded
+  (closed <date>, source); no additions." Absence of a Phase C note means the
+  step wasn't run, not that there was nothing to find.
+
+---
+
+## A city is not "done" until all of these are checked
+
+Per-city definition of done — record each in `results/<region>.md`:
+
+- [ ] **Phase A** — Store Finder pulled and haversine-filtered to the chosen radius.
+- [ ] **Phase B** — every Phase A candidate tiered (A / B / Excluded) and recorded.
+- [ ] **Phase C** — off-list discovery search run; each candidate verified + included or excluded with a cited reason, or a recorded negative.
+- [ ] **Results file** — `results/<region>.md` written with tiers, evidence, and any exclusions.
+
+If any box is unchecked the city is only *partially* researched — say so
+explicitly rather than implying it's complete.
