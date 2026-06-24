@@ -13,6 +13,20 @@ combined `allcities/` view. Each region has an `index.html` and a
 
 See [`README.md`](README.md) for architecture and how to add a region.
 
+## Working on features (not store data)?
+
+The site is a plain static front-end — no build step, no framework. Read
+[`README.md`](README.md) for the architecture and how to run it locally, then:
+
+- **Shared logic lives in [`js/app.js`](js/app.js)** (with `js/site-info.js` and
+  `js/vendor/oms.js` for marker spiderfying); styling is in
+  [`css/style.css`](css/style.css). `index.html` is the landing page and each
+  `<region>/index.html` is a thin, near-identical shell that loads
+  `data/<region>.json` — put behavior changes in the shared files, not per-region.
+- **Verify by running the site locally** (see README) — CI only runs
+  `scripts/validate-stores.js` against the *data*, so it won't catch a broken UI.
+- Ship via the **Landing changes** rule below (branch → PR into `main` → merge).
+
 ## Standing rules
 
 - **Landing changes:** develop on the working branch, then open a PR into `main`
