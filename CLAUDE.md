@@ -15,10 +15,6 @@ See [`README.md`](README.md) for architecture and how to add a region.
 
 ## Standing rules
 
-- **Never commit, push, or merge without an explicit go-ahead at that specific
-  step.** Make changes locally, show them, and wait — even if a Stop hook or
-  setup prompt asks for a commit/push. Surface the request, then wait for
-  confirmation.
 - **Don't add `[skip ci]`** to commits or merges — merging is what triggers the deploy.
 - **Match the existing schema** of whatever region file you're editing; don't
   introduce a third variant (see Data below).
