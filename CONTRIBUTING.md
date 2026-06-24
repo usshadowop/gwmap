@@ -1,58 +1,74 @@
-# Adding a store
+# Contributing
 
-Edit `data/twincities.json` (or the relevant city's JSON file under `data/`) and add a new entry to the array:
+## Suggesting a store (easiest)
+
+Most stores are added through the Google Form linked in the site footer. A
+submission opens a pull request automatically; a maintainer reviews and merges
+it, and the site redeploys. You don't need a GitHub account to use the form.
+
+## Adding a store by hand (pull request)
+
+Edit `data/twincities.json` (or the relevant city's file under `data/`) and add
+an entry to the array. Entries share a flat schema — only a handful of fields
+are required; the rest can be left as empty strings (`""`), `false`, `[]`, or
+`null`:
 
 ```json
 {
   "id": "unique-slug",
   "name": "Store Name",
   "address": "Street, City, State, Zip",
-  "discount": "Description of the GW discount offered",
+  "lat": null,
+  "lng": null,
   "category": "15",
-  "website": "https://example.com",
-  "phone": "(555) 555-5555"
+  "discount": "Description of the GW discount offered"
 }
 ```
 
-`website` and `phone` are optional. The map geocodes `address` automatically in the browser (via OpenStreetMap Nominatim) — no need to look up coordinates.
+Required: `id` (lowercase kebab-case, unique), `name`, and `category`. The map
+geocodes `address` in the browser (via OpenStreetMap Nominatim), so `lat`/`lng`
+may be `null`. Set them directly (e.g. from a Google Maps link) to skip
+geocoding and pin exact coordinates.
 
-Optionally, set `lat`/`lng` directly (e.g. pulled from a Google Maps link) to skip geocoding entirely and use exact coordinates:
+`category` controls the pin color in the legend:
 
-```json
-{
-  "id": "unique-slug",
-  "name": "Store Name",
-  "address": "Street, City, State, Zip",
-  "lat": 44.8839,
-  "lng": -93.2882,
-  "discount": "Description of the GW discount offered",
-  "category": "15"
-}
+| category      | color  | meaning                              |
+|---------------|--------|--------------------------------------|
+| `15`          | green  | 15% discount                         |
+| `10`          | blue   | 10% discount                         |
+| `loyalty`     | yellow | Discount with store loyalty program  |
+| `none`        | red    | No discount                          |
+| `unconfirmed` | purple | Not yet verified                     |
+
+### Optional fields
+
+| field | type | shown when |
+|-------|------|-----------|
+| `newReleases` | boolean | discount applies to launch-day releases |
+| `preorders` | boolean | store takes pre-orders |
+| `preorderUrl` | string | link shown in the pre-order box (if `preorders`) |
+| `preorderLinkText` | string | label for `preorderUrl` (defaults to "Pre-order instructions") |
+| `mapsUrl` | string | "View on Google Maps" link (defaults to an address search) |
+| `website` | string | website link |
+| `phone` | string | phone number |
+| `note` | string | extra note under the popup |
+
+Additional flat fields are also carried on each entry for upcoming phases
+(`affiliation`, `discountExclusions`, `discountDetails`, `loyaltyDetails`,
+`gameSystems` (array), `stockLevel`, socials `discord`/`facebook`/`instagram`/
+`twitter`/`otherSocials`, and play-space `playSpaceTables`/`playSpaceCost`/
+`playSpacePrice`/`playSpaceRestrictions`/`playSpaceReserve`). They aren't
+rendered yet — leave them blank if you don't have the info.
+
+## Validation
+
+`scripts/validate-stores.js` runs on every pull request (see
+`.github/workflows/validate.yml`) and blocks merge if the data is malformed —
+invalid JSON, a missing required field, an unknown `category`, or a duplicate
+`id`. Run it locally before opening a PR:
+
+```sh
+node scripts/validate-stores.js
 ```
 
-`category` controls the pin color shown in the legend:
-
-| category  | color  | meaning                              |
-|-----------|--------|---------------------------------------|
-| `15`      | green  | 15% discount                          |
-| `10`      | yellow | 10% discount                          |
-| `none`    | red    | No discount                           |
-| `loyalty` | blue   | Discount with store loyalty program   |
-
-Optional fields can be added to flag what a store carries:
-
-```json
-{
-  "newReleases": true,
-  "preorders": true,
-  "preorderUrl": "https://example.com/preorders",
-  "preorderLinkText": "fill out the pre-order form"
-}
-```
-
-- `newReleases`: set `true` if the store carries new releases on launch day.
-- `preorders`: set `true` if the store takes pre-orders.
-- `preorderUrl`: optional link to pre-order instructions, only shown if `preorders` is `true`.
-- `preorderLinkText`: optional custom text for the `preorderUrl` link. Defaults to "pre-order instructions".
-
-Open a pull request with your addition.
+Then open a pull request with your change.
