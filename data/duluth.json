@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rogue-robot-duluth",
+    "name": "Rogue Robot Games & Comics",
+    "address": "3 S 4th Ave W, Duluth, MN 55802",
+    "lat": 46.782771,
+    "lng": -92.103104,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(218) 727-8101",
+    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+  },
+  {
+    "id": "loch-cafe-duluth",
+    "name": "The Loch Cafe",
+    "address": "318 N 18th Ave E, Duluth, MN 55812",
+    "lat": 46.806612,
+    "lng": -92.079547,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(218) 606-1104",
+    "note": "On the official Warhammer Store Finder (carries Games Workshop product) — appears to be a board-game cafe / play venue. Discount policy not yet verified — call to confirm."
+  },
+  {
+    "id": "level-up-superior",
+    "name": "Level Up Toys Games and Comics",
+    "address": "525 Tower Ave, Superior, WI 54880",
+    "lat": 46.731596,
+    "lng": -92.104269,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(715) 718-2440",
+    "note": "Across the state line in Superior, WI (~4 mi from Duluth). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+  },
+  {
+    "id": "hobbytown-hermantown",
+    "name": "HobbyTown - Hermantown",
+    "address": "4879 Miller Trunk Hwy Ste B, Hermantown, MN 55811",
+    "lat": 46.826515,
+    "lng": -92.192626,
+    "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
+    "category": "unconfirmed",
+    "website": null,
+    "phone": "(218) 723-7114",
+    "note": "HobbyTown franchise location in Hermantown (~5 mi from Duluth). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+  }
+]
