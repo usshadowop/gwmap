@@ -30,3 +30,13 @@ The map auto-fits to the confirmed (visible) pins in the loaded data. If a regio
 ## Deploying
 
 Enable GitHub Pages in the repo settings: **Settings > Pages > Source**, select the branch to deploy (e.g. `main`) and the root folder. No build step is required.
+
+## Documentation
+
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — store schema and how to add a store.
+- [`CLAUDE.md`](CLAUDE.md) — working notes / standing rules for contributors and AI assistants.
+- [`docs/project-plan.md`](docs/project-plan.md) — high-level roadmap (setup + per-city workflow).
+- [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md) — the city-agnostic process for building an authoritative GW store list (Phase A pull + Phase B verify/tier).
+- [`docs/research-process/results/`](docs/research-process/results/) — per-region findings ([Twin Cities](docs/research-process/results/twincities.md), [Colorado Springs](docs/research-process/results/coloradosprings.md), [Denver](docs/research-process/results/denver.md)).
+- [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
+- [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs.

@@ -1,0 +1,71 @@
+# Project plan — Warhammer discount map
+
+High-level roadmap for the multi-city expansion. Two groups of work: **setup**
+(done once) and the **per-city workflow** (repeats per new city). For the
+rigorous store-finding mechanics, this defers to
+[`research-process/step1-store-finder.md`](research-process/step1-store-finder.md);
+this file is just the map of the moving parts.
+
+> Status as of 2026-06: the site architecture (per-region template + per-region
+> JSON + shared `js/app.js`) is **built and multi-city** (Twin Cities, Colorado
+> Springs, Denver, plus the combined All Cities view). The Form → PR automation
+> is **built and deployed**. The remaining work is per-city store research and
+> outreach.
+
+## Tool legend
+
+| Tool | Role |
+|---|---|
+| **Claude.ai chat** (web/mobile) | Planning, copy drafting, schema analysis, store discovery (places/web search), per-store outreach generation |
+| **Claude Code** (CLI) | All code/data editing: Apps Script, JSON files, scaffolding, repo work |
+| **Claude in Chrome** (extension) | Browser automation (Google Forms UI, light website scraping) |
+| **Cowork** (desktop, optional) | Unattended multi-step browser + file tasks; uses Claude in Chrome under the hood |
+| **Google Apps Script** | Runtime hosting the Form → JSON → GitHub automation |
+| **Gmail / Forms / Sheets** | Outreach, data collection, source-of-truth storage |
+
+## Setup work (one-time) — status
+
+### Phase A — Foundation alignment ✅ done
+Verification form schema aligned to the repo JSON schema; Hub Hobby piloted
+end-to-end as proof-of-concept.
+
+### Phase B — Form → JSON → GitHub automation ✅ done
+Form submissions flow into the repo via a PR. Built and deployed; see
+[`form/form-sync-operations.md`](form/form-sync-operations.md). One open item:
+a full live end-to-end test submission through each discount branch is still
+recommended.
+
+### Phase C — New-city scaffolding helper ⏸ deferred
+A `./new-city <slug> <name> <lat> <lng>` script that stamps out a region
+subdir + stub HTML + landing-page link. Defer until friction shows up (probably
+after city #3). The README documents the manual version as ~5 minutes — not yet
+worth automating.
+
+## Per-city workflow (repeats for each new city)
+
+1. **Discover stores** — pull the official GW Store Finder for the city and
+   tier each candidate. Use the full process in
+   [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md)
+   (Phase A pull + Phase B verify/tier, default-include policy). Record findings
+   in `research-process/results/<region>.md`.
+2. **Find contacts** — website / contact-form / social handle per store (Places
+   data, then site scraping via Claude in Chrome or Cowork).
+3. **Generate outreach materials** — per-store prefilled Google Form link (see
+   [`form/form-reference.md`](form/form-reference.md)) + a personalized email.
+4. **Execute outreach** — send 10–20/day, manually. Resists automation by
+   design; personalized cold outreach beats bulk.
+5. **Response → site** — fully automatic once Phase B exists: form submit → PR →
+   validate → merge → deploy. No manual work.
+
+## Recommended order
+
+1. Run **per-city Phase 1 + 2** (discover + contacts) against the next target city.
+2. Generate + send outreach (Phases 3–4).
+3. Let Phase 5 (automation) publish responses.
+4. Build setup **Phase C** only once the manual region-add becomes a real annoyance.
+
+## Notes
+
+- Address auto-geocodes via OpenStreetMap Nominatim in the browser, so `lat`/`lng` are optional in the JSON — stores can submit just an address. (For stores pulled from the GW Store Finder, use its `_geoloc` coords directly.)
+- Map library is **Leaflet** + OpenStreetMap; hosting is **GitHub Pages** with a CNAME. Don't change either.
+- The authoritative store schema lives in [`../CONTRIBUTING.md`](../CONTRIBUTING.md); per-region schema variance is intentional and documented in [`../CLAUDE.md`](../CLAUDE.md).
