@@ -7,9 +7,9 @@
     "lng": -92.103104,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://roguerobotmn.com",
     "phone": "(218) 727-8101",
-    "note": "On the official Warhammer Store Finder (carries Games Workshop product). Discount policy not yet verified — call to confirm."
+    "note": "Confirmed Games Workshop stockist — own site's miniatures page references Warhammer miniatures, the store carries Warhammer 40,000 and the full Games Workshop paint range, and it runs a dedicated 'Rogue Robot Warhammer Community' page. Also on the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "loch-cafe-duluth",
@@ -19,9 +19,9 @@
     "lng": -92.079547,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://www.facebook.com/thelochcafeduluth/",
     "phone": "(218) 606-1104",
-    "note": "On the official Warhammer Store Finder (carries Games Workshop product) — appears to be a board-game cafe / play venue. Discount policy not yet verified — call to confirm."
+    "note": "Confirmed Games Workshop stockist — local press (Duluth News Tribune) and community coverage describe it carrying Warhammer 40K supplies as one of 'the big three'; it's a coffee / board-game cafe and play venue. Also on the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "level-up-superior",
@@ -31,9 +31,9 @@
     "lng": -92.104269,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://levelupsuperior.com",
     "phone": "(715) 718-2440",
-    "note": "Across the state line in Superior, WI (~4 mi from Duluth). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+    "note": "Confirmed Games Workshop stockist — own site's tabletop-games page literally lists 'Warhammer 40,000 and Age of Sigmar.' Across the state line in Superior, WI (~4 mi from Duluth). Also on the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
   },
   {
     "id": "hobbytown-hermantown",
@@ -43,8 +43,8 @@
     "lng": -92.192626,
     "discount": "Discount status unknown — not yet researched. Call store to confirm their Games Workshop discount policy.",
     "category": "unconfirmed",
-    "website": null,
+    "website": "https://www.hobbytown.com/hermantown-mn/l144",
     "phone": "(218) 723-7114",
-    "note": "HobbyTown franchise location in Hermantown (~5 mi from Duluth). On the official Warhammer Store Finder. Discount policy not yet verified — call to confirm."
+    "note": "On the official Warhammer Store Finder; HobbyTown is a national chain that stocks the Games Workshop range. The per-store page returned HTTP 403, so first-party stocking couldn't be fetched directly (capability gap, not a negative). ~5 mi from Duluth. Discount policy not yet verified — call to confirm."
   }
 ]
