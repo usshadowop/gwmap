@@ -35,8 +35,8 @@ The site is a plain static front-end — no build step, no framework. Read
 - **Landing changes:** develop on the working branch, then open a PR into `main`
   and merge it (direct push to `main` is branch-protected). No need to ask first.
 - **Don't add `[skip ci]`** to commits or merges — merging is what triggers the deploy.
-- **Match the existing schema** of whatever region file you're editing; don't
-  introduce a third variant (see Data below).
+- **Match the unified schema** — every region file uses the same flat rich
+  schema; keep the full key set and don't introduce a variant (see Data below).
 - **Verify, don't trust, search-summary claims.** A web-search summary can
   assert a store carries Warhammer when the page text doesn't. Fetch the literal
   source and quote it before treating anything as confirmed. A blocked/empty
