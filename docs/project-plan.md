@@ -9,7 +9,8 @@ this file is just the map of the moving parts.
 > Status (2026-06-24): the site architecture (per-region template + per-region
 > JSON + shared `js/app.js`) is **built and multi-city** (Twin Cities, Colorado
 > Springs, Denver, plus the combined All Cities view), and the Form → PR
-> automation is **built and deployed** — so setup Phases A & B are done. Per-city
+> automation is **built and deployed**, and the Phase C scaffolding script
+> (`scripts/new-city.js`) now exists — so all of setup Phases A, B & C are done. Per-city
 > store research has been run for all three cities; **outreach is underway in
 > Twin Cities** and **not yet started** in Colorado Springs and Denver. See the
 > per-city status table below.
@@ -37,11 +38,11 @@ Form submissions flow into the repo via a PR. Built and deployed; see
 a full live end-to-end test submission through each discount branch is still
 recommended.
 
-### Phase C — New-city scaffolding helper ⏸ deferred
-A `./new-city <slug> <name> <lat> <lng>` script that stamps out a region
-subdir + stub HTML + landing-page link. Defer until friction shows up (probably
-after city #3). The README documents the manual version as ~5 minutes — not yet
-worth automating.
+### Phase C — New-city scaffolding helper ✅ done
+`node scripts/new-city.js <slug> "<name>" <lat> <lng>` stamps out a region
+subdir + stub HTML + landing-page link + All Cities entry; see
+[`../README.md`](../README.md#adding-a-new-region). Built once city count
+passed the original "probably after city #3" trigger (six regions exist now).
 
 ## Per-city workflow (repeats for each new city)
 
@@ -81,8 +82,7 @@ policy). The workflow itself:
 2. **Colorado Springs & Denver:** discovery is done — run contacts + outreach
    (Phases 2–4) against the existing lists.
 3. Let Phase 5 (automation) publish responses as they arrive.
-4. Reconsider setup **Phase C** (scaffolding helper) when adding city #4 — three
-   cities exist now, so the next region-add is the point where it may earn its keep.
+4. Use `node scripts/new-city.js` (Phase C, now built) for the next region add.
 
 ## Notes
 

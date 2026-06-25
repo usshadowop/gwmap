@@ -20,12 +20,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Adding a new region
 
-1. Create a new subdirectory under `location/` (e.g. `location/chicago/`) with an `index.html` modeled on `location/twincities/index.html` (it already uses the correct `../../` asset paths).
-2. Set `window.GWMAP_DATA_URL` in that page to point at a new `../../data/<region>.json` file.
-3. Add a link to the new region (`location/<region>/`) on the root `index.html` landing page.
-4. Add the new data file to the `window.GWMAP_DATA_URLS` array in `location/allcities/index.html` so it appears on the combined map.
+Run `node scripts/new-city.js <slug> "<name>" <lat> <lng>`, e.g. `node scripts/new-city.js chicago "Chicago, IL" 41.8781 -87.6298`. It scaffolds:
 
-The map auto-fits to the confirmed (visible) pins in the loaded data. If a region has no confirmed pins yet (e.g. every store is `unconfirmed` and hidden by default), set `window.GWMAP_CENTER` (`[lat, lng]`) and `window.GWMAP_ZOOM` in the page so it still opens centered on the region — see `location/coloradosprings/index.html` for an example.
+1. `location/<slug>/index.html`, modeled on `location/twincities/index.html`, with `window.GWMAP_DATA_URL` pointed at `../../data/<slug>.json` and `window.GWMAP_CENTER`/`GWMAP_ZOOM` set to the given coordinates (new regions start with every store `unconfirmed`, so there are no confirmed pins yet for the map to auto-fit to).
+2. An empty `data/<slug>.json` ready for the store-finding process to populate.
+3. A link to the new region on the root `index.html` landing page.
+4. An entry in the `window.GWMAP_DATA_URLS` array in `location/allcities/index.html` so it appears on the combined map.
+
+The script aborts if `location/<slug>/` or `data/<slug>.json` already exists, so it's safe to run without clobbering an existing region.
 
 ## Deploying
 
