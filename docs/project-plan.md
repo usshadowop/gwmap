@@ -88,4 +88,4 @@ policy). The workflow itself:
 
 - Address auto-geocodes via OpenStreetMap Nominatim in the browser, so `lat`/`lng` are optional in the JSON — stores can submit just an address. (For stores pulled from the GW Store Finder, use its `_geoloc` coords directly.)
 - Map library is **Leaflet** + OpenStreetMap; hosting is **GitHub Pages** with a CNAME. Don't change either.
-- The authoritative store schema lives in [`../CONTRIBUTING.md`](../CONTRIBUTING.md); per-region schema variance is intentional and documented in [`../CLAUDE.md`](../CLAUDE.md).
+- The authoritative store schema lives in [`../CONTRIBUTING.md`](../CONTRIBUTING.md); all regions share one unified flat (~31-field) rich schema — every store carries the full key set — as documented in [`../CLAUDE.md`](../CLAUDE.md).
