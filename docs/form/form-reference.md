@@ -94,7 +94,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSfzAk_VSsmppzKYyV-oZUDAzB17RT8SNli2H_zZ
 ## 4. Completed example: Hub Hobby (pilot store)
 
 Two locations, same management/contact, sent as **one outreach email** with
-**two separate prefilled links** (one address field per submission).
+**two separate prefilled links** (one per location).
 
 **Known data:**
 
@@ -103,10 +103,13 @@ Two locations, same management/contact, sent as **one outreach email** with
 - Little Canada: 82 Minnesota Ave, Little Canada, MN 55117
 - Richfield: 6410 Penn Ave S, Richfield, MN 55423
 
-These prefilled links remain valid after the latest form edit since none of the
-entry IDs they use were changed — only new, unrelated fields were added. (The
-full link strings live with the project's outreach material; regenerate via
-Section 2 if the form is edited again.)
+The original pilot links used the old combined "Address or google maps link"
+question (entry.1138144738). That entry ID still exists, so the links won't
+error — but that field is now **address-only**, and a separate Maps-link field
+(entry.1890704744) was added. Any pilot link that put a Maps URL into
+entry.1138144738 should be **regenerated** (Section 2) so the URL lands in the
+new Maps-link field instead of the address box. (The full link strings live with
+the project's outreach material.)
 
 ## 5. Outstanding / next steps
 
