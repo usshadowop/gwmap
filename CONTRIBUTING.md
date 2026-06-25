@@ -9,9 +9,10 @@ it, and the site redeploys. You don't need a GitHub account to use the form.
 ## Adding a store by hand (pull request)
 
 Edit `data/twincities.json` (or the relevant city's file under `data/`) and add
-an entry to the array. Entries share a flat schema — only a handful of fields
-are required; the rest can be left as empty strings (`""`), `false`, `[]`, or
-`null`:
+an entry to the array. **All regions share one flat schema**, so copy an
+existing entry and fill in what you know — keep the full field set even when
+most values are blank (`""`, `false`, `[]`, or `null`). Only a handful of fields
+are required; the rest can stay blank:
 
 ```json
 {
@@ -21,14 +22,39 @@ are required; the rest can be left as empty strings (`""`), `false`, `[]`, or
   "lat": null,
   "lng": null,
   "category": "15",
-  "discount": "Description of the GW discount offered"
+  "discount": "Description of the GW discount offered",
+  "discountExclusions": "",
+  "discountDetails": "",
+  "loyaltyDetails": "",
+  "newReleases": false,
+  "preorders": false,
+  "preorderUrl": "",
+  "preorderLinkText": "",
+  "mapsUrl": "",
+  "website": "",
+  "phone": "",
+  "affiliation": "",
+  "note": "",
+  "gameSystems": [],
+  "stockLevel": "",
+  "discord": "",
+  "facebook": "",
+  "instagram": "",
+  "twitter": "",
+  "otherSocials": "",
+  "playSpaceTables": "",
+  "playSpaceCost": "",
+  "playSpacePrice": "",
+  "playSpaceRestrictions": "",
+  "playSpaceReserve": ""
 }
 ```
 
 Required: `id` (lowercase kebab-case, unique), `name`, and `category`. The map
 geocodes `address` in the browser (via OpenStreetMap Nominatim), so `lat`/`lng`
 may be `null`. Set them directly (e.g. from a Google Maps link) to skip
-geocoding and pin exact coordinates.
+geocoding and pin exact coordinates. Everything else is optional and can be left
+blank — but keep the key present so every entry has the same shape.
 
 `category` controls the pin color in the legend:
 

@@ -6,10 +6,13 @@ current; it's the first thing to read.
 ## What this project is
 
 An interactive Leaflet + OpenStreetMap map of local hobby stores that offer
-discounts on Games Workshop models, hosted on GitHub Pages. The site root links
-out to per-region maps (`twincities/`, `coloradosprings/`, `denver/`) plus a
-combined `allcities/` view. Each region has an `index.html` and a
-`data/<region>.json`; all regions share `css/style.css` + `js/app.js`.
+discounts on Games Workshop models, hosted on GitHub Pages. The site root
+(`index.html`) links out to per-region maps that live under `location/`
+(`location/twincities/`, `location/coloradosprings/`, `location/denver/`, …)
+plus a combined `location/allcities/` view. Each region has a
+`location/<region>/index.html` and a `data/<region>.json`; all regions share
+`css/style.css` + `js/app.js`. Region pages sit two levels deep, so they
+reference shared assets as `../../css/`, `../../js/`, `../../data/`.
 
 See [`README.md`](README.md) for architecture and how to add a region.
 
@@ -21,8 +24,8 @@ The site is a plain static front-end — no build step, no framework. Read
 - **Shared logic lives in [`js/app.js`](js/app.js)** (with `js/site-info.js` and
   `js/vendor/oms.js` for marker spiderfying); styling is in
   [`css/style.css`](css/style.css). `index.html` is the landing page and each
-  `<region>/index.html` is a thin, near-identical shell that loads
-  `data/<region>.json` — put behavior changes in the shared files, not per-region.
+  `location/<region>/index.html` is a thin, near-identical shell that loads
+  `../../data/<region>.json` — put behavior changes in the shared files, not per-region.
 - **Verify by running the site locally** (see README) — CI only runs
   `scripts/validate-stores.js` against the *data*, so it won't catch a broken UI.
 - Ship via the **Landing changes** rule below (branch → PR into `main` → merge).
@@ -49,12 +52,16 @@ The site is a plain static front-end — no build step, no framework. Read
   PRs that change `data/**`, the script, or its workflow — docs/UI-only PRs
   don't trigger it). It requires only `id`, `name` (non-empty strings),
   `category` ∈ `{15, 10, loyalty, none, unconfirmed}`, and `lat`/`lng` as number-or-null.
-- **Schema variance is intentional and allowed:** `data/twincities.json` uses a
-  richer ~31-field flat schema (discount details, game systems, socials, play
-  space, etc.); `data/coloradosprings.json` and `data/denver.json` use a minimal
-  schema (`id`/`name`/`address`/`lat`/`lng`/`discount`/`category`/`website`/
-  `phone`/`note`). Both pass validation. When adding to a region, follow that
-  region's existing shape.
+- **One unified schema for all regions:** every `data/<region>.json` store uses
+  the same flat ~31-field rich schema (the field set in `data/twincities.json`:
+  discount details, `newReleases`/`preorders`, `mapsUrl`, socials, `gameSystems`,
+  play-space, etc.). Only `id`/`name`/`category` are required; unknown fields are
+  left blank (`""`, `false`, `[]`, or `null` as appropriate) — but keep the full
+  key set on every entry so the schema stays identical across files. `app.js`
+  only renders a field when it's populated, so blanks are invisible. When adding
+  a store, copy an existing entry's full field list rather than emitting a subset.
+  (The canonical key order lives in `data/twincities.json`; see also
+  [`CONTRIBUTING.md`](CONTRIBUTING.md).)
 - **Default-include policy** (current): every store on the official GW Store
   Finder goes into the data as `category: "unconfirmed"` unless there's citable
   *contradicting* evidence (confirmed closure, wrong/stale address, duplicate).
