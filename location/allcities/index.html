@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - Rochester Hobby Stores with Games Workshop Discounts</title>
+  <title>GW Discount Map - All Cities Hobby Stores with Games Workshop Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <header>
-    <h1>Games Workshop Discount Map — Rochester</h1>
-    <p>Find local hobby stores selling Games Workshop models and see which ones offer persistent discounts.</p>
+    <h1>Games Workshop Discount Map — All Cities</h1>
+    <p>Every store across all regions. Find local hobby stores selling Games Workshop models and see which ones offer persistent discounts.</p>
   </header>
   <details class="legend-menu">
     <summary>Legend <span class="expand-hint">(click to expand)</span></summary>
@@ -36,15 +36,21 @@
     </div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="../js/vendor/oms.js"></script>
+  <script src="../../js/vendor/oms.js"></script>
   <script>
-    window.GWMAP_DATA_URL = '../data/rochester.json';
-    // All Rochester stores are currently unconfirmed (hidden by default),
-    // so there are no confirmed pins to auto-fit. Center on Rochester.
-    window.GWMAP_CENTER = [44.0121, -92.4802];
-    window.GWMAP_ZOOM = 11;
+    // Combined view: load every region's data file. The map auto-fits to the
+    // confirmed (visible) pins across all regions; add new data files here as
+    // regions are added.
+    window.GWMAP_DATA_URLS = [
+      '../../data/twincities.json',
+      '../../data/coloradosprings.json',
+      '../../data/denver.json',
+      '../../data/duluth.json',
+      '../../data/rochester.json',
+      '../../data/mankato.json'
+    ];
   </script>
-  <script src="../js/app.js"></script>
-  <script src="../js/site-info.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/site-info.js"></script>
 </body>
 </html>
