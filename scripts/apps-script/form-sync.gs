@@ -100,11 +100,22 @@ function makeGetters_(map) {
     }
     return '';
   };
-  return { get: get, getAny: getAny };
+  // Return the first answer whose (normalized) question title CONTAINS one of
+  // the given substrings — tolerant of trailing parentheticals / minor wording.
+  const getMatch = function (substrings) {
+    const keys = Object.keys(map);
+    for (let i = 0; i < substrings.length; i++) {
+      const needle = normTitle_(substrings[i]);
+      for (let j = 0; j < keys.length; j++) {
+        if (keys[j].indexOf(needle) !== -1) return map[keys[j]];
+      }
+    }
+    return '';
+  };
+  return { get: get, getAny: getAny, getMatch: getMatch };
 }
 
 function isYes_(v) { return String(v).trim().toLowerCase() === 'yes'; }
-function isUrl_(v) { return /^https?:\/\//i.test(String(v).trim()); }
 
 function slugify_(name) {
   return String(name).toLowerCase()
@@ -160,9 +171,10 @@ function onFormSubmit(e) {
     return;
   }
 
-  // Q4 is a single "Address or google maps link" field — split by URL sniff.
-  const addressOrUrl = g.get('Address or google maps link');
-  const isLink = isUrl_(addressOrUrl);
+  // Address and Google Maps link are two SEPARATE questions. Substring matching
+  // tolerates the Maps-link question's trailing parenthetical / minor wording.
+  const address = g.getMatch(['store street address', 'store address']);
+  const mapsUrl = g.getMatch(['google maps link', 'maps link']);
 
   const q5 = g.get('Do you offer any innate persistent discounts on all Games Workshop models?');
   const pctRaw = g.get('What % discount?');
@@ -190,7 +202,7 @@ function onFormSubmit(e) {
   const entry = {
     id: slugify_(rawName),
     name: rawName,
-    address: isLink ? '' : addressOrUrl,
+    address: address,
     lat: null,
     lng: null,
     category: cat.category,
@@ -208,7 +220,7 @@ function onFormSubmit(e) {
     ])),
     preorderUrl: '',
     preorderLinkText: g.get('Describe how someone puts in a pre-order at your shop:'),
-    mapsUrl: isLink ? addressOrUrl : '',
+    mapsUrl: mapsUrl,
     website: '',
     phone: '',
     affiliation: g.get('What is your affiliation with this store?'),
@@ -255,6 +267,10 @@ function onFormSubmit(e) {
     ['lat', 'lng', 'website', 'phone', 'preorderUrl', 'note'].forEach(function (k) {
       entry[k] = stores[idx][k];
     });
+    // mapsUrl IS collected now, but the question is OPTIONAL — only overwrite
+    // when the submission actually provides a link, so a blank answer can't
+    // wipe a previously verified pin URL.
+    if (!entry.mapsUrl) entry.mapsUrl = stores[idx].mapsUrl;
     stores[idx] = Object.assign({}, stores[idx], entry);
   } else {
     stores.push(entry);

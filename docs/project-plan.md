@@ -69,7 +69,8 @@ policy). The workflow itself:
 2. **Find contacts** — website / contact-form / social handle per store (Places
    data, then site scraping via Claude in Chrome or Cowork).
 3. **Generate outreach materials** — per-store prefilled Google Form link (see
-   [`form/form-reference.md`](form/form-reference.md)) + a personalized email.
+   [`form/form-reference.md`](form/form-reference.md)) + a personalized email
+   (template + rules: [`form/outreach-email-template.md`](form/outreach-email-template.md)).
 4. **Execute outreach** — send 10–20/day, manually. Resists automation by
    design; personalized cold outreach beats bulk.
 5. **Response → site** — fully automatic once Phase B exists: form submit → PR →

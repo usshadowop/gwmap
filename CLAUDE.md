@@ -78,6 +78,7 @@ The site is a plain static front-end — no build step, no framework. Read
 - `docs/research-process/results/<region>.md` — what was actually found per region (Twin Cities, Colorado Springs, Denver).
 - [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
 - [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs, and its gotchas.
+- [`docs/form/outreach-email-template.md`](docs/form/outreach-email-template.md) — store-owner verification email template (subject, button-styled HTML body, city-link rules) — use for every outreach email.
 
 ## GW Store Finder API (quick reference)
 
