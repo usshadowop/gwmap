@@ -89,13 +89,34 @@ function regionHtml(slug, name, lat, lng) {
 `;
 }
 
+// Sort key for a "City, ST" label: [state, city]. Labels with no state
+// (e.g. "All cities") sort last.
+function citySortKey(label) {
+  const m = label.match(/^(.*),\s*([A-Za-z]{2})$/);
+  return m ? [m[2].toUpperCase(), m[1]] : ['~', label];
+}
+
 function addLandingLink(slug, name) {
   const indexPath = path.join(ROOT, 'index.html');
   const lines = fs.readFileSync(indexPath, 'utf8').split('\n');
   const allCitiesIdx = lines.findIndex(l => l.includes('location/allcities/'));
   if (allCitiesIdx === -1) fail('Could not find the "All cities" link in index.html to insert before.');
   const indent = lines[allCitiesIdx].match(/^\s*/)[0];
-  lines.splice(allCitiesIdx, 0, `${indent}<li><a href="location/${slug}/">${name}</a></li>`);
+
+  // Insert in state-then-alphabetical order rather than always appending,
+  // so the landing page list stays sorted as new regions are added.
+  const [newState, newCity] = citySortKey(name);
+  let insertIdx = allCitiesIdx;
+  for (let i = 0; i < allCitiesIdx; i++) {
+    const m = lines[i].match(/<a href="location\/[^"]+\/">([^<]+)<\/a>/);
+    if (!m) continue;
+    const [state, city] = citySortKey(m[1]);
+    if (state > newState || (state === newState && city > newCity)) {
+      insertIdx = i;
+      break;
+    }
+  }
+  lines.splice(insertIdx, 0, `${indent}<li><a href="location/${slug}/">${name}</a></li>`);
   fs.writeFileSync(indexPath, lines.join('\n'));
 }
 
