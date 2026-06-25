@@ -6,6 +6,8 @@ generate prefilled per-store links without re-deriving the mapping from scratch.
 The automation that consumes this form's submissions lives in
 [`../../scripts/apps-script/form-sync.gs`](../../scripts/apps-script/form-sync.gs);
 operational notes are in [`form-sync-operations.md`](form-sync-operations.md).
+The email that invites a store owner to fill this form out (sent before any
+submission) has its own template: [`outreach-email-template.md`](outreach-email-template.md).
 
 **Project:** warhammerdiscounts.com (the live site for this repo)
 
