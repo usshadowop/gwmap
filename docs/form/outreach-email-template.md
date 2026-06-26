@@ -5,7 +5,9 @@ them to verify/correct their listing via a personalized prefilled Google Form.
 This is distinct from the maintainer-facing approval email in
 [`../../scripts/apps-script/form-sync.gs`](../../scripts/apps-script/form-sync.gs)
 (`sendApprovalEmail_`), which fires *after* a form submission and is sent to
-the maintainer, not the store.
+the maintainer, not the store. For stores listed as `category: "unconfirmed"`
+(found but not yet verified, hidden by default), use the
+[unconfirmed-listing variant](outreach-email-unconfirmed-template.md) instead.
 
 Outreach emails are generated and sent manually (per
 [`../project-plan.md`](../project-plan.md) — "resists automation by design;
