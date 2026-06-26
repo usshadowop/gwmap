@@ -417,16 +417,18 @@ function sendApprovalEmail_(entry, isUpdate, snappedFrom, pr, region, needsTriag
       html += '<p style="margin:4px 0;"><strong>' + k + ':</strong> ' + v + '</p>';
     }
   });
-  html += '<div style="text-align:center;margin:28px 0;">' +
-    '<a href="' + pr.html_url + '" style="background:#2563eb;color:#fff;padding:12px 28px;' +
-    'text-decoration:none;font-weight:bold;border-radius:6px;display:inline-block;">' +
-    'Review PR #' + pr.number + ' on GitHub</a></div>';
+  html += '<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:28px auto;">' +
+    '<tr><td align="center" bgcolor="#2563eb" style="border-radius:6px;">' +
+    '<a href="' + pr.html_url + '" style="display:inline-block;padding:12px 28px;font-family:Arial,sans-serif;' +
+    'font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:6px;">' +
+    'Review PR #' + pr.number + ' on GitHub</a></td></tr></table>';
   if (WEB_APP_URL) {
     const mergeLink = WEB_APP_URL + '?action=merge&pr=' + pr.number;
-    html += '<div style="text-align:center;margin:8px 0 24px;">' +
-      '<a href="' + mergeLink + '" style="background:#16a34a;color:#fff;padding:10px 24px;' +
-      'text-decoration:none;font-weight:bold;border-radius:6px;display:inline-block;">' +
-      'Approve &amp; merge</a></div>' +
+    html += '<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:8px auto 24px;">' +
+      '<tr><td align="center" bgcolor="#16a34a" style="border-radius:6px;">' +
+      '<a href="' + mergeLink + '" style="display:inline-block;padding:10px 24px;font-family:Arial,sans-serif;' +
+      'font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:6px;">' +
+      'Approve &amp; merge</a></td></tr></table>' +
       '<p style="font-size:12px;color:#888;text-align:center;">Merging runs the deploy and ' +
       'takes the change live.</p>';
   }
