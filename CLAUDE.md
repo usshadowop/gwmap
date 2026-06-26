@@ -3,13 +3,19 @@
 Guidance for any AI assistant (or human) picking up `gwmap`. Keep this short and
 current; it's the first thing to read.
 
+> **Starting a session?** Read [`docs/handoff.md`](docs/handoff.md) first — it's
+> the "pick up here" snapshot of where the last session left off and what to do
+> next. Overwrite it (whole file) before you wrap up.
+
 ## What this project is
 
 An interactive Leaflet + OpenStreetMap map of local hobby stores that offer
 discounts on Games Workshop models, hosted on GitHub Pages. The site root
 (`index.html`) links out to per-region maps that live under `location/`
 (`location/twincities/`, `location/coloradosprings/`, `location/denver/`, …)
-plus a combined `location/allcities/` view. Each region has a
+plus per-state combined views (`location/minnesota/`, `location/colorado/`) and a
+combined `location/allcities/` view. The landing page groups cities under
+clickable state headers. Each city region has a
 `location/<region>/index.html` and a `data/<region>.json`; all regions share
 `css/style.css` + `js/app.js`. Region pages sit two levels deep, so they
 reference shared assets as `../../css/`, `../../js/`, `../../data/`.
@@ -71,6 +77,7 @@ The site is a plain static front-end — no build step, no framework. Read
 
 ## Documentation map
 
+- [`docs/handoff.md`](docs/handoff.md) — session handoff: where the last session left off, what's next (read first; overwrite when done).
 - [`README.md`](README.md) — architecture, running locally, adding a region.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — store schema + how to add a store.
 - [`docs/project-plan.md`](docs/project-plan.md) — high-level roadmap (setup + per-city workflow).

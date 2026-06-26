@@ -1,18 +1,25 @@
 # Session handoff
 
-Short-lived "pick up here" notes between chat sessions. **Overwrite the "Current
-state" and "Next up" sections each session** — this is not an archive. For
-durable rules read [`../CLAUDE.md`](../CLAUDE.md); for the roadmap/status table
-read [`project-plan.md`](project-plan.md). This file is just: where we left off,
+Short-lived "pick up here" notes between chat sessions. **Overwrite this whole
+file each session** — replace the contents wholesale with the current state;
+this is not an append-only log or an archive. For durable rules read
+[`../CLAUDE.md`](../CLAUDE.md); for the roadmap/status table read
+[`project-plan.md`](project-plan.md). This file is just: where we left off,
 what's mid-flight, and what to do next.
 
 _Last updated: 2026-06-26_
 
 ## Current state
 
-- **Site is live and healthy** at warhammerdiscounts.com. Six regions (Twin
-  Cities, Colorado Springs, Denver, Duluth, Rochester, Mankato) + the All Cities
-  combined view. Landing page list is sorted by state, then city (PR #23).
+- **Site is live and healthy** at warhammerdiscounts.com. Six city regions (Twin
+  Cities, Colorado Springs, Denver, Duluth, Rochester, Mankato), per-state
+  combined views (`location/minnesota/`, `location/colorado/`), and the All
+  Cities combined view.
+- **Landing page** groups cities under clickable state headers (states
+  alphabetical, cities alphabetical within each state); the state header links to
+  that state's combined map. `scripts/new-city.js` keeps this structure in sync —
+  it slots a new city under its state (creating the state group + state page if
+  the state is new) and takes `"City, ST"` as the name arg.
 - **Form → PR automation is built and deployed.** The form's combined
   "address or maps link" question was split into two (street address +
   optional Maps link); `form-sync.gs`, `form-reference.md`, and
