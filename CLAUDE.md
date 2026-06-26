@@ -86,6 +86,7 @@ The site is a plain static front-end — no build step, no framework. Read
 - [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
 - [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs, and its gotchas.
 - [`docs/form/outreach-email-template.md`](docs/form/outreach-email-template.md) — store-owner verification email template (subject, button-styled HTML body, city-link rules) — use for every outreach email.
+- [`docs/form/outreach-email-unconfirmed-template.md`](docs/form/outreach-email-unconfirmed-template.md) — variant of the outreach email for `unconfirmed` stores (found-but-not-verified, hidden by default); "Confirm Your Listing" button.
 - [`.claude/skills/begin-city-outreach/SKILL.md`](.claude/skills/begin-city-outreach/SKILL.md) — the "begin city outreach &lt;city&gt;" runbook: discover → contacts → prefilled-link drafts → auto-publish. Ties the above together.
 
 ## "Begin city outreach" workflow
