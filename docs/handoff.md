@@ -79,3 +79,35 @@ _Last updated: 2026-06-26_
 | Mankato | 3 | 2 stockists confirmed, discounts unverified |
 
 (Authoritative counts live in `data/<region>.json`; this table is a snapshot.)
+
+## Session log
+
+> Normally this file is overwritten wholesale each session. This section is a
+> one-time appended log of the 2026-06-26 session for continuity; future sessions
+> can fold it into "Current state" and drop it.
+
+### 2026-06-26
+
+- **Per-state pages + nested landing page** (PR #24, merged): added
+  `location/minnesota/` and `location/colorado/` combined views; landing page now
+  groups cities under clickable state headers (state → cities, alphabetical).
+  `new-city.js` updated to slot new cities under their state + create the state
+  page/group when the state is new (name arg is now `"City, ST"`).
+- **"Begin city outreach" workflow** (PR #25, merged): `form-sync.gs` now routes
+  each submission to the `data/<region>.json` that already holds the store (scan
+  + match; `[triage]` fallback to the default region). Added
+  `scripts/prefill-link.js` (record → prefilled form URL) and the
+  `begin-city-outreach` skill (discover → contacts → prefilled-link drafts).
+- **Branch hygiene:** enabled "Automatically delete head branches"; merged PR
+  branches now self-delete, ending the squash-divergence churn. Old stale
+  branches deleted. Note: branch deletion can't be done from the AI side (token
+  lacks the permission) — the repo setting handles it instead.
+- **Apps Script re-paste is the gating manual step.** The region-routing
+  `form-sync.gs` is merged in the repo but only goes live once re-pasted into the
+  Apps Script editor. Until then the live automation still writes only to
+  `data/twincities.json`.
+- **In flight:** contact emails are being generated in a separate chat; once
+  done, run a live end-to-end test with one sample store (submit → confirm it
+  opens a PR routed to the correct region file, correct `category`/Yes-No, and
+  `address`/`mapsUrl` in their separate fields). A sample store not pre-seeded in
+  any region file should land in Twin Cities flagged `[triage]` — expected.
