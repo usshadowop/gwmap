@@ -23,6 +23,7 @@ Verify Your Store Listing — {Store Name} on warhammerdiscounts.com
 ```html
 <div style="font-family:Arial,sans-serif;max-width:640px;color:#333;">
   <p>Hi {owner name, or "{Store Name} team" if the owner's name isn't known},</p>
+  <p>I'm Jon H. owner of warhammerstores.com &amp; its subsidiary page warhammerdiscounts.com</p>
   <p>{Store Name} is currently listed on warhammerdiscounts.com's
     <a href="https://warhammerdiscounts.com/location/{region-slug}/">{City, ST}</a>
     page, but we wanted to email you to verify the details we have are correct.</p>
@@ -40,7 +41,7 @@ Verify Your Store Listing — {Store Name} on warhammerdiscounts.com
       </td>
     </tr>
   </table>
-  <p>Thanks for your time,<br>Jon@warhammerdiscounts.com</p>
+  <p>Thanks for your time,<br>Jon@warhammerstores.com</p>
 </div>
 ```
 
@@ -73,7 +74,10 @@ the `<td>` survives that stripping.)
 - **Form link:** always a **button**, never a bare pasted URL. Generate the
   per-store prefilled link per
   [`form-reference.md`](form-reference.md) §2, and use it as the button's `href`.
-- **Sign-off:** always `Jon@warhammerdiscounts.com`.
+- **Intro line:** after the greeting, always include the sender's identity line:
+  "I'm Jon H. owner of warhammerstores.com & its subsidiary page
+  warhammerdiscounts.com" (constant across all stores).
+- **Sign-off:** always `Jon@warhammerstores.com`.
 - **Sending:** draft via the Gmail `create_draft` tool with `htmlBody` set to
   the rendered template (placeholders filled in), then review before sending —
   there's no auto-send tool, drafts are reviewed and sent manually.
