@@ -61,6 +61,29 @@ header p {
   text-decoration: underline;
 }
 
+/* Region nav: state groups with their cities tabbed underneath. */
+.region-nav .state > a {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.region-nav .state > ul {
+  margin: 0.3rem 0 0.9rem;
+  padding-left: 1.5rem;
+}
+
+.region-nav .state > ul a {
+  font-size: 1rem;
+}
+
+.region-nav .all-cities {
+  margin-top: 0.9rem;
+}
+
+.region-nav .all-cities a {
+  font-weight: 600;
+}
+
 .footer-links {
   background: #1a1a1a;
   color: #fff;
