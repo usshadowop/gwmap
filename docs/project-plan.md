@@ -68,13 +68,18 @@ policy). The workflow itself:
    in `research-process/results/<region>.md`.
 2. **Find contacts** — website / contact-form / social handle per store (Places
    data, then site scraping via Claude in Chrome or Cowork).
-3. **Generate outreach materials** — per-store prefilled Google Form link (see
+3. **Generate outreach materials** — per-store prefilled Google Form link
+   (`node scripts/prefill-link.js <region>`; mechanics in
    [`form/form-reference.md`](form/form-reference.md)) + a personalized email
    (template + rules: [`form/outreach-email-template.md`](form/outreach-email-template.md)).
 4. **Execute outreach** — send 10–20/day, manually. Resists automation by
    design; personalized cold outreach beats bulk.
-5. **Response → site** — fully automatic once Phase B exists: form submit → PR →
-   validate → merge → deploy. No manual work.
+5. **Response → site** — fully automatic: form submit → form-sync routes it to
+   the right `data/<region>.json` → PR → validate → merge → deploy. No manual work.
+
+Steps 1–4 for a given city are driven by the **`begin-city-outreach` skill**
+(`.claude/skills/begin-city-outreach/SKILL.md`) — say "begin city outreach" + a
+city and it runs discover → contacts → prefilled-link drafts.
 
 ## Recommended order
 

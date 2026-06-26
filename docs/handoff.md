@@ -14,44 +14,40 @@ _Last updated: 2026-06-26_
 - **Site is live and healthy** at warhammerdiscounts.com. Six city regions (Twin
   Cities, Colorado Springs, Denver, Duluth, Rochester, Mankato), per-state
   combined views (`location/minnesota/`, `location/colorado/`), and the All
-  Cities combined view.
-- **Landing page** groups cities under clickable state headers (states
-  alphabetical, cities alphabetical within each state); the state header links to
-  that state's combined map. `scripts/new-city.js` keeps this structure in sync —
-  it slots a new city under its state (creating the state group + state page if
-  the state is new) and takes `"City, ST"` as the name arg.
-- **Form → PR automation is built and deployed.** The form's combined
-  "address or maps link" question was split into two (street address +
-  optional Maps link); `form-sync.gs`, `form-reference.md`, and
-  `form-sync-operations.md` are all reconciled to that split (PR #22).
-  - ⚠️ **Apps Script is a manual copy.** The `form-sync.gs` changes are only live
-    once the updated file is pasted into the Apps Script editor. Confirm this was
-    done before trusting the next form submission.
-- **Outreach email template** is formalized in
-  [`form/outreach-email-template.md`](form/outreach-email-template.md) (button
-  CTA, direct city-page link, fixed `Jon@warhammerdiscounts.com` sign-off).
-- **Branches:** PRs from `claude/plan-feature-status-nuxitm` are squash-merged,
-  so that branch shows perpetual "ahead/behind" vs `main` — cosmetic, not lost
-  work. Stale branches to delete (no AI-side permission to do it):
-  `claude/plan-feature-status-nuxitm`, `claude/keen-goldberg-660scr`,
-  `form/hub-hobby-little-canada-1782369233539`.
+  Cities combined view. Landing page groups cities under clickable state headers.
+- **"Begin city outreach" is now a one-command workflow.** The
+  `begin-city-outreach` skill (`.claude/skills/begin-city-outreach/SKILL.md`)
+  drives: scaffold region if new → discovery (A/B/C) → compile contacts →
+  generate prefilled links (`scripts/prefill-link.js`) → draft outreach emails
+  (Gmail `create_draft`, **drafts only**). Submissions auto-publish.
+- **Auto-publish works for any city now.** `form-sync.gs` no longer hardcodes
+  Twin Cities — on each submission it scans every `data/<region>.json`, finds the
+  store (pre-seeded during discovery), updates that file, and opens a PR.
+  Unmatched submissions land in the default region flagged `[triage]`.
+  - ⚠️ **Apps Script is a manual copy.** The new routing code only goes live once
+    the updated `form-sync.gs` is re-pasted into the Apps Script editor. Until
+    then the live automation still writes only to `data/twincities.json`.
+- **Branch hygiene:** "Automatically delete head branches" is now ON, so merged
+  PR branches clean themselves up. Old stale branches are already deleted; only
+  `main` and the working branch remain.
 
 ## Mid-flight / open items
 
-- **Live end-to-end form test** through the new split fields (address +
-  Maps-link) — recommended in `form-sync-operations.md`, not yet run.
-- **Stale branch deletion** — needs a maintainer with delete permission (UI
-  trash-can or `git push origin --delete <branch>`).
+- **Re-paste `form-sync.gs` into Apps Script** — required before non–Twin-Cities
+  outreach, or those submissions route wrong / silently default.
+- **Live end-to-end form test** still recommended (see `form-sync-operations.md`
+  "Open item"): submit once through each discount branch + an update that leaves
+  the Maps-link blank, and confirm routing lands in the right region file.
 
 ## Next up (priority order)
 
-1. **Twin Cities outreach** — 19 stores still `unconfirmed`. This is the warmest
-   lead: discovery is done, the form + email pipeline works, responses publish
-   themselves. Generate per-store prefilled links + emails and send 10–20/day.
-2. **Colorado Springs & Denver outreach** — discovery (A+B+C) is done; they just
-   need contacts + outreach. CO Springs: 13 unconfirmed. Denver: 25 unconfirmed.
-3. **Verify the form pipeline once** with a real submission before bulk outreach,
-   so a broken Apps-Script paste doesn't silently eat responses.
+1. **Twin Cities outreach** — 19 stores still `unconfirmed`; warmest lead
+   (discovery done, pipeline proven). Run `begin-city-outreach` for Twin Cities,
+   or just steps 2–4 (contacts → links → drafts) since discovery already ran.
+2. **Colorado Springs & Denver outreach** — discovery (A+B+C) is done; need
+   contacts + drafts. CO Springs: 13 unconfirmed. Denver: 25 unconfirmed.
+3. **New cities** — say "begin city outreach &lt;city&gt;" and the skill scaffolds
+   + discovers + drafts from scratch.
 
 ## Per-region status snapshot
 

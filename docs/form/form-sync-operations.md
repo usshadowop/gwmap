@@ -1,6 +1,6 @@
 # Form-sync — operations & gotchas
 
-How the Google Form → `data/twincities.json` automation actually runs, and the
+How the Google Form → `data/<region>.json` automation actually runs, and the
 non-obvious traps. The code is [`../../scripts/apps-script/form-sync.gs`](../../scripts/apps-script/form-sync.gs);
 the form's field map is [`form-reference.md`](form-reference.md).
 
@@ -27,6 +27,24 @@ diff/history/validation.
 - An **on-form-submit** trigger is added.
 - Branch protection on `main` requires the `validate` status check (admin bypass left ON).
 - *(Optional)* the one-click "Approve & merge" email button needs the script deployed as a Web App (Execute as: Me, Access: Anyone) with the `/exec` URL pasted into `WEB_APP_URL`.
+
+## Region routing (which `data/<region>.json` a submission lands in)
+
+The form has **no city/region question**. On each submission, `form-sync.gs`
+lists `data/`, loads every `data/<region>.json`, and finds the file that already
+contains a store matching the submission (by `id`, then by name). It updates the
+store **in that file** and opens a PR against it. This works because the
+**discovery phase pre-seeds every store into its city file** (as `unconfirmed`)
+*before* any outreach — so a later submission always has a home to match.
+
+- A submission matching **no** existing store (someone found the generic form on
+  their own) lands in `DEFAULT_FILE_PATH` (`data/twincities.json`) and is flagged
+  `[triage]` in the PR title + approval email — move it to the right city file
+  before merging if needed.
+- Cost is one directory-list call plus one fetch per region file per submission —
+  fine at the current scale (single-digit regions). If region count ever grows
+  large enough to matter, switch to a prefilled region field (see
+  [`form-reference.md`](form-reference.md) for how prefill params work).
 
 ## Gotchas (the important ones)
 
