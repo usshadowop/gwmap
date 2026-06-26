@@ -24,7 +24,12 @@
 // ====== CONFIGURATION ======
 const REPO_OWNER = 'usshadowop';
 const REPO_NAME = 'gwmap';
-const FILE_PATH = 'data/twincities.json';
+// Region files live at data/<region>.json. A submission is routed to whichever
+// region file already contains the store (stores are pre-seeded into their city
+// file during the discovery phase, before outreach). A submission that matches
+// no existing store falls back to DEFAULT_FILE_PATH and is flagged for triage.
+const DATA_DIR = 'data';
+const DEFAULT_FILE_PATH = 'data/twincities.json';
 const MAIN_BRANCH = 'main';
 const MY_EMAIL = 'us.shadow.op@gmail.com';
 // Optional: paste your Web App /exec URL to enable the one-click merge button.
@@ -154,6 +159,41 @@ function deriveCategory_(q5, pctNum) {
   return { category: 'unconfirmed', snappedFrom: null };
 }
 
+// ---------- region routing ----------
+
+/** Strip "data/" and ".json" → region slug, for human-readable messages. */
+function regionFromPath_(p) {
+  return String(p).replace(/^data\//, '').replace(/\.json$/, '');
+}
+
+/**
+ * Load every region file under data/ as { path, sha, stores }. One request to
+ * list the directory plus one per file. Used to route a submission to the file
+ * that already contains the store (no region question on the form needed).
+ */
+function loadAllRegionFiles_() {
+  const listRes = gh_('GET', '/repos/' + REPO_OWNER + '/' + REPO_NAME +
+    '/contents/' + DATA_DIR + '?ref=' + MAIN_BRANCH);
+  if (listRes.code !== 200 || !Array.isArray(listRes.json)) {
+    throw new Error('Failed to list ' + DATA_DIR + ': ' + listRes.code + ' ' + listRes.text);
+  }
+  const files = [];
+  listRes.json.forEach(function (item) {
+    if (item.type === 'file' && /\.json$/.test(item.name)) {
+      const r = gh_('GET', '/repos/' + REPO_OWNER + '/' + REPO_NAME +
+        '/contents/' + item.path + '?ref=' + MAIN_BRANCH);
+      if (r.code !== 200) {
+        throw new Error('Failed to fetch ' + item.path + ': ' + r.code + ' ' + r.text);
+      }
+      const content = Utilities.newBlob(
+        Utilities.base64Decode(r.json.content.replace(/\s/g, ''))
+      ).getDataAsString();
+      files.push({ path: item.path, sha: r.json.sha, stores: JSON.parse(content) });
+    }
+  });
+  return files;
+}
+
 // ---------- main entry point ----------
 
 function onFormSubmit(e) {
@@ -239,44 +279,51 @@ function onFormSubmit(e) {
     playSpaceReserve: g.get('How does someone go about reserving or requesting to use play space?')
   };
 
-  // --- fetch current file from main ---
-  const fileRes = gh_('GET', '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' +
-    FILE_PATH + '?ref=' + MAIN_BRANCH);
-  if (fileRes.code !== 200) {
-    console.error("Failed to fetch file: " + fileRes.code + " " + fileRes.text);
-    return;
+  // --- route to the region file that already holds this store ---
+  const regionFiles = loadAllRegionFiles_();
+  let target = null;
+  let idx = -1;
+  for (let f = 0; f < regionFiles.length; f++) {
+    let i = regionFiles[f].stores.findIndex(function (s) { return s.id === entry.id; });
+    if (i === -1) {
+      i = regionFiles[f].stores.findIndex(function (s) {
+        return String(s.name).toLowerCase() === entry.name.toLowerCase();
+      });
+    }
+    if (i !== -1) { target = regionFiles[f]; idx = i; break; }
   }
-  const fileSha = fileRes.json.sha;
-  const currentJson = Utilities.newBlob(
-    Utilities.base64Decode(fileRes.json.content.replace(/\s/g, ''))
-  ).getDataAsString();
-  const stores = JSON.parse(currentJson);
 
-  // --- new vs update (match by id, then by name) ---
-  let idx = stores.findIndex(function (s) { return s.id === entry.id; });
-  if (idx === -1) {
-    idx = stores.findIndex(function (s) {
-      return String(s.name).toLowerCase() === entry.name.toLowerCase();
-    });
-  }
-  const isUpdate = idx !== -1;
+  const isUpdate = target !== null;
+  let needsTriage = false;
   if (isUpdate) {
-    entry.id = stores[idx].id; // keep the established id
+    const existing = target.stores[idx];
+    entry.id = existing.id; // keep the established id
     // Preserve fields the form never collects so an update can't wipe them
     // (most importantly lat/lng — losing those drops the store's map pin).
     ['lat', 'lng', 'website', 'phone', 'preorderUrl', 'note'].forEach(function (k) {
-      entry[k] = stores[idx][k];
+      entry[k] = existing[k];
     });
     // mapsUrl IS collected now, but the question is OPTIONAL — only overwrite
     // when the submission actually provides a link, so a blank answer can't
     // wipe a previously verified pin URL.
-    if (!entry.mapsUrl) entry.mapsUrl = stores[idx].mapsUrl;
-    stores[idx] = Object.assign({}, stores[idx], entry);
+    if (!entry.mapsUrl) entry.mapsUrl = existing.mapsUrl;
+    target.stores[idx] = Object.assign({}, existing, entry);
   } else {
-    stores.push(entry);
+    // No existing store matched — this submission didn't come from our seeded
+    // outreach. Land it in the default region and flag for triage so a human
+    // can confirm it's real and move it to the right city.
+    needsTriage = true;
+    target = regionFiles.find(function (f) { return f.path === DEFAULT_FILE_PATH; });
+    if (!target) {
+      console.error("Default region file " + DEFAULT_FILE_PATH + " not found; cannot route submission.");
+      return;
+    }
+    target.stores.push(entry);
+    idx = target.stores.length - 1;
   }
 
-  const updatedContent = JSON.stringify(stores, null, 2) + '\n';
+  const region = regionFromPath_(target.path);
+  const updatedContent = JSON.stringify(target.stores, null, 2) + '\n';
 
   // --- create a branch off main ---
   const refRes = gh_('GET', '/repos/' + REPO_OWNER + '/' + REPO_NAME +
@@ -298,10 +345,10 @@ function onFormSubmit(e) {
   }
 
   // --- commit the change onto the branch (note: no [skip ci]) ---
-  const putRes = gh_('PUT', '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + FILE_PATH, {
-    message: (isUpdate ? 'Update' : 'Add') + ' store: ' + entry.name + ' (form submission)',
+  const putRes = gh_('PUT', '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + target.path, {
+    message: (isUpdate ? 'Update' : 'Add') + ' store: ' + entry.name + ' in ' + region + ' (form submission)',
     content: Utilities.base64Encode(updatedContent, Utilities.Charset.UTF_8),
-    sha: fileSha,
+    sha: target.sha,
     branch: branch
   });
   if (putRes.code !== 200 && putRes.code !== 201) {
@@ -310,12 +357,13 @@ function onFormSubmit(e) {
   }
 
   // --- open the PR ---
-  const prTitle = (isUpdate ? 'Update' : 'Add') + ' store: ' + entry.name;
+  const prTitle = (needsTriage ? '[triage] ' : '') +
+    (isUpdate ? 'Update' : 'Add') + ' store: ' + entry.name + ' (' + region + ')';
   const prRes = gh_('POST', '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/pulls', {
     title: prTitle,
     head: branch,
     base: MAIN_BRANCH,
-    body: buildPrBody_(entry, isUpdate, cat.snappedFrom)
+    body: buildPrBody_(entry, isUpdate, cat.snappedFrom, region, needsTriage)
   });
   if (prRes.code !== 201) {
     console.error("Failed to open PR: " + prRes.code + " " + prRes.text);
@@ -324,13 +372,19 @@ function onFormSubmit(e) {
   const pr = prRes.json;
   console.log("Opened PR #" + pr.number + ": " + pr.html_url);
 
-  sendApprovalEmail_(entry, isUpdate, cat.snappedFrom, pr);
+  sendApprovalEmail_(entry, isUpdate, cat.snappedFrom, pr, region, needsTriage);
 }
 
 // ---------- email + PR body ----------
 
-function buildPrBody_(entry, isUpdate, snappedFrom) {
-  let body = (isUpdate ? 'Updating' : 'Adding') + ' **' + entry.name + '** from a form submission.\n\n';
+function buildPrBody_(entry, isUpdate, snappedFrom, region, needsTriage) {
+  let body = (isUpdate ? 'Updating' : 'Adding') + ' **' + entry.name + '** in `data/' + region +
+    '.json` from a form submission.\n\n';
+  if (needsTriage) {
+    body += '> ⚠️ **Triage needed:** no existing store matched this submission, so it was added to ' +
+      'the default region (`' + region + '`). Confirm it\'s real and move it to the correct city ' +
+      'file before merging if needed.\n\n';
+  }
   if (snappedFrom != null) {
     body += '> ℹ️ Discount of ' + snappedFrom + '% was snapped to the `' + entry.category +
       '` tier for the pin color. The exact percentage is preserved in the discount text.\n\n';
@@ -339,11 +393,19 @@ function buildPrBody_(entry, isUpdate, snappedFrom) {
   return body;
 }
 
-function sendApprovalEmail_(entry, isUpdate, snappedFrom, pr) {
-  const subject = (isUpdate ? '⚠️ gwmap: Review edits for ' : '✨ gwmap: New store — ') + entry.name;
+function sendApprovalEmail_(entry, isUpdate, snappedFrom, pr, region, needsTriage) {
+  const subject = (needsTriage ? '🔎 gwmap: Triage — ' :
+    (isUpdate ? '⚠️ gwmap: Review edits for ' : '✨ gwmap: New store — ')) +
+    entry.name + ' (' + region + ')';
   let html = '<div style="font-family:Arial,sans-serif;max-width:640px;color:#333;">';
   html += '<h2 style="color:' + (isUpdate ? '#d97706' : '#16a34a') + ';">' +
-    (isUpdate ? 'Proposed edits to an existing store' : 'New store request') + '</h2>';
+    (isUpdate ? 'Proposed edits to an existing store' : 'New store request') +
+    ' <span style="font-size:14px;color:#888;">(' + region + ')</span></h2>';
+  if (needsTriage) {
+    html += '<p style="background:#fef3c7;border-left:4px solid #d97706;padding:8px 12px;">' +
+      'No existing store matched this submission, so it was added to the default region <b>' +
+      region + '</b>. Move it to the correct city file before merging if needed.</p>';
+  }
   if (snappedFrom != null) {
     html += '<p style="background:#dbeafe;border-left:4px solid #2563eb;padding:8px 12px;">' +
       'Discount of <b>' + snappedFrom + '%</b> was snapped to the <b>' + entry.category +

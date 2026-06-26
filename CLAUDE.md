@@ -86,6 +86,17 @@ The site is a plain static front-end — no build step, no framework. Read
 - [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
 - [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs, and its gotchas.
 - [`docs/form/outreach-email-template.md`](docs/form/outreach-email-template.md) — store-owner verification email template (subject, button-styled HTML body, city-link rules) — use for every outreach email.
+- [`.claude/skills/begin-city-outreach/SKILL.md`](.claude/skills/begin-city-outreach/SKILL.md) — the "begin city outreach &lt;city&gt;" runbook: discover → contacts → prefilled-link drafts → auto-publish. Ties the above together.
+
+## "Begin city outreach" workflow
+
+When the user says **"begin city outreach"** + a city, the `begin-city-outreach`
+skill drives the whole pipeline: scaffold the region if new (`scripts/new-city.js`),
+run discovery (Phases A/B/C, seeding `data/<region>.json`), compile contacts,
+generate prefilled form links (`node scripts/prefill-link.js <region>`), and draft
+one outreach email per store (Gmail `create_draft`, drafts only — never auto-send).
+Submitted responses auto-publish: `form-sync.gs` routes each submission to the
+region file that already holds the store (no region question on the form).
 
 ## GW Store Finder API (quick reference)
 
