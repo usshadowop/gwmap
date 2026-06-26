@@ -29,20 +29,27 @@ Verify Your Store Listing — {Store Name} on warhammerdiscounts.com
   <p>I've generated a pre-filled Google Form with your current details —
     once you verify, your changes will be automatically pushed live to the
     site within about 10 minutes.</p>
-  <div style="text-align:center;margin:28px 0;">
-    <a href="{prefilled form link}"
-       style="background:#2563eb;color:#fff;padding:12px 28px;text-decoration:none;
-              font-weight:bold;border-radius:6px;display:inline-block;">
-      Verify Store Details
-    </a>
-  </div>
+  <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:28px auto;">
+    <tr>
+      <td align="center" bgcolor="#2563eb" style="border-radius:6px;">
+        <a href="{prefilled form link}"
+           style="display:inline-block;padding:12px 28px;font-family:Arial,sans-serif;
+                  font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:6px;">
+          Verify Store Details
+        </a>
+      </td>
+    </tr>
+  </table>
   <p>Thanks for your time,<br>Jon@warhammerdiscounts.com</p>
 </div>
 ```
 
 (Button styling matches the one already used in `form-sync.gs`'s approval
 email, so anything store-facing or maintainer-facing looks like it's from the
-same product.)
+same product. Keep the **table + `bgcolor`** structure — Gmail strips the
+`background`/`background-color` CSS off a bare `<a>`, which leaves white button
+text on a white background, i.e. an invisible button. The `bgcolor` attribute on
+the `<td>` survives that stripping.)
 
 ## Rules
 
