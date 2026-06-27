@@ -91,9 +91,7 @@ function regionHtml(slug, cityName, lat, lng) {
     <ul id="store-list" class="store-list"></ul>
   </details>
   <footer class="footer-links">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka8Ua9pjBsVoRD4os_BnRg6IJbrZOrYtsi2p8AUp5AW1vvQ/viewform" target="_blank" rel="noopener">Suggest a store</a>
-    &nbsp;|&nbsp;
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCknJuHNeoyAjhpoPd4OgijqxiohbY26y4HtOTFJlPR09s_A/viewform" target="_blank" rel="noopener">See an issue or have a suggestion?</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka8Ua9pjBsVoRD4os_BnRg6IJbrZOrYtsi2p8AUp5AW1vvQ/viewform?usp=header" target="_blank" rel="noopener">Have a request?</a>
     &nbsp;|&nbsp;
     <a href="#" id="site-info-link">Site Info</a>
   </footer>
@@ -145,9 +143,7 @@ function statePageHtml(stateName, citySlug) {
     <ul id="store-list" class="store-list"></ul>
   </details>
   <footer class="footer-links">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka8Ua9pjBsVoRD4os_BnRg6IJbrZOrYtsi2p8AUp5AW1vvQ/viewform" target="_blank" rel="noopener">Suggest a store</a>
-    &nbsp;|&nbsp;
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCknJuHNeoyAjhpoPd4OgijqxiohbY26y4HtOTFJlPR09s_A/viewform" target="_blank" rel="noopener">See an issue or have a suggestion?</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka8Ua9pjBsVoRD4os_BnRg6IJbrZOrYtsi2p8AUp5AW1vvQ/viewform?usp=header" target="_blank" rel="noopener">Have a request?</a>
     &nbsp;|&nbsp;
     <a href="#" id="site-info-link">Site Info</a>
   </footer>

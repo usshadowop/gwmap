@@ -1,16 +1,16 @@
-store,address,phone,facebook,instagram,contact_form,discord,notes
-Scale Model Supplies,"458 Lexington Pkwy N, St Paul, MN 55104",(651) 646-7781,,,,,Site says phone-only
-Brickmania,"1618 Central Ave NE Suite 110, Minneapolis, MN 55413",(612) 545-5263,,,https://www.brickmania.com/contact/,,Has contact form
-Lewis Game Shop,"220 7th St W, Monticello, MN 55362",(763) 200-4308,,,https://www.lewisgameshop.com/contact,,Has contact form
-The Mana Dojo,"1178 Burnsville Center #1071, Burnsville, MN 55306",,https://www.facebook.com/p/The-Mana-Dojo-61586445781964/,,,,Facebook only
-Level Up Games - Minneapolis,"1425 Lasalle Ave, Minneapolis, MN 55403",(612) 315-3945,,,,,3-location chain (shared brand)
-Level Up Games - St. Paul,"2493 7th St W, Saint Paul, MN 55116",(651) 528-8681,,,,,3-location chain (shared brand)
-Level Up Games - Hastings,"120 2nd St E, Hastings, MN 55033",(651) 346-1631,,,,,3-location chain (shared brand)
-Phoenix Games,"1091 E Moore Lake Dr, Fridley, MN 55432",(763) 315-3821,https://www.facebook.com/p/Phoenix-Games-100057504457911/,,,,
-Rockhopper Comics,"8016 Medicine Lake Rd, New Hope, MN 55427",(763) 710-4683,https://www.facebook.com/rockhoppercomicsandgames/,,,,
-Midtown Hobby Shop and Gaming,"1919 2nd Ave, Anoka, MN 55303",,https://www.facebook.com/998854583314572,,,,Facebook only
-Story Arc Comics & Collectibles,"5753 Egan Dr, Savage, MN 55378",(952) 882-7282,https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/,https://www.instagram.com/storyarcmn/,,,
-Top Level Wargames LLC,"680 Commerce Dr Suite #220, Woodbury, MN 55125",,https://www.facebook.com/people/Top-Level-Wargames/61581800336873/,,,has Discord,
-"BigBadGameStore, LLC","5825 Krueger Ln, Oak Park Heights, MN 55082",(651) 472-5940,https://www.facebook.com/BigBadGameStore,,,,
-The Gamers Den,"140 Buchanan St N, Cambridge, MN 55008",(763) 689-5370,,,https://thegamersden.com/pages/contact,,Has contact form
-Game Quest - River Falls,"104 N Main St, River Falls, WI 54022",(715) 426-7725,https://www.facebook.com/gamequestgamingriverfalls/,,,has Discord,
+num,store,address,phone,facebook,instagram,contact_form,discord,notes
+1,Scale Model Supplies,"458 Lexington Pkwy N, St Paul, MN 55104",(651) 646-7781,,,,,Site says phone-only
+2,Brickmania,"1618 Central Ave NE Suite 110, Minneapolis, MN 55413",(612) 545-5263,,,https://www.brickmania.com/contact/,,Has contact form
+3,Lewis Game Shop,"220 7th St W, Monticello, MN 55362",(763) 200-4308,,,https://www.lewisgameshop.com/contact,,Has contact form
+4,The Mana Dojo,"1178 Burnsville Center #1071, Burnsville, MN 55306",,https://www.facebook.com/p/The-Mana-Dojo-61586445781964/,,,,Facebook only
+5,Level Up Games - Minneapolis,"1425 Lasalle Ave, Minneapolis, MN 55403",(612) 315-3945,,,,,3-location chain (shared brand)
+6,Level Up Games - St. Paul,"2493 7th St W, Saint Paul, MN 55116",(651) 528-8681,,,,,3-location chain (shared brand)
+7,Level Up Games - Hastings,"120 2nd St E, Hastings, MN 55033",(651) 346-1631,,,,,3-location chain (shared brand)
+8,Phoenix Games,"1091 E Moore Lake Dr, Fridley, MN 55432",(763) 315-3821,https://www.facebook.com/p/Phoenix-Games-100057504457911/,,,,
+9,Rockhopper Comics,"8016 Medicine Lake Rd, New Hope, MN 55427",(763) 710-4683,https://www.facebook.com/rockhoppercomicsandgames/,,,,
+10,Midtown Hobby Shop and Gaming,"1919 2nd Ave, Anoka, MN 55303",,https://www.facebook.com/998854583314572,,,,Facebook only
+11,Story Arc Comics & Collectibles,"5753 Egan Dr, Savage, MN 55378",(952) 882-7282,https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/,https://www.instagram.com/storyarcmn/,,,
+12,Top Level Wargames LLC,"680 Commerce Dr Suite #220, Woodbury, MN 55125",,https://www.facebook.com/people/Top-Level-Wargames/61581800336873/,,,has Discord,
+13,"BigBadGameStore, LLC","5825 Krueger Ln, Oak Park Heights, MN 55082",(651) 472-5940,https://www.facebook.com/BigBadGameStore,,,,
+14,The Gamers Den,"140 Buchanan St N, Cambridge, MN 55008",(763) 689-5370,,,https://thegamersden.com/pages/contact,,Has contact form
+15,Game Quest - River Falls,"104 N Main St, River Falls, WI 54022",(715) 426-7725,https://www.facebook.com/gamequestgamingriverfalls/,,,has Discord,
