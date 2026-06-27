@@ -1,34 +1,33 @@
 # Outreach email status
 
-_Generated 2026-06-27 from the Gmail Sent folder + current Drafts, cross-referenced against `data/*.json`._
+_Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced against `data/*.json`. Drafts are currently empty — every store with an email has been sent._
 
-**Legend:** Sent = actually emailed · Drafted = ready in Drafts, not yet sent · Not emailed = no draft yet · Excluded = GW corporate store, no owner outreach.
+**Legend:** Sent = emailed · Not emailed = no email (phone/form/social only) · Excluded = GW corporate store, no owner outreach.
 
 ## Summary
 
-| Region | Sent | Drafted (queued) | Not emailed | Excluded | Total |
-|---|---|---|---|---|---|
-| Twin Cities | 6 | 20 | 16 | 2 | 44 |
-| coloradosprings | 0 | 0 | 13 | 0 | 13 |
-| denver | 0 | 0 | 27 | 0 | 27 |
-| duluth | 0 | 0 | 4 | 0 | 4 |
-| rochester | 0 | 0 | 1 | 0 | 1 |
-| mankato | 0 | 0 | 3 | 0 | 3 |
+| Region | Sent | Not emailed | Excluded | Total |
+|---|---|---|---|---|
+| Twin Cities | 34 | 9 | 2 | 45 |
+| coloradosprings | 0 | 13 | 0 | 13 |
+| denver | 0 | 27 | 0 | 27 |
+| duluth | 0 | 4 | 0 | 4 |
+| rochester | 0 | 1 | 0 | 1 |
+| mankato | 0 | 3 | 0 | 3 |
 
 ## Twin Cities — detail
 
-### ✅ Sent (6)
+### Sent (34)
 - Hub Hobby Richfield  (15)
 - Hub Hobby Little Canada  (15)
+- Scale Model Supplies  (15)
+- Brickmania  (none)
 - Dumpster Cat Games  (15)
-- The Forge  (10)
-- Sliver King Games  (unconfirmed)
-- All Systems Go Games  (unconfirmed)
-
-### ✉️ Drafted, not yet sent (20)
 - Source Comics & Games  (loyalty)
+- The Forge  (10)
 - Dreamers Vault Games Eden Prairie  (none)
 - Dreamers Vault Games Burnsville  (none)
+- The Mana Dojo  (15)
 - Dreamers Vault Games Champlin  (none)
 - Dreamers Vault Games Minneapolis  (none)
 - Dreamers Vault Games Roseville  (none)
@@ -36,36 +35,36 @@ _Generated 2026-06-27 from the Gmail Sent folder + current Drafts, cross-referen
 - Dreamers Vault Games South St. Paul  (none)
 - Tower Games  (none)
 - Tower Games - Bloomington  (none)
-- Battlegrounds Cafe  (10)
+- Level Up Games - Minneapolis  (10)
+- Level Up Games - St. Paul  (10)
+- Level Up Games - Hastings  (10)
+- The Battleground Cafe  (10)
 - Gamezenter  (none)
+- Phoenix Games  (none)
 - Steamship Games  (unconfirmed)
 - Fox Den Board Game Cafe  (unconfirmed)
+- Midtown Hobby Shop and Gaming  (unconfirmed)
 - JK's Cards and Collectibles  (unconfirmed)
+- Sliver King Games  (unconfirmed)
 - Mystic Fortress Games  (unconfirmed)
 - Midwest Jedi  (unconfirmed)
 - VB Games and More  (unconfirmed)
 - Dubois Station LLC  (unconfirmed)
+- All Systems Go Games  (unconfirmed)
 - Galaxy Games  (unconfirmed)
 
-### ⬜ Not emailed yet (16)
-- Scale Model Supplies  (15)
-- Brickmania  (none)
+### Not emailed — no email, phone/form/social only (9)
 - Lewis Game Shop  (loyalty)
-- The Mana Dojo  (15)
-- Level Up Games - Minneapolis  (10)
-- Level Up Games - St. Paul  (10)
-- Level Up Games - Hastings  (10)
-- Phoenix Games  (none)
 - Rockhopper Comics  (unconfirmed)
-- Games By James - Mall of America  (unconfirmed)
-- Midtown Hobby Shop and Gaming  (unconfirmed)
+- Games By James - Mall of America  (loyalty)
 - Story Arc Comics & Collectibles  (unconfirmed)
 - Top Level Wargames LLC  (unconfirmed)
 - BigBadGameStore, LLC  (unconfirmed)
 - Game Quest - River Falls  (unconfirmed)
 - The Gamers Den  (unconfirmed)
+- Lewis Game Shop - St Cloud  (unconfirmed)
 
-### 🚫 Excluded — GW corporate (2)
+### Excluded — GW corporate (2)
 - Warhammer: Fountain Place  (none)
 - Warhammer Saint Anthony  (none)
 

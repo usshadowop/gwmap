@@ -73,7 +73,7 @@ means a research pass confirmed no public email; "pending" = not yet researched.
 | 13 | BigBadGameStore LLC (Oak Park Heights) | [Facebook](https://www.facebook.com/BigBadGameStore) / (651) 472-5940 | pending |
 | 14 | The Gamers Den (Cambridge) | [Contact form](https://thegamersden.com/pages/contact) / (763) 689-5370 | pending |
 | 15 | Game Quest (River Falls, WI) | [Facebook](https://www.facebook.com/gamequestgamingriverfalls/) / Discord / (715) 426-7725 | pending |
-| — | Games By James (Mall of America) | (952) 854-4747 | checked 2026-06-27 — phone-confirmed, no email; carries Warhammer, no discount (loyalty program) → category `none`, now confirmed |
+| — | Games By James (Mall of America) | (952) 854-4747 | checked 2026-06-27 — phone-confirmed, no email; carries Warhammer + store loyalty program → category `loyalty`, now confirmed |
 
 ## Excluded (Games Workshop corporate stores — no owner outreach)
 

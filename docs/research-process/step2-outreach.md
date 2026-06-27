@@ -66,6 +66,13 @@ When you confirm a store's `website` or `phone`, write it into that store's entr
 in `data/<region>.json` (the schema already has both fields). This keeps the data
 file the single source of truth and feeds future prefilled links.
 
+When a store confirms its details **directly** (phone call, in person, email reply)
+rather than through the Google Form, set its `note` to mirror the form-sync
+convention — **`Verified by store via phone on <YYYY-MM-DD>`** (swap "phone" for the
+channel used). The form automation writes `Verified by store via form on <date>`;
+keep manual confirmations in the same shape, and put substantive details (stock
+level, discount, loyalty terms) in their own fields rather than the note.
+
 ### A.4 Record the contacts file
 Write `docs/outreach/<region>-contacts.md` with three buckets:
 - **Approved — ready for outreach** — a table of store → email → source. Group a
