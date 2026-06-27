@@ -165,6 +165,12 @@ set; the variants only change framing and button text.
 - **Greeting:** never leave a placeholder unfilled — fall back to "{Store} team".
 - **Don't reuse links across stores** (Phase B) — a multi-store email needs a
   *distinct* prefilled link per location button.
+- **Mark sent stores.** When an outreach email is actually sent, append
+  `Store email confirmation sent on <YYYY-MM-DD>` to that store's `note` in
+  `data/<region>.json` (skip stores already `Verified by store via …`). It shows
+  in the popup as a pending-outreach marker and `form-sync.gs` strips it
+  automatically when the store responds via the form — so the auto-removal only
+  works once the latest `form-sync.gs` is re-pasted into the Apps Script editor.
 
 ---
 
