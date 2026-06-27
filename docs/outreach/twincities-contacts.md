@@ -47,6 +47,7 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | The Mana Dojo (Burnsville) | `peter.y@altdigitaldesigns.com` | maintainer-provided (2026-06-27) |
 | Phoenix Games (Fridley) | `contact@phoenixgamesonline.com` | maintainer-provided (2026-06-27) |
 | Midtown Hobby Shop and Gaming (Anoka) | `genty@midtownhobby.com` | maintainer-provided (2026-06-27) |
+| Level Up Games — **all 3** (Minneapolis, St. Paul, Hastings) | `drive@levelupmn.com` | maintainer-provided (2026-06-27) |
 
 > Note: Dreamers Vault has a second address, `service@lotusvault.com`, but that's
 > for their **online** store (Lotus Vault) only — use `info@dreamersvault.com`
@@ -67,7 +68,6 @@ means a research pass confirmed no public email; "pending" = not yet researched.
 | CSV # | Store | Best contact | Status |
 |---|---|---|---|
 | 3 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 | checked 2026-06-27 — no public email |
-| 5–7 | Level Up Games — Minneapolis / St. Paul / Hastings | [Contact form] / phones 612-315-3945 / 651-528-8681 / 651-346-1631 | checked 2026-06-27 — no public email (contact form only) |
 | 9 | Rockhopper Comics (New Hope) | (763) 710-4683 / [Facebook](https://www.facebook.com/rockhoppercomicsandgames/) | checked 2026-06-27 — phone only |
 | 11 | Story Arc Comics & Collectibles (Savage) | [Facebook](https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/) / [Instagram](https://www.instagram.com/storyarcmn/) / (952) 882-7282 | pending |
 | 12 | Top Level Wargames LLC (Woodbury) | [Facebook](https://www.facebook.com/people/Top-Level-Wargames/61581800336873/) / Discord | pending |
