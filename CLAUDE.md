@@ -81,12 +81,14 @@ The site is a plain static front-end — no build step, no framework. Read
 - [`README.md`](README.md) — architecture, running locally, adding a region.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — store schema + how to add a store.
 - [`docs/project-plan.md`](docs/project-plan.md) — high-level roadmap (setup + per-city workflow).
-- [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md) — canonical, city-agnostic store-finding process (Phase A pull + Phase B verify/tier).
+- [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md) — canonical, city-agnostic store-finding process (Phase A pull + Phase B verify/tier + Phase C off-list).
+- [`docs/research-process/step2-outreach.md`](docs/research-process/step2-outreach.md) — canonical, city-agnostic outreach step: compile contacts → prefilled links → pick template per store → draft emails (drafts only).
 - `docs/research-process/results/<region>.md` — what was actually found per region (Twin Cities, Colorado Springs, Denver).
 - [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
 - [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs, and its gotchas.
 - [`docs/form/outreach-email-template.md`](docs/form/outreach-email-template.md) — store-owner verification email template (subject, button-styled HTML body, city-link rules) — use for every outreach email.
 - [`docs/form/outreach-email-unconfirmed-template.md`](docs/form/outreach-email-unconfirmed-template.md) — variant of the outreach email for `unconfirmed` stores (found-but-not-verified, hidden by default); "Confirm Your Listing" button.
+- [`docs/form/outreach-email-multistore-template.md`](docs/form/outreach-email-multistore-template.md) — variant for chain owners whose one inbox controls several stores; one email listing all locations, each with its own prefilled "Verify" button.
 - [`.claude/skills/begin-city-outreach/SKILL.md`](.claude/skills/begin-city-outreach/SKILL.md) — the "begin city outreach &lt;city&gt;" runbook: discover → contacts → prefilled-link drafts → auto-publish. Ties the above together.
 
 ## "Begin city outreach" workflow

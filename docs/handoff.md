@@ -50,11 +50,14 @@ _Last updated: 2026-06-27_
 
 ## Mid-flight / open items
 
-- **Twin Cities contacts — finish the review.** The "no public email" stores
-  (#10–22 in `twincities-contacts.md`) are still marked **pending decision**: for
-  each, the maintainer needs to approve as phone/social, supply an email, or ask
-  for a deeper dig. **Games By James** is parked in "further research required"
-  (unverified lead + GW-stocking itself unconfirmed).
+- **Twin Cities outreach drafts created (2026-06-27).** Gmail drafts exist for all
+  18 approved contacts (15 single-store + 3 multi-store chain emails: Dreamers
+  Vault ×7, Tower Games ×2, Hub Hobby ×2 — 26 stores). Drafts only; the user
+  reviews/sends manually. The no-email stores (#10–22) were exported to
+  `docs/outreach/twincities-no-email-stores.csv` for the user to run email
+  research (Gemini); once emails come back, draft those too. **Games By James**
+  is still parked in "further research required" (unverified lead + GW-stocking
+  itself unconfirmed).
 - **Colorado Springs contacts — verify.** All emails there are unverified search
   leads. Next: confirm the 4 leads (Gamer's Haven, Petrie's, Valkyrie's Loft,
   Chaos Games) against each store's own site, dig the phone/social-only set, and
@@ -69,17 +72,18 @@ _Last updated: 2026-06-27_
   yet exercised: the full matrix (see `form-sync-operations.md` "Open item") —
   one pass through each discount branch + an update that leaves the Maps-link
   blank.
-- **Multi-store / shared-email outreach template (backlog).** For owners whose
-  one contact email controls multiple stores (chains — e.g. Dreamers Vault ×6,
-  Tower Games ×2, Hub Hobby ×2), build an email variant that leads with a single
-  combined form to update all of that owner's stores at once, then lists a
-  per-store form below for individual edits.
+- **Multi-store / shared-email outreach template — ✅ built (2026-06-27).**
+  `docs/form/outreach-email-multistore-template.md`: one email per chain owner
+  listing every location, each with its own prefilled "Verify" button. Note: the
+  form is per-store (one submission = one store), so a true single combined-form
+  submission isn't possible — the template bundles per-store links instead, and
+  says so. Already used for the Dreamers Vault / Tower Games / Hub Hobby drafts.
 
 ## Next up (priority order)
 
-1. **Twin Cities outreach** — contacts compiled; finish the #10–22 review, then
-   generate prefilled links + draft emails for the confirmed-email stores (steps
-   2–4 of `begin-city-outreach`; discovery already ran). 19 stores `unconfirmed`.
+1. **Twin Cities outreach — drafts done; await Gemini email research** for the
+   #10–22 no-email stores (CSV exported), then draft those + Games By James. The
+   18 approved-contact drafts are ready in Gmail for the user to send.
 2. **Colorado Springs outreach** — verify the contacts file first (above), then
    links + drafts. 13 unconfirmed.
 3. **Denver outreach** — discovery (A+B+C) done; needs contacts + drafts. 25
@@ -105,6 +109,20 @@ _Last updated: 2026-06-27_
 > Normally this file is overwritten wholesale each session. This section is an
 > appended log of recent sessions for continuity; future sessions can fold older
 > entries into "Current state" and drop them.
+
+### 2026-06-27 (later session)
+
+- **Site housekeeping** (PR #40, merged/live): added a floating bottom-right
+  contact envelope icon (`mailto:jon@warhammerstores.com`) injected via the shared
+  `js/site-info.js`; rebranded visible "Games Workshop" / standalone "GW" → "Warhammer"
+  across page titles, `data/*.json` store text, and the `new-city.js` templates.
+  Discovery docs / process intentionally left referencing "Games Workshop" so web
+  searches still find stockists.
+- **Multi-store outreach template built** + Twin Cities CSV: new
+  `docs/form/outreach-email-multistore-template.md` (chain owners) and
+  `docs/outreach/twincities-no-email-stores.csv` (#10–22 for email research).
+- **Twin Cities outreach drafts created**: 18 Gmail drafts (15 single + 3 chain),
+  26 stores, drafts only. Verified present in Drafts.
 
 ### 2026-06-27
 

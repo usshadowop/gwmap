@@ -11,7 +11,14 @@ repo rule "verify, don't trust search-summary claims," an email was marked
 maintainer reviewed and approved (without a site fetch) are marked
 *maintainer-approved*. Stores with no email use phone / social instead.
 
-_Last gathered: 2026-06-26 · last reviewed: 2026-06-26_
+_Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-06-27_
+
+> **Outreach status (2026-06-27):** Gmail drafts created for every approved
+> contact below — 15 single-store emails + 3 multi-store chain emails (Dreamers
+> Vault ×7, Tower Games ×2, Hub Hobby ×2), covering 26 stores. Drafts only;
+> reviewed/sent manually. The no-email stores (#10–22) were exported to
+> [`twincities-no-email-stores.csv`](twincities-no-email-stores.csv) for an
+> email-research pass.
 
 ## Approved — ready for outreach
 
@@ -48,8 +55,9 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26_
 
 ## No public email found — pending decision
 
-Only a phone, contact form, or social channel was found for these. Awaiting
-maintainer call on each (approve as-is / supply an email / retry a deeper dig).
+Only a phone, contact form, or social channel was found for these. Exported to
+[`twincities-no-email-stores.csv`](twincities-no-email-stores.csv) (2026-06-27)
+for an email-research pass; awaiting results before drafting.
 
 | # | Store | Best contact |
 |---|---|---|
