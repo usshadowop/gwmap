@@ -47,6 +47,11 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | Phoenix Games (Fridley) | `contact@phoenixgamesonline.com` | maintainer-provided (2026-06-27) |
 | Midtown Hobby Shop and Gaming (Anoka) | `genty@midtownhobby.com` | maintainer-provided (2026-06-27) |
 | Level Up Games — **all 3** (Minneapolis, St. Paul, Hastings) | `drive@levelupmn.com` | maintainer-provided (2026-06-27) |
+| Story Arc Comics & Collectibles (Savage) | `lee.amrine@storyarccomics.com` | maintainer-provided (2026-06-27) |
+| Top Level Wargames LLC (Woodbury) | `ethan@toplevelwargames.com` | maintainer-provided (2026-06-27) |
+| BigBadGameStore, LLC (Oak Park Heights) | `service@bigbadtoystore.com` | maintainer-provided (2026-06-27) |
+| The Gamers Den (Cambridge) | `info@gamersden.net` | maintainer-provided (2026-06-27) |
+| Game Quest (River Falls, WI) | `gamequestgaming@hotmail.com` | maintainer-provided (2026-06-27) |
 
 > Note: Dreamers Vault has a second address, `service@lotusvault.com`, but that's
 > for their **online** store (Lotus Vault) only — use `info@dreamersvault.com`
@@ -67,11 +72,6 @@ means a research pass confirmed no public email; "pending" = not yet researched.
 |---|---|---|---|
 | 3 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 | checked 2026-06-27 — no public email |
 | 9 | Rockhopper Comics (New Hope) | (763) 710-4683 / [Facebook](https://www.facebook.com/rockhoppercomicsandgames/) | checked 2026-06-27 — phone only |
-| 11 | Story Arc Comics & Collectibles (Savage) | [Facebook](https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/) / [Instagram](https://www.instagram.com/storyarcmn/) / (952) 882-7282 | pending |
-| 12 | Top Level Wargames LLC (Woodbury) | [Facebook](https://www.facebook.com/people/Top-Level-Wargames/61581800336873/) / Discord | pending |
-| 13 | BigBadGameStore LLC (Oak Park Heights) | [Facebook](https://www.facebook.com/BigBadGameStore) / (651) 472-5940 | pending |
-| 14 | The Gamers Den (Cambridge) | [Contact form](https://thegamersden.com/pages/contact) / (763) 689-5370 | pending |
-| 15 | Game Quest (River Falls, WI) | [Facebook](https://www.facebook.com/gamequestgamingriverfalls/) / Discord / (715) 426-7725 | pending |
 | — | Games By James (Mall of America) | (952) 854-4747 | checked 2026-06-27 — phone-confirmed, no email; carries Warhammer + store loyalty program → category `loyalty`, now confirmed |
 
 ## Excluded (Games Workshop corporate stores — no owner outreach)
