@@ -313,6 +313,13 @@ function onFormSubmit(e) {
     } else {
       entry.note = existing.note;
     }
+    // The outreach "Store email confirmation sent on <date>" marker only tracks
+    // pending outreach — once the store responds via the form, drop it.
+    if (entry.note) {
+      entry.note = entry.note
+        .replace(/\s*Store email confirmation sent on \d{4}-\d{2}-\d{2}\.?/g, '')
+        .trim();
+    }
     // mapsUrl IS collected now, but the question is OPTIONAL — only overwrite
     // when the submission actually provides a link, so a blank answer can't
     // wipe a previously verified pin URL.
