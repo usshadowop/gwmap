@@ -35,8 +35,6 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26_
 | Midwest Jedi (River Falls, WI) | `jedi@midwestjedi.com` | maintainer-approved |
 | Galaxy Games (Eagan) | `john@galaxygamesmn.com` | maintainer-approved |
 | JK's Cards and Collectibles (Farmington) | `jk@jkcollecting.com` | maintainer-approved |
-| Jon's Store (Minneapolis) | `jonathon.j.holt@gmail.com` | maintainer-approved |
-| Northern Front Games (St Paul) — *unconfirmed listing* | `jonathon.j.holt@gmail.com` | maintainer-approved |
 
 > Note: Dreamers Vault has a second address, `service@lotusvault.com`, but that's
 > for their **online** store (Lotus Vault) only — use `info@dreamersvault.com`
