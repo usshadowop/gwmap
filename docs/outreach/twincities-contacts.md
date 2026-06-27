@@ -42,6 +42,8 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | Midwest Jedi (River Falls, WI) | `jedi@midwestjedi.com` | maintainer-approved |
 | Galaxy Games (Eagan) | `john@galaxygamesmn.com` | maintainer-approved |
 | JK's Cards and Collectibles (Farmington) | `jk@jkcollecting.com` | maintainer-approved |
+| Scale Model Supplies (St Paul) | `scalemodelsupplies@comcast.net` | maintainer-provided (2026-06-27) |
+| Brickmania (Minneapolis) | `ghq@brickmania.com` | maintainer-provided (2026-06-27) |
 
 > Note: Dreamers Vault has a second address, `service@lotusvault.com`, but that's
 > for their **online** store (Lotus Vault) only — use `info@dreamersvault.com`
@@ -61,8 +63,6 @@ for an email-research pass; awaiting results before drafting.
 
 | # | Store | Best contact |
 |---|---|---|
-| 10 | Scale Model Supplies (St Paul) | Phone (651) 646-7781 — site says phone-only |
-| 11 | Brickmania (Minneapolis) | [Contact form](https://www.brickmania.com/contact/) / (612) 545-5263 |
 | 12 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 |
 | 13 | The Mana Dojo (Burnsville) | [Facebook](https://www.facebook.com/p/The-Mana-Dojo-61586445781964/) |
 | 14 | Level Up Games — Minneapolis / St. Paul / Hastings | Phones 612-315-3945 / 651-528-8681 / 651-346-1631 |
