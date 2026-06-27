@@ -72,7 +72,7 @@ function regionHtml(slug, cityName, lat, lng) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - ${cityName} Hobby Stores with Warhammer Discounts</title>
+  <title>Warhammer Discount Map - ${cityName} Hobby Stores with Warhammer Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="../../css/style.css">
 </head>
@@ -126,7 +126,7 @@ function statePageHtml(stateName, citySlug) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - ${stateName} Hobby Stores with Warhammer Discounts</title>
+  <title>Warhammer Discount Map - ${stateName} Hobby Stores with Warhammer Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="../../css/style.css">
 </head>
