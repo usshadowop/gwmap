@@ -44,6 +44,9 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | JK's Cards and Collectibles (Farmington) | `jk@jkcollecting.com` | maintainer-approved |
 | Scale Model Supplies (St Paul) | `scalemodelsupplies@comcast.net` | maintainer-provided (2026-06-27) |
 | Brickmania (Minneapolis) | `ghq@brickmania.com` | maintainer-provided (2026-06-27) |
+| The Mana Dojo (Burnsville) | `peter.y@altdigitaldesigns.com` | maintainer-provided (2026-06-27) |
+| Phoenix Games (Fridley) | `contact@phoenixgamesonline.com` | maintainer-provided (2026-06-27) |
+| Midtown Hobby Shop and Gaming (Anoka) | `genty@midtownhobby.com` | maintainer-provided (2026-06-27) |
 
 > Note: Dreamers Vault has a second address, `service@lotusvault.com`, but that's
 > for their **online** store (Lotus Vault) only — use `info@dreamersvault.com`
@@ -55,25 +58,22 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 |---|---|---|
 | Games By James (Mall of America) | search lead `info@GamesByJames.com` (unverified) | Needs more research before contacting — also note GW-product stocking itself is unconfirmed (`data/twincities.json` flags it as possibly board-games/puzzles only). |
 
-## No public email found — pending decision
+## No public email found
 
-Only a phone, contact form, or social channel was found for these. Exported to
-[`twincities-no-email-stores.csv`](twincities-no-email-stores.csv) (2026-06-27)
-for an email-research pass; awaiting results before drafting.
+Only a phone, contact form, or social channel. `CSV #` matches
+[`twincities-no-email-stores.csv`](twincities-no-email-stores.csv). "Checked"
+means a research pass confirmed no public email; "pending" = not yet researched.
 
-| # | Store | Best contact |
-|---|---|---|
-| 12 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 |
-| 13 | The Mana Dojo (Burnsville) | [Facebook](https://www.facebook.com/p/The-Mana-Dojo-61586445781964/) |
-| 14 | Level Up Games — Minneapolis / St. Paul / Hastings | Phones 612-315-3945 / 651-528-8681 / 651-346-1631 |
-| 15 | Phoenix Games (Fridley) | (763) 315-3821 / [Facebook](https://www.facebook.com/p/Phoenix-Games-100057504457911/) |
-| 16 | Rockhopper Comics (New Hope) | (763) 710-4683 / [Facebook](https://www.facebook.com/rockhoppercomicsandgames/) |
-| 17 | Midtown Hobby Shop and Gaming (Anoka) | [Facebook](https://www.facebook.com/998854583314572) |
-| 18 | Story Arc Comics & Collectibles (Savage) | [Facebook](https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/) / [Instagram](https://www.instagram.com/storyarcmn/) / (952) 882-7282 |
-| 19 | Top Level Wargames LLC (Woodbury) | [Facebook](https://www.facebook.com/people/Top-Level-Wargames/61581800336873/) / Discord |
-| 20 | BigBadGameStore LLC (Oak Park Heights) | [Facebook](https://www.facebook.com/BigBadGameStore) / (651) 472-5940 |
-| 21 | The Gamers Den (Cambridge) | [Contact form](https://thegamersden.com/pages/contact) / (763) 689-5370 |
-| 22 | Game Quest (River Falls, WI) | [Facebook](https://www.facebook.com/gamequestgamingriverfalls/) / Discord / (715) 426-7725 |
+| CSV # | Store | Best contact | Status |
+|---|---|---|---|
+| 3 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 | checked 2026-06-27 — no public email |
+| 5–7 | Level Up Games — Minneapolis / St. Paul / Hastings | [Contact form] / phones 612-315-3945 / 651-528-8681 / 651-346-1631 | checked 2026-06-27 — no public email (contact form only) |
+| 9 | Rockhopper Comics (New Hope) | (763) 710-4683 / [Facebook](https://www.facebook.com/rockhoppercomicsandgames/) | checked 2026-06-27 — phone only |
+| 11 | Story Arc Comics & Collectibles (Savage) | [Facebook](https://www.facebook.com/p/Story-Arc-Comics-Collectibles-61569494378068/) / [Instagram](https://www.instagram.com/storyarcmn/) / (952) 882-7282 | pending |
+| 12 | Top Level Wargames LLC (Woodbury) | [Facebook](https://www.facebook.com/people/Top-Level-Wargames/61581800336873/) / Discord | pending |
+| 13 | BigBadGameStore LLC (Oak Park Heights) | [Facebook](https://www.facebook.com/BigBadGameStore) / (651) 472-5940 | pending |
+| 14 | The Gamers Den (Cambridge) | [Contact form](https://thegamersden.com/pages/contact) / (763) 689-5370 | pending |
+| 15 | Game Quest (River Falls, WI) | [Facebook](https://www.facebook.com/gamequestgamingriverfalls/) / Discord / (715) 426-7725 | pending |
 
 ## Excluded (Games Workshop corporate stores — no owner outreach)
 
