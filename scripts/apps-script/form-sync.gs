@@ -300,9 +300,19 @@ function onFormSubmit(e) {
     entry.id = existing.id; // keep the established id
     // Preserve fields the form never collects so an update can't wipe them
     // (most importantly lat/lng — losing those drops the store's map pin).
-    ['lat', 'lng', 'website', 'phone', 'preorderUrl', 'note'].forEach(function (k) {
+    ['lat', 'lng', 'website', 'phone', 'preorderUrl'].forEach(function (k) {
       entry[k] = existing[k];
     });
+    // Preserve a human-written note, but when an owner verifies a previously
+    // unconfirmed store, the auto-generated "found on the Store Finder / not yet
+    // verified" seed note is no longer true — replace it with a dated
+    // verification note instead of carrying the stale text forward.
+    var seedNote = /^New listing — found on the official Warhammer Store Finder/.test(existing.note || '');
+    if (existing.category === 'unconfirmed' && seedNote) {
+      entry.note = 'Verified by store via form on ' + new Date().toISOString().slice(0, 10);
+    } else {
+      entry.note = existing.note;
+    }
     // mapsUrl IS collected now, but the question is OPTIONAL — only overwrite
     // when the submission actually provides a link, so a blank answer can't
     // wipe a previously verified pin URL.
