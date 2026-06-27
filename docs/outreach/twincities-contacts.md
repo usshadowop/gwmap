@@ -33,7 +33,6 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | Fox Den Board Game Cafe (Burnsville) | `Questions@foxdenbgc.com` | site-verified ([contact](https://www.foxdenbgc.com/contact)) |
 | VB Games and More (Northfield) | `Vbgamesandmore@gmail.com` | site-verified ([contact](https://vbgamesandmore.com/contact-us)) |
 | Dubois Station LLC (Princeton) | `Glitter@duboisstation.com` | site-verified ([site](https://duboisstation.com/)) |
-| All Systems Go Games (Minneapolis) | `asgnempls@gmail.com` | site-verified ([contact](https://allsystemsgo.games/pages/contact)) |
 | Hub Hobby — Richfield & Little Canada | `kevin@hubhobby.com` | maintainer-approved (Kevin is the Warhammer contact for the store) |
 | Gamezenter (Roseville) | `contact@gamezenter.com` | maintainer-approved |
 | Steamship Games (Minneapolis) | `steamshipgames@gmail.com` | maintainer-approved |

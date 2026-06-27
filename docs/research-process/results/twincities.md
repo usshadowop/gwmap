@@ -55,6 +55,12 @@ discount claimed), just flagged as a fact.
 had an address and were run through the 8-item checklist (`jons-store` has no
 address on file and was excluded).
 
+> **Excluded 2026-06-27 — All Systems Go Games (Minneapolis).** Despite earlier
+> first-party site text ("252 results found for 'warhammer'"), the store replied
+> directly to outreach saying they do **not** carry Warhammer / Games Workshop
+> models. Removed from `data/twincities.json` per the contradicting-evidence
+> exclusion rule; do not re-add on a future Phase A pull.
+
 ### Promoted to Tier A (confirmed GW product, citable source)
 
 - **The Gamers Den** (Cambridge) — own site's Games Workshop collection page

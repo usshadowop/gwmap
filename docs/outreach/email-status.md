@@ -8,7 +8,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 | Region | Sent | Not emailed | Excluded | Total |
 |---|---|---|---|---|
-| Twin Cities | 34 | 9 | 2 | 45 |
+| Twin Cities | 33 | 9 | 2 | 44 |
 | coloradosprings | 0 | 13 | 0 | 13 |
 | denver | 0 | 27 | 0 | 27 |
 | duluth | 0 | 4 | 0 | 4 |
@@ -17,7 +17,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 ## Twin Cities — detail
 
-### Sent (34)
+### Sent (33)
 - Hub Hobby Richfield  (15)
 - Hub Hobby Little Canada  (15)
 - Scale Model Supplies  (15)
@@ -50,7 +50,6 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - Midwest Jedi  (unconfirmed)
 - VB Games and More  (unconfirmed)
 - Dubois Station LLC  (unconfirmed)
-- All Systems Go Games  (unconfirmed)
 - Galaxy Games  (unconfirmed)
 
 ### Not emailed — no email, phone/form/social only (9)
