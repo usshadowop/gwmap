@@ -66,12 +66,14 @@ policy). The workflow itself:
    [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md)
    (Phase A pull + Phase B verify/tier, default-include policy). Record findings
    in `research-process/results/<region>.md`.
-2. **Find contacts** — website / contact-form / social handle per store (Places
-   data, then site scraping via Claude in Chrome or Cowork).
-3. **Generate outreach materials** — per-store prefilled Google Form link
-   (`node scripts/prefill-link.js <region>`; mechanics in
-   [`form/form-reference.md`](form/form-reference.md)) + a personalized email
-   (template + rules: [`form/outreach-email-template.md`](form/outreach-email-template.md)).
+2. **Find contacts** & **3. Generate outreach materials** — compile the best
+   email per store, generate a per-store prefilled Google Form link
+   (`node scripts/prefill-link.js <region>`), pick the right email template per
+   store (confirmed / unconfirmed / chain), and draft one Gmail email per store.
+   Full process in
+   [`research-process/step2-outreach.md`](research-process/step2-outreach.md)
+   (mechanics: [`form/form-reference.md`](form/form-reference.md); templates:
+   [`form/outreach-email-template.md`](form/outreach-email-template.md)).
 4. **Execute outreach** — send 10–20/day, manually. Resists automation by
    design; personalized cold outreach beats bulk.
 5. **Response → site** — fully automatic: form submit → form-sync routes it to

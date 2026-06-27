@@ -81,7 +81,8 @@ The site is a plain static front-end — no build step, no framework. Read
 - [`README.md`](README.md) — architecture, running locally, adding a region.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — store schema + how to add a store.
 - [`docs/project-plan.md`](docs/project-plan.md) — high-level roadmap (setup + per-city workflow).
-- [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md) — canonical, city-agnostic store-finding process (Phase A pull + Phase B verify/tier).
+- [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md) — canonical, city-agnostic store-finding process (Phase A pull + Phase B verify/tier + Phase C off-list).
+- [`docs/research-process/step2-outreach.md`](docs/research-process/step2-outreach.md) — canonical, city-agnostic outreach step: compile contacts → prefilled links → pick template per store → draft emails (drafts only).
 - `docs/research-process/results/<region>.md` — what was actually found per region (Twin Cities, Colorado Springs, Denver).
 - [`docs/form/form-reference.md`](docs/form/form-reference.md) — Google Form field/entry-ID map.
 - [`docs/form/form-sync-operations.md`](docs/form/form-sync-operations.md) — how the form → PR automation runs, and its gotchas.
