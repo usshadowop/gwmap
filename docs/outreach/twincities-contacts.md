@@ -55,9 +55,8 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 
 ## Further research required (before outreach)
 
-| Store | Lead | Status |
-|---|---|---|
-| Games By James (Mall of America) | search lead `info@GamesByJames.com` (unverified) | Needs more research before contacting — also note GW-product stocking itself is unconfirmed (`data/twincities.json` flags it as possibly board-games/puzzles only). |
+_None outstanding._ (Games By James was resolved by a 2026-06-27 phone call —
+confirmed Warhammer stockist, no discount; see below.)
 
 ## No public email found
 
@@ -74,6 +73,7 @@ means a research pass confirmed no public email; "pending" = not yet researched.
 | 13 | BigBadGameStore LLC (Oak Park Heights) | [Facebook](https://www.facebook.com/BigBadGameStore) / (651) 472-5940 | pending |
 | 14 | The Gamers Den (Cambridge) | [Contact form](https://thegamersden.com/pages/contact) / (763) 689-5370 | pending |
 | 15 | Game Quest (River Falls, WI) | [Facebook](https://www.facebook.com/gamequestgamingriverfalls/) / Discord / (715) 426-7725 | pending |
+| — | Games By James (Mall of America) | (952) 854-4747 | checked 2026-06-27 — phone-confirmed, no email; carries Warhammer, no discount (loyalty program) → category `none`, now confirmed |
 
 ## Excluded (Games Workshop corporate stores — no owner outreach)
 
