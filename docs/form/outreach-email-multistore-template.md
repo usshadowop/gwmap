@@ -41,6 +41,8 @@ Render one `<table>…</table>` location block per store from the loop below.
     generated a pre-filled Google Form for <strong>each</strong> location below —
     once you verify a location, your changes are automatically pushed live to the
     site within about 10 minutes.</p>
+  <p>Feel free to forward this email to the manager or staff at each location so
+    each store can fill out its own form — or one person can complete all of them.</p>
 
   <!-- ===== repeat this block once per location ===== -->
   <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:22px 0;border-top:1px solid #e5e7eb;">
@@ -76,6 +78,9 @@ Same rules as the [standard template](outreach-email-template.md), plus:
 
 - **One email per shared inbox**, not per store — list every location that inbox
   controls. Never send the same address several near-identical single-store emails.
+- **Forwarding line:** include the note that the email can be forwarded to each
+  location's manager/staff to fill out their own form, or one person can do them
+  all — so a multi-store owner can delegate rather than complete all forms alone.
 - **One button per location**, each with its **own** prefilled link from
   `node scripts/prefill-link.js <region> "<store name>"`. Don't reuse one link for
   multiple stores — each submission only matches the store named in it.
