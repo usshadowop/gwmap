@@ -72,14 +72,14 @@ function regionHtml(slug, cityName, lat, lng) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - ${cityName} Hobby Stores with Games Workshop Discounts</title>
+  <title>GW Discount Map - ${cityName} Hobby Stores with Warhammer Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <header>
-    <h1>Games Workshop Discount Map — ${cityName}</h1>
-    <p>Find local hobby stores selling Games Workshop models and see which ones offer persistent discounts.</p>
+    <h1>Warhammer Discount Map — ${cityName}</h1>
+    <p>Find local hobby stores selling Warhammer models and see which ones offer persistent discounts.</p>
   </header>
   <details class="legend-menu">
     <summary>Legend <span class="expand-hint">(click to expand)</span></summary>
@@ -126,14 +126,14 @@ function statePageHtml(stateName, citySlug) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GW Discount Map - ${stateName} Hobby Stores with Games Workshop Discounts</title>
+  <title>GW Discount Map - ${stateName} Hobby Stores with Warhammer Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <header>
-    <h1>Games Workshop Discount Map — ${stateName}</h1>
-    <p>Every store across ${stateName}. Find local hobby stores selling Games Workshop models and see which ones offer persistent discounts.</p>
+    <h1>Warhammer Discount Map — ${stateName}</h1>
+    <p>Every store across ${stateName}. Find local hobby stores selling Warhammer models and see which ones offer persistent discounts.</p>
   </header>
   <details class="legend-menu">
     <summary>Legend <span class="expand-hint">(click to expand)</span></summary>
