@@ -53,7 +53,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - Galaxy Games  (unconfirmed)
 
 ### Not emailed — no email, phone/form/social only (9)
-- Lewis Game Shop  (none)
+- Lewis Game Shop  (loyalty)
 - Rockhopper Comics  (unconfirmed)
 - Games By James - Mall of America  (loyalty)
 - Story Arc Comics & Collectibles  (unconfirmed)
@@ -61,7 +61,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - BigBadGameStore, LLC  (unconfirmed)
 - Game Quest - River Falls  (unconfirmed)
 - The Gamers Den  (unconfirmed)
-- Lewis Game Shop - St Cloud  (none)
+- Lewis Game Shop - St Cloud  (loyalty)
 
 ### Excluded — GW corporate (2)
 - Warhammer: Fountain Place  (none)
