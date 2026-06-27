@@ -70,7 +70,7 @@ means a research pass confirmed no public email; "pending" = not yet researched.
 
 | CSV # | Store | Best contact | Status |
 |---|---|---|---|
-| 3 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 | checked 2026-06-27 — no public email |
+| 3 | Lewis Game Shop (Monticello) | [Contact form](https://www.lewisgameshop.com/contact) / (763) 200-4308 | phone-confirmed 2026-06-27 — carries Warhammer, no discount (~100 units); category `none`, now confirmed |
 | 9 | Rockhopper Comics (New Hope) | (763) 710-4683 / [Facebook](https://www.facebook.com/rockhoppercomicsandgames/) | checked 2026-06-27 — phone only |
 | — | Games By James (Mall of America) | (952) 854-4747 | checked 2026-06-27 — phone-confirmed, no email; carries Warhammer + store loyalty program → category `loyalty`, now confirmed |
 
