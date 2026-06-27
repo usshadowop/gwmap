@@ -33,10 +33,10 @@ _Last updated: 2026-06-27_
     `form-sync.gs` was pasted in and verified by a real submission — it updated a
     store in place in the correct region file, and a name-mismatch submission
     correctly hit the `[triage]` fallback.
-  - ⚠️ **Apps Script re-paste still pending for two newer fixes** (button
-    visibility + stale-note replacement — see 2026-06-27 log). Routing works
-    without it; these two only go live on the next re-paste of the latest
-    `scripts/apps-script/form-sync.gs`.
+  - ✅ **Apps Script re-paste DONE (2026-06-27).** The latest `form-sync.gs` is
+    pasted in, so all current logic is live: region routing, the button-visibility
+    fix, stale-note replacement, and the new auto-removal of the "Store email
+    confirmation sent on <date>" outreach marker on form submission.
 - **Outreach email system matured (2026-06-27).** Two templates now exist:
   `outreach-email-template.md` (verified stores) and the new
   `outreach-email-unconfirmed-template.md` (unconfirmed/found-not-verified
@@ -63,9 +63,9 @@ _Last updated: 2026-06-27_
   Chaos Games) against each store's own site, dig the phone/social-only set, and
   confirm whether **Kev J Art** (looks like a solo artist) and **Squatch Bros
   Retro Arcade** are genuine GW stockists at all.
-- **Re-paste the latest `form-sync.gs`** — routing is already live, but the
-  button-visibility fix and the stale-note fix (both 2026-06-27) only take effect
-  after re-pasting `scripts/apps-script/form-sync.gs`. Raw:
+- ✅ **`form-sync.gs` re-paste DONE (2026-06-27)** — latest script is live in Apps
+  Script (routing + button-visibility + stale-note + outreach-marker auto-removal).
+  Raw, if it ever needs re-pasting again:
   `https://raw.githubusercontent.com/usshadowop/gwmap/main/scripts/apps-script/form-sync.gs`.
 - **Live end-to-end form test — partially done.** A real submission routed +
   auto-published correctly, and the `[triage]` fallback was observed firing. Not
