@@ -8,6 +8,9 @@ This is distinct from the maintainer-facing approval email in
 the maintainer, not the store. For stores listed as `category: "unconfirmed"`
 (found but not yet verified, hidden by default), use the
 [unconfirmed-listing variant](outreach-email-unconfirmed-template.md) instead.
+For an owner whose one inbox controls several stores (a chain), use the
+[multi-store variant](outreach-email-multistore-template.md) so they get a single
+email listing all their locations rather than one email per store.
 
 Outreach emails are generated and sent manually (per
 [`../project-plan.md`](../project-plan.md) — "resists automation by design;
