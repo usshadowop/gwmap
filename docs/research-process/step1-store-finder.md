@@ -325,6 +325,40 @@ Phase C must end in one of two recorded outcomes in `results/<region>.md`:
 
 ---
 
+## Two-state metros (e.g. Kansas City, MO/KS)
+
+When a metro area straddles a state line, scaffold **two separate regions** —
+one centered on each state's side of the city (e.g. `kansascity-mo` and
+`kansascity-ks`), each with its own center point and the standard radius. Run
+Phases A/B/C independently for each. The radius is **not** state-filtered (per
+Phase A above), so both regions will legitimately pull in many of the same
+physical stores near the state line — that's expected, not a bug.
+
+- **Keep store `id`s unique per file** (e.g. suffix `-mo` / `-ks`). This is for
+  data hygiene — two distinguishable records — *not* for form routing. Be aware
+  it does **not** steer which file a form submission lands in: the prefilled
+  link carries no `id` (`prefill-link.js` only prefills name/address/Maps/
+  discount), so `form-sync.gs` rebuilds an id from the submitted *name*
+  (`slugify_(name)`) and routes by `s.id === slugify(name)` else `s.name ===
+  name`, taking the **first** matching region file (files are read in directory/
+  alphabetical order) and stopping there. So for two same-named twins, a
+  submission always updates exactly one file — whichever sorts first — regardless
+  of the suffixed ids. (A suffixed id actually skips the primary id check and
+  falls to the name match, which is fine; just don't expect the id to pick the
+  side.)
+- **Duplicates are not merged or deduped, and form-sync only updates one side.**
+  When a duplicate store gets verified — by form submission (auto-updates one
+  twin, per above), phone call, or email reply — manually copy the same fields
+  (category, discount, note, etc.) into its twin entry in the other region's
+  file. There's no automated cross-region sync.
+- **Don't re-send outreach to a store that's already been emailed under its
+  other region.** See step2-outreach.md A.6.
+- **State pages are unaffected.** Each region's whole file still rides along
+  into its state page as-is — a region's file can contain out-of-state stores
+  and that's fine, intentional, and not filtered at render time (see the
+  existing Minnesota/River Falls precedent: `data/twincities.json` has two
+  River Falls, WI stores that still show up on the Minnesota state page).
+
 ## A city is not "done" until all of these are checked
 
 Per-city definition of done — record each in `results/<region>.md`:

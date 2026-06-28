@@ -25,6 +25,10 @@ This skill orchestrates existing pieces — read them, don't reinvent them:
 
 ### 0. Resolve / scaffold the region
 - Pick the kebab slug and confirm coordinates (city center).
+- **Two-state metro?** Scaffold it as two regions, one per state side (e.g.
+  `kansascity-mo` + `kansascity-ks`) — see step1-store-finder.md "Two-state
+  metros" for the id-uniqueness and no-duplicate-outreach rules before
+  proceeding.
 - If `data/<slug>.json` doesn't exist yet, scaffold it:
   `node scripts/new-city.js <slug> "City, ST" <lat> <lng>`
   (this also adds the landing-page link under the state, the per-state page, and
