@@ -133,8 +133,16 @@ one inbox? then (2) is the store confirmed or unconfirmed?**
 | One store, **confirmed** (`category` = `15` / `10` / `loyalty` / `none`) | [`outreach-email-template.md`](../form/outreach-email-template.md) | **Verify Store Details** |
 | One store, **`unconfirmed`** (found, not yet verified — hidden by default) | [`outreach-email-unconfirmed-template.md`](../form/outreach-email-unconfirmed-template.md) | **Confirm Your Listing** |
 | **Chain** — one inbox controls several locations | [`outreach-email-multistore-template.md`](../form/outreach-email-multistore-template.md) | **Verify {Store}** per location |
+| **Owner wary of a form/button link** (phishing concern) | [`outreach-email-inline-template.md`](../form/outreach-email-inline-template.md) | *(none — every question is in the email body; owner replies)* |
 
 Key points:
+- **The inline variant trades automation for trust.** It has no form link or
+  button, so it sidesteps the "looks like phishing" reaction — but a free-form
+  reply doesn't go through `form-sync.gs`, so there's **no auto-publish**: read the
+  reply and update `data/<region>.json` by hand (set the real `category`, add
+  `Verified by store via email on <date>`, strip the sent-marker), then ship via
+  branch → PR → merge. Skip Phase B (no prefilled link) for these stores. Use it
+  when an owner is link-shy; otherwise prefer the button templates.
 - **`category: "none"` is confirmed, not unconfirmed.** It means a verified
   stockist that offers no discount — use the standard (confirmed) template, not
   the unconfirmed one. Only literal `category: "unconfirmed"` uses the unconfirmed

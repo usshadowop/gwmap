@@ -8,6 +8,10 @@ template instead of the standard verification one when the store you're emailing
 is `unconfirmed`; the copy is framed around *"we found you, confirm your
 listing"* rather than *"verify the details we already have."*
 
+For an owner who distrusts a form/button link (phishing concern), use the
+[inline-questions variant](outreach-email-inline-template.md) instead — it puts
+every question in the email body for a plain reply, with no form link or button.
+
 Like the verification email, these are generated and sent **manually** (drafts
 only — review before sending). Use this template every time so the format stays
 consistent across stores.

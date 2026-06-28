@@ -8,7 +8,10 @@ every location they control, each with its own "Verify" button**.
 
 For single-store owners use the [standard template](outreach-email-template.md);
 for an `unconfirmed` (found-but-not-verified) store use the
-[unconfirmed variant](outreach-email-unconfirmed-template.md).
+[unconfirmed variant](outreach-email-unconfirmed-template.md). For an owner who
+distrusts a form/button link, use the
+[inline-questions variant](outreach-email-inline-template.md) (every question in
+the email body, plain reply, no link or button).
 
 > **Why per-store buttons, not one combined form?** The verification Google Form
 > is per-store — one submission carries one store name and `form-sync.gs` matches

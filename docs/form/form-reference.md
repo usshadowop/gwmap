@@ -8,6 +8,10 @@ The automation that consumes this form's submissions lives in
 operational notes are in [`form-sync-operations.md`](form-sync-operations.md).
 The email that invites a store owner to fill this form out (sent before any
 submission) has its own template: [`outreach-email-template.md`](outreach-email-template.md).
+(There is also a reply-by-email
+[inline-questions variant](outreach-email-inline-template.md) that skips the form
+entirely for owners wary of clicking a link — those replies are transcribed into
+`data/<region>.json` by hand and don't go through this form or `form-sync.gs`.)
 
 **Project:** warhammerdiscounts.com (the live site for this repo)
 
