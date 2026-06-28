@@ -86,6 +86,26 @@ Additional flat fields are also carried on each entry for upcoming phases
 `playSpacePrice`/`playSpaceRestrictions`/`playSpaceReserve`). They aren't
 rendered yet — leave them blank if you don't have the info.
 
+## Generated state store-finder supplements
+
+Some `data/` files are **generated, not hand-edited**: any file named
+`data/<state>-storefinder.json` (e.g. `data/minnesota-storefinder.json`) is
+produced by `scripts/gen-state-storefinder.js <ST>` from the local Games
+Workshop Store Finder snapshot under `storefinder/`. It contains every
+store-finder entry in that state — mapped to the same flat schema, GW
+company-owned stores as `category: "none"` and everyone else as `unconfirmed`
+with the note "Found in Games Workshop Store Finder." — **minus** any store
+already covered by one of the state's curated city files (deduped by proximity
+or name, so the city entry stays the authoritative pin). It's wired into the
+per-state combined view (`location/<state>/index.html`) alongside the city
+files.
+
+Don't edit these files by hand — your changes would be overwritten on the next
+regeneration. To promote a store, add or curate it in the relevant **city**
+file instead; the dedup will then drop it from the supplement on regen. Refresh
+the snapshot (`scripts/pull-storefinder.js`) and regenerate
+(`scripts/gen-state-storefinder.js <ST>`) about once a month.
+
 ## Validation
 
 `scripts/validate-stores.js` runs on every pull request (see

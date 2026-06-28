@@ -20,6 +20,27 @@ array) before replacing anything, writes `storefinder-<today>.json`, and deletes
 the previous snapshot so exactly one current file remains here. A failed
 download leaves the existing snapshot untouched.
 
+After re-pulling, regenerate any per-state supplements built from this snapshot
+(see below) so they reflect the fresh data.
+
+## Per-state supplements built from this snapshot
+
+`scripts/gen-state-storefinder.js <ST>` reads this snapshot and writes
+`data/<state>-storefinder.json` — every store-finder entry in that state,
+mapped to the store schema, minus the ones already in the state's curated city
+files (deduped by proximity/name). It also wires the file into
+`location/<state>/index.html` so the state map shows the full store-finder long
+tail behind the "Show unconfirmed stores" toggle, without duplicating curated
+pins. Re-run it for each state that has a supplement whenever you re-pull:
+
+```
+node scripts/gen-state-storefinder.js MN
+```
+
+These generated files are not hand-edited (see
+[`../CONTRIBUTING.md`](../CONTRIBUTING.md) → "Generated state store-finder
+supplements").
+
 ## Why it's committed
 
 This is an ephemeral remote environment — the container is re-cloned each

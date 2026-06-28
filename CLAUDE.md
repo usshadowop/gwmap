@@ -74,6 +74,15 @@ The site is a plain static front-end — no build step, no framework. Read
   Corroboration is only used to *upgrade* a listing to a real `category` —
   never required just to include one. Full process:
   [`docs/research-process/step1-store-finder.md`](docs/research-process/step1-store-finder.md).
+- **Generated state supplements:** `data/<state>-storefinder.json` files are
+  built by `node scripts/gen-state-storefinder.js <ST>` from the
+  `storefinder/` snapshot — every store-finder entry in that state (GW-owned →
+  `none`, others → `unconfirmed`, note "Found in Games Workshop Store Finder."),
+  minus stores already in the state's curated city files (deduped by
+  proximity/name). They're wired into `location/<state>/index.html`. **Don't
+  hand-edit them** (regen overwrites); curate in the city file instead.
+  Regenerate after each monthly snapshot re-pull. See
+  [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`storefinder/README.md`](storefinder/README.md).
 
 ## Documentation map
 
