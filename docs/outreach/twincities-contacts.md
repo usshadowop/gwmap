@@ -39,7 +39,7 @@ _Last gathered: 2026-06-26 · last reviewed: 2026-06-26 · drafts created: 2026-
 | Sliver King Games (Hastings) | `sliverkinggamesllc@gmail.com` | maintainer-approved |
 | Mystic Fortress Games (Waconia) | `info@mysticfortressgames.com` | maintainer-approved |
 | Midwest Jedi (River Falls, WI) | `jedi@midwestjedi.com` | maintainer-approved |
-| Galaxy Games (Eagan) | `john@galaxygamesmn.com` | maintainer-approved |
+| ~~Galaxy Games (Eagan)~~ | `john@galaxygamesmn.com` | **REMOVED 2026-06-28** — confirmed via form they don't sell Warhammer/GW models; archived to root `removed-stores.json` |
 | JK's Cards and Collectibles (Farmington) | `jk@jkcollecting.com` | maintainer-approved |
 | Scale Model Supplies (St Paul) | `scalemodelsupplies@comcast.net` | maintainer-provided (2026-06-27) |
 | Brickmania (Minneapolis) | `ghq@brickmania.com` | maintainer-provided (2026-06-27) |
