@@ -39,7 +39,7 @@ _Last updated: 2026-06-28_
 |---|---|---|
 | Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
 | St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
-| Colorado Springs | 12 | Discovery done; **all 12 unconfirmed**. Contacts verified this session — **4 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More), awaiting maintainer send. 5 stores deferred (unverified/contradicted emails), 2 phone/contact-form only, 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
+| Colorado Springs | 12 | Discovery done; **all 12 unconfirmed**. Contacts verified this session — **9 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More + Gamer's Haven, Hobby Smith, Van's Comics, Impact Sports, J&J — last 5 sent on unverified-guess emails per maintainer call), awaiting send. 2 phone/contact-form only (Theo's, Squatch Bros), 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
 | Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
 | Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
@@ -64,12 +64,17 @@ _Last updated: 2026-06-28_
 
 ## Colorado Springs outreach — detail (2026-06-28)
 
-- **4 Gmail drafts created** (unconfirmed-listing template, "Confirm Your
-  Listing" button): Tabletop Citadel, Petrie's Family Games, Valkyrie's Loft
-  Toys and Games, Chaos Games and More. Verified via `list_drafts` — one each,
-  no duplicates. **Not yet sent** — maintainer reviews/sends manually, then add
-  `Store email confirmation sent on 2026-06-28` to each store's `note` in
-  `data/coloradosprings.json` (not added yet, since nothing's sent).
+- **9 Gmail drafts created** (unconfirmed-listing template, "Confirm Your
+  Listing" button): Tabletop Citadel, Petrie's Family Games, Valkyrie's Loft,
+  Chaos Games and More (verified/corroborated emails), plus Gamer's Haven,
+  Hobby Smith, Van's Comics Games Cards, Impact Sports Cards & Collectibles,
+  J & J Games N Hobbies (emails that didn't hold up against a direct site
+  check — maintainer chose to send anyway, treating a bounce as low-risk
+  rather than waiting on further verification). Verified via `list_drafts` —
+  one each, no duplicates. **Not yet sent** — maintainer reviews/sends
+  manually, then add `Store email confirmation sent on 2026-06-28` to each
+  store's `note` in `data/coloradosprings.json` (not added yet, since
+  nothing's sent).
 - **A user-supplied (Gemini-generated) contact list for all 13 stores was
   cross-checked against primary sources before trusting any address** — per
   `CLAUDE.md`'s "verify, don't trust" rule. The list's "Kev J Art is Closed"
@@ -78,20 +83,15 @@ _Last updated: 2026-06-28_
   Warhammer models** — the actual disqualifying fact — so it was **removed
   from `data/coloradosprings.json` entirely** (12 stores now), not just left
   `unconfirmed`.
-- **5 stores deferred** — Gemini's email guess either conflicted with a prior
-  independent guess (Gamer's Haven) or was contradicted/unverifiable against
-  the store's own site (Hobby Smith, Van's Comics, Impact Sports Cards, J & J
-  Games N Hobbies). Full detail + what was checked in
-  `docs/outreach/coloradosprings-contacts.md`.
 - **2 stores** stay phone/contact-form only (Theo's Toys, Squatch Bros.),
-  consistent across both research passes.
+  consistent across both research passes — no email exists for either.
 - Full writeup: `docs/outreach/coloradosprings-contacts.md`.
 
 ## Next up (priority order)
 
-1. **Send the 4 Colorado Springs drafts** (maintainer action) and mark them sent
-   in `data/coloradosprings.json`. Then decide whether the 5 deferred stores get
-   a deeper research pass (e.g. phone calls) or stay phone/social-only.
+1. **Send the 9 Colorado Springs drafts** (maintainer action) and mark them sent
+   in `data/coloradosprings.json`. Theo's Toys and Squatch Bros. remain
+   phone/social-only (no email exists for either).
 2. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
 3. **Twin Cities loose ends** — Rockhopper reply; flip any store that submits the
    form (auto-published) from its email-marker note to verified.
@@ -121,10 +121,13 @@ _Last updated: 2026-06-28_
 - Verified a Gemini-generated contact list for all 13 Colorado Springs stores
   (also supplied as a Google Doc) against each store's own site/contact page
   rather than trusting it outright.
-- Created 4 Gmail drafts (unconfirmed template) for the stores with
-  site-verified or two-source-corroborated emails: Tabletop Citadel, Petrie's
-  Family Games, Valkyrie's Loft, Chaos Games and More. 5 stores deferred
-  (unverified/contradicted email guesses), 2 phone/contact-form only.
+- Created 9 Gmail drafts (unconfirmed template): 4 for stores with
+  site-verified/corroborated emails (Tabletop Citadel, Petrie's Family Games,
+  Valkyrie's Loft, Chaos Games and More); 5 more for stores whose emails
+  didn't hold up against a direct site check (Gamer's Haven, Hobby Smith,
+  Van's Comics, Impact Sports Cards, J & J Games) — maintainer chose to send
+  on the unverified guess anyway rather than wait. 2 stores have no email at
+  all (Theo's Toys, Squatch Bros.) and stay phone/contact-form only.
 - **Removed Kev J Art** from `data/coloradosprings.json` (13 → 12 stores) —
   the Gemini list's "Closed" claim was disproved by a direct site check, but
   the maintainer confirmed separately the store no longer sells Warhammer
