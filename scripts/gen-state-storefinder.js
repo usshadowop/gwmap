@@ -18,9 +18,11 @@
  * Dedup: a snapshot entry is treated as already-covered if it sits within ~120 m
  * of ANY curated city store repo-wide (so a border store curated under an
  * adjacent state's metro doesn't double-pin on the combined All Cities view), or
- * if its normalized name matches one of THIS state's city stores (the fallback
- * for curated stores with no coordinates). City data files are never modified —
- * they stay the authoritative pin.
+ * if its normalized name matches one of THIS state's coordinate-less city stores
+ * (a fallback used only when proximity can't apply — name matching is never used
+ * for stores that have coordinates, so distinct same-named chain locations like
+ * the official "Games Workshop" stores are each kept). City data files are never
+ * modified — they stay the authoritative pin.
  *
  * Usage:
  *   node scripts/gen-state-storefinder.js <ST>     e.g. node scripts/gen-state-storefinder.js MN
@@ -250,16 +252,23 @@ function main() {
     return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
   });
 
-  // Name dedup is scoped to THIS state's city files (the fallback for curated
-  // stores with no coordinates); proximity dedup is repo-wide so cross-border
-  // curated stores don't double-pin on the All Cities view.
-  const cityNameKeys = new Set(cityStores.map(s => nameKey(s.name)));
+  // Name dedup is ONLY the coordinate-less fallback: just this state's curated
+  // stores that lack lat/lng (so proximity can't reach them) are matched by name.
+  // Matching every curated store by name — or matching the stores we've already
+  // kept this run by name — would wrongly collapse distinct chain locations that
+  // share a name, e.g. the many official "Games Workshop"/"Warhammer" stores in a
+  // state (each is a different shop with its own coordinates). Those are deduped
+  // by proximity instead, never by name.
+  const cityNameKeys = new Set(
+    cityStores.filter(s => s.lat == null || s.lng == null).map(s => nameKey(s.name))
+  );
   const curatedPoints = readAllCuratedPoints();
 
-  // Covered = matches an existing pin (or one we've already kept this run).
-  function isCovered(s, keptKeys, keptPoints) {
-    const key = nameKey(s.name);
-    if (cityNameKeys.has(key) || keptKeys.has(key)) return true;
+  // Covered = same location as an existing pin (any curated store repo-wide, or
+  // one kept earlier this run), or — only for coordinate-less curated stores —
+  // the same normalized name.
+  function isCovered(s, keptPoints) {
+    if (cityNameKeys.has(nameKey(s.name))) return true;
     const geo = s._geoloc || {};
     const lat = num(geo.lat), lng = num(geo.lng);
     if (lat == null || lng == null) return false;
@@ -272,7 +281,6 @@ function main() {
   const inState = snapshot.filter(s =>
     s.countryCode === 'US' && (s.isoRegionCode === code || s.region === code));
 
-  const keptKeys = new Set();
   const keptPoints = [];
   const usedIds = new Set();
   const stores = [];
@@ -283,9 +291,11 @@ function main() {
     String(a.name).localeCompare(String(b.name)) || String(a.city).localeCompare(String(b.city)));
 
   for (const s of inState) {
-    if (isCovered(s, keptKeys, keptPoints)) continue;
+    if (isCovered(s, keptPoints)) continue;
 
     // Unique, provenance-suffixed id (-sf) that won't collide with city files.
+    // Many official stores share the name "Games Workshop"/"Warhammer", so fall
+    // back to the city (then a counter) to keep ids unique within the file.
     const base = kebab(displayName(s.name)) || 'store';
     let id = `${base}-sf`;
     if (usedIds.has(id)) id = `${base}-${kebab(s.city)}-sf`;
@@ -293,7 +303,6 @@ function main() {
     usedIds.add(id);
 
     stores.push(toStore(s, id));
-    keptKeys.add(nameKey(s.name));
     const geo = s._geoloc || {};
     const lat = num(geo.lat), lng = num(geo.lng);
     if (lat != null && lng != null) keptPoints.push([lat, lng]);
