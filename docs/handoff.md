@@ -39,7 +39,7 @@ _Last updated: 2026-06-28_
 |---|---|---|
 | Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
 | St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
-| Colorado Springs | 12 | Discovery done; **all 12 unconfirmed**. Contacts verified this session — **9 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More + Gamer's Haven, Hobby Smith, Van's Comics, Impact Sports, J&J — last 5 sent on unverified-guess emails per maintainer call), awaiting send. 2 phone/contact-form only (Theo's, Squatch Bros), 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
+| Colorado Springs | 12 | Discovery done; **1 confirmed (`none`), 11 unconfirmed**. **Squatch Bros. phone-confirmed** (carries Warhammer, no discount, clearance/trade options, ~50–100 units, no play space). **9 email drafts created + marked sent** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More + Gamer's Haven, Hobby Smith, Van's Comics, Impact Sports, J&J — last 5 sent on unverified-guess emails per maintainer call). Theo's Toys remains phone/contact-form only, 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
 | Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
 | Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
@@ -71,10 +71,13 @@ _Last updated: 2026-06-28_
   J & J Games N Hobbies (emails that didn't hold up against a direct site
   check — maintainer chose to send anyway, treating a bounce as low-risk
   rather than waiting on further verification). Verified via `list_drafts` —
-  one each, no duplicates. **Not yet sent** — maintainer reviews/sends
-  manually, then add `Store email confirmation sent on 2026-06-28` to each
-  store's `note` in `data/coloradosprings.json` (not added yet, since
-  nothing's sent).
+  one each, no duplicates. **Marked sent** — `Store email confirmation sent on
+  2026-06-28.` appended to each of the 9 stores' `note` in
+  `data/coloradosprings.json`.
+- **Squatch Bros. Retro Arcade phone-confirmed (2026-06-28)** — promoted from
+  `unconfirmed` to `category: "none"`. Carries Warhammer models, no discount;
+  some clearance/trade options available; ~50–100 units of stock; no play
+  space. `note` set to `Verified by store via phone on 2026-06-28.`
 - **A user-supplied (Gemini-generated) contact list for all 13 stores was
   cross-checked against primary sources before trusting any address** — per
   `CLAUDE.md`'s "verify, don't trust" rule. The list's "Kev J Art is Closed"
@@ -83,15 +86,16 @@ _Last updated: 2026-06-28_
   Warhammer models** — the actual disqualifying fact — so it was **removed
   from `data/coloradosprings.json` entirely** (12 stores now), not just left
   `unconfirmed`.
-- **2 stores** stay phone/contact-form only (Theo's Toys, Squatch Bros.),
-  consistent across both research passes — no email exists for either.
+- **1 store** stays phone/contact-form only (Theo's Toys & Games) — no email
+  exists for it.
 - Full writeup: `docs/outreach/coloradosprings-contacts.md`.
 
 ## Next up (priority order)
 
-1. **Send the 9 Colorado Springs drafts** (maintainer action) and mark them sent
-   in `data/coloradosprings.json`. Theo's Toys and Squatch Bros. remain
-   phone/social-only (no email exists for either).
+1. **Await replies** to the 9 Colorado Springs outreach emails (already sent
+   and marked in `data/coloradosprings.json`); flip each to its confirmed
+   category as form responses come in. Theo's Toys & Games remains
+   phone/social-only (no email exists for it).
 2. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
 3. **Twin Cities loose ends** — Rockhopper reply; flip any store that submits the
    form (auto-published) from its email-marker note to verified.

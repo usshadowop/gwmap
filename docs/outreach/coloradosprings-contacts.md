@@ -21,14 +21,14 @@ _Last gathered: 2026-06-28._
 | Impact Sports Cards & Collectibles | `info@impactsportscards.com` | **Maintainer-approved, sent on guess** — the store's own `/pages/contact` page lists phone/address/socials and explicitly **no email**, a direct contradiction; sent anyway per maintainer call. |
 | J & J Games N Hobbies | `azrielsdad@yahoo.com` | **Maintainer-approved, sent on guess** — personal Yahoo address unconnected to the business domain, weak sourcing ("distributor networks"); sent anyway per maintainer call. |
 
-All 9 are `category: unconfirmed` → unconfirmed-listing template used. Gmail drafts created 2026-06-28 (verified via `list_drafts`, no duplicates: 4 in the first pass, 5 more after the maintainer chose to accept the unverified guesses). **Note markers not yet added to `data/coloradosprings.json`** — pending maintainer confirming these get sent (see handoff).
+All 9 are `category: unconfirmed` → unconfirmed-listing template used. Gmail drafts created 2026-06-28 (verified via `list_drafts`, no duplicates: 4 in the first pass, 5 more after the maintainer chose to accept the unverified guesses). `Store email confirmation sent on 2026-06-28.` appended to each store's `note` in `data/coloradosprings.json`.
 
-## No email found — phone / social / contact form (confirmed both passes)
+## No email — phone / social / contact form
 
 | Store | Best contact |
 |---|---|
 | Theo's Toys & Games (Manitou Springs) | (719) 247-8126 · [theostoys.com](https://www.theostoys.com/) — built-in contact form, no email |
-| Squatch Bros. Retro Arcade (Cripple Creek) | (719) 419-1539 — phone only; retro arcade, GW-stocking doubtful |
+| Squatch Bros. Retro Arcade (Cripple Creek) | **Phone-confirmed 2026-06-28** — promoted to `category: none`. Carries Warhammer models, no discount; some clearance/trade options available; ~50–100 units of stock; no play space. `note` set to `Verified by store via phone on 2026-06-28.` |
 
 ## Removed
 
