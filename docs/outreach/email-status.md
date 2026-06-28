@@ -8,7 +8,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 | Region | Sent | Not emailed | Excluded | Total |
 |---|---|---|---|---|
-| Twin Cities | 33 | 9 | 2 | 44 |
+| Twin Cities | 33 | 8 | 2 | 43 |
 | coloradosprings | 0 | 13 | 0 | 13 |
 | denver | 0 | 27 | 0 | 27 |
 | duluth | 0 | 4 | 0 | 4 |
@@ -52,7 +52,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - Dubois Station LLC  (unconfirmed)
 - Galaxy Games  (unconfirmed)
 
-### Not emailed — no email, phone/form/social only (9)
+### Not emailed — no email, phone/form/social only (8)
 - Lewis Game Shop  (loyalty)
 - Rockhopper Comics  (unconfirmed)
 - Games By James - Mall of America  (loyalty)
@@ -61,7 +61,6 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - BigBadGameStore, LLC  (unconfirmed)
 - Game Quest - River Falls  (unconfirmed)
 - The Gamers Den  (unconfirmed)
-- Lewis Game Shop - St Cloud  (loyalty)
 
 ### Excluded — GW corporate (2)
 - Warhammer: Fountain Place  (none)
