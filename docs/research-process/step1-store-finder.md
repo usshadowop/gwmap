@@ -62,12 +62,22 @@ GET https://www.warhammer.com/api/storefinder
    with no special auth headers (like this one), it can just be curled
    directly from then on.
 
+### Use the local cached snapshot (don't re-pull every session)
+A dated snapshot of the full dataset lives at
+`storefinder/storefinder-<YYYY-MM-DD>.json` (see
+[`../../storefinder/README.md`](../../storefinder/README.md)). **Read from that
+local file** instead of hitting the live endpoint each time. **Freshness check
+first:** if the date in the filename is more than ~1 month old, refresh it with
+`node scripts/pull-storefinder.js` (downloads, validates, and replaces the old
+snapshot) before filtering — otherwise just load the existing file.
+
 ### Fetching + filtering (Python)
 ```python
-import json, math
+import json, math, glob
 
-# curl -s "https://www.warhammer.com/api/storefinder" -o storefinder.json
-with open("storefinder.json") as f:
+# Load the local cached snapshot (refresh with `node scripts/pull-storefinder.js`
+# if storefinder/storefinder-<date>.json is older than ~1 month).
+with open(sorted(glob.glob("storefinder/storefinder-*.json"))[-1]) as f:
     data = json.load(f)
 
 TARGET_LAT, TARGET_LNG = 38.8339, -104.8214  # swap for the target city's center point

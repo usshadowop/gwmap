@@ -109,3 +109,9 @@ of re-geocoding), `isWarHammerStore`, address fields, and `phone`. Distance-filt
 by true haversine distance, **never by state code alone** — cross-state-line
 stores near a target city would be silently dropped. Full how-to + the buggy
 patterns to avoid are in the process doc above.
+
+**Don't re-pull every session — use the local cache.** A dated snapshot lives at
+`storefinder/storefinder-<YYYY-MM-DD>.json` ([`storefinder/README.md`](storefinder/README.md)).
+Read from it; only when its filename date is **older than ~1 month** run
+`node scripts/pull-storefinder.js` to refresh (it validates and replaces the old
+snapshot, keeping exactly one current copy).
