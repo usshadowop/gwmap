@@ -7,7 +7,7 @@ this is not an append-only log or an archive. For durable rules read
 [`project-plan.md`](project-plan.md). This file is just: where we left off,
 what's mid-flight, and what to do next.
 
-_Last updated: 2026-06-27_
+_Last updated: 2026-06-28_
 
 ## Current state
 
@@ -39,7 +39,7 @@ _Last updated: 2026-06-27_
 |---|---|---|
 | Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
 | St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
-| Colorado Springs | 13 | Discovery done; **all 13 unconfirmed**. Contacts CSV exported (`docs/outreach/coloradosprings-stores.csv`) for an email-research pass — **next city up**. |
+| Colorado Springs | 13 | Discovery done; **all 13 unconfirmed**. Contacts verified this session — **4 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More), awaiting maintainer send. 5 stores deferred (unverified/contradicted emails), 2 phone/contact-form only, 1 corrected (Kev J Art — not closed), 1 GW-corporate excluded. |
 | Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
 | Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
@@ -62,13 +62,34 @@ _Last updated: 2026-06-27_
 - Contacts source of truth: `docs/outreach/twincities-contacts.md`. Live
   sent/not-emailed snapshot: `docs/outreach/email-status.md`.
 
+## Colorado Springs outreach — detail (2026-06-28)
+
+- **4 Gmail drafts created** (unconfirmed-listing template, "Confirm Your
+  Listing" button): Tabletop Citadel, Petrie's Family Games, Valkyrie's Loft
+  Toys and Games, Chaos Games and More. Verified via `list_drafts` — one each,
+  no duplicates. **Not yet sent** — maintainer reviews/sends manually, then add
+  `Store email confirmation sent on 2026-06-28` to each store's `note` in
+  `data/coloradosprings.json` (not added yet, since nothing's sent).
+- **A user-supplied (Gemini-generated) contact list for all 13 stores was
+  cross-checked against primary sources before trusting any address** — per
+  `CLAUDE.md`'s "verify, don't trust" rule. One claim was caught and corrected:
+  **Kev J Art was asserted "Closed" — false**, the site is live and taking
+  commissions (still dubious as a genuine storefront/GW stockist for other
+  reasons, but not closed).
+- **5 stores deferred** — Gemini's email guess either conflicted with a prior
+  independent guess (Gamer's Haven) or was contradicted/unverifiable against
+  the store's own site (Hobby Smith, Van's Comics, Impact Sports Cards, J & J
+  Games N Hobbies). Full detail + what was checked in
+  `docs/outreach/coloradosprings-contacts.md`.
+- **2 stores** stay phone/contact-form only (Theo's Toys, Squatch Bros.),
+  consistent across both research passes.
+- Full writeup: `docs/outreach/coloradosprings-contacts.md`.
+
 ## Next up (priority order)
 
-1. **Colorado Springs outreach** — the CSV is out for email research. As emails
-   come back: record in a `coloradosprings-contacts.md`, generate prefilled links
-   (`node scripts/prefill-link.js coloradosprings`), and draft (all 13 are
-   `unconfirmed` → use the **unconfirmed** "Confirm Your Listing" template).
-   Mark each sent store with the `Store email confirmation sent on <date>` note.
+1. **Send the 4 Colorado Springs drafts** (maintainer action) and mark them sent
+   in `data/coloradosprings.json`. Then decide whether the 5 deferred stores get
+   a deeper research pass (e.g. phone calls) or stay phone/social-only.
 2. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
 3. **Twin Cities loose ends** — Rockhopper reply; flip any store that submits the
    form (auto-published) from its email-marker note to verified.
@@ -92,6 +113,18 @@ _Last updated: 2026-06-27_
   `[skip ci]`). Data changes must pass `node scripts/validate-stores.js`.
 
 ## Session log
+
+### 2026-06-28 (Colorado Springs outreach)
+
+- Verified a Gemini-generated contact list for all 13 Colorado Springs stores
+  against each store's own site/contact page rather than trusting it outright;
+  caught and corrected a false "Kev J Art is closed" claim.
+- Created 4 Gmail drafts (unconfirmed template) for the stores with
+  site-verified or two-source-corroborated emails: Tabletop Citadel, Petrie's
+  Family Games, Valkyrie's Loft, Chaos Games and More. 5 stores deferred
+  (unverified/contradicted email guesses), 2 phone/contact-form only.
+- Rewrote `docs/outreach/coloradosprings-contacts.md` with the verification
+  detail per store.
 
 ### 2026-06-27 (outreach + housekeeping session)
 
