@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warhammer Discount Map - Colorado Hobby Stores with Warhammer Discounts</title>
+  <title>Warhammer Discount Map - Texas Hobby Stores with Warhammer Discounts</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <header>
-    <h1>Warhammer Discount Map — Colorado</h1>
-    <p>Every store across Colorado. Find local hobby stores selling Warhammer models and see which ones offer persistent discounts.</p>
+    <h1>Warhammer Discount Map — Texas</h1>
+    <p>Every store across Texas. Find local hobby stores selling Warhammer models and see which ones offer persistent discounts.</p>
   </header>
   <details class="legend-menu">
     <summary>Legend <span class="expand-hint">(click to expand)</span></summary>
@@ -36,14 +36,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="../../js/vendor/oms.js"></script>
   <script>
-    // State view: load every Colorado region's data file. The map auto-fits to
-    // the confirmed (visible) pins across the state; add new CO data files here
-    // as regions are added.
+    // State view: load every Texas data file. Most stores here come
+    // straight from the Games Workshop Store Finder and start "unconfirmed"
+    // (hidden behind the map's toggle), so there's nothing to auto-fit to yet —
+    // frame the whole state instead. Add curated city data files here as regions
+    // are researched (the confirmed pins will then drive the auto-fit).
     window.GWMAP_DATA_URLS = [
-      '../../data/coloradosprings.json',
-      '../../data/denver.json',
-      '../../data/colorado-storefinder.json'
+      '../../data/texas-storefinder.json'
     ];
+    window.GWMAP_CENTER = [30.4513, -97.2239];
+    window.GWMAP_ZOOM = 6;
   </script>
   <script src="../../js/app.js"></script>
   <script src="../../js/site-info.js"></script>

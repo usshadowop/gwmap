@@ -84,7 +84,11 @@ The site is a plain static front-end — no build step, no framework. Read
   minus stores already in the state's curated city files (deduped by
   proximity/name). They're wired into `location/<state>/index.html`. **Don't
   hand-edit them** (regen overwrites); curate in the city file instead.
-  Regenerate after each monthly snapshot re-pull. See
+  Regenerate after each monthly snapshot re-pull. To (re)build a page +
+  supplement for **every** state in the snapshot at once and link them all on the
+  landing page, run `node scripts/gen-all-state-pages.js` (idempotent; it
+  scaffolds any missing `location/<state>/` page, then calls
+  `gen-state-storefinder.js` per state). See
   [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`storefinder/README.md`](storefinder/README.md).
 
 ## Documentation map
