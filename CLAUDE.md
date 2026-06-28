@@ -101,6 +101,7 @@ The site is a plain static front-end — no build step, no framework. Read
 - [`docs/form/outreach-email-template.md`](docs/form/outreach-email-template.md) — store-owner verification email template (subject, button-styled HTML body, city-link rules) — use for every outreach email.
 - [`docs/form/outreach-email-unconfirmed-template.md`](docs/form/outreach-email-unconfirmed-template.md) — variant of the outreach email for `unconfirmed` stores (found-but-not-verified, hidden by default); "Confirm Your Listing" button.
 - [`docs/form/outreach-email-multistore-template.md`](docs/form/outreach-email-multistore-template.md) — variant for chain owners whose one inbox controls several stores; one email listing all locations, each with its own prefilled "Verify" button.
+- [`docs/form/outreach-email-inline-template.md`](docs/form/outreach-email-inline-template.md) — trust-first variant for owners wary of clicking a form/button link: every question is in the email body for a plain reply — no form link or button (and no auto-publish; the reply is transcribed into `data/<region>.json` by hand).
 - [`.claude/skills/begin-city-outreach/SKILL.md`](.claude/skills/begin-city-outreach/SKILL.md) — the "begin city outreach &lt;city&gt;" runbook: discover → contacts → prefilled-link drafts → auto-publish. Ties the above together.
 
 ## "Begin city outreach" workflow

@@ -10,7 +10,11 @@ the maintainer, not the store. For stores listed as `category: "unconfirmed"`
 [unconfirmed-listing variant](outreach-email-unconfirmed-template.md) instead.
 For an owner whose one inbox controls several stores (a chain), use the
 [multi-store variant](outreach-email-multistore-template.md) so they get a single
-email listing all their locations rather than one email per store.
+email listing all their locations rather than one email per store. For an owner
+who distrusts a form/button link (phishing concern), use the
+[inline-questions variant](outreach-email-inline-template.md), which puts every
+question in the email body for a plain reply — no form link or button (and no
+auto-publish; you transcribe the reply by hand).
 
 Outreach emails are generated and sent manually (per
 [`../project-plan.md`](../project-plan.md) — "resists automation by design;
