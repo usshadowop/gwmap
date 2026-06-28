@@ -1,0 +1,43 @@
+{
+  "_about": "Stores removed from the warhammerdiscounts.com maps — e.g. confirmed not to sell Games Workshop / Warhammer models. Each store's full original record is retained here (plus a `removed` block noting why/when/from-where) for a future, more general hobby-store project. This file is NOT loaded by any map page and is intentionally kept outside data/ so it isn't bound to the Games Workshop store schema or scripts/validate-stores.js.",
+  "stores": [
+    {
+      "id": "galaxy-games-eagan",
+      "name": "Galaxy Games",
+      "address": "1095 Diffley Rd F, Eagan, MN 55123",
+      "lat": 44.8051403,
+      "lng": -93.1464027,
+      "category": "unconfirmed",
+      "discount": "Discount status unknown ? not yet researched. Call store to confirm their Warhammer discount policy.",
+      "discountExclusions": "",
+      "discountDetails": "",
+      "loyaltyDetails": "",
+      "newReleases": false,
+      "preorders": false,
+      "preorderUrl": "",
+      "preorderLinkText": "",
+      "mapsUrl": "",
+      "website": "",
+      "phone": "",
+      "affiliation": "",
+      "note": "New listing — not on the official Warhammer Store Finder, found via independent web search. Described generically as a board/card/RPG game store; no explicit Warhammer mention found in any source checked (store has no standalone website, only a login-walled Facebook page that could not be verified). Call store to confirm Warhammer product and discount policy. Store email confirmation sent on 2026-06-27.",
+      "gameSystems": [],
+      "stockLevel": "",
+      "discord": "",
+      "facebook": "",
+      "instagram": "",
+      "twitter": "",
+      "otherSocials": "",
+      "playSpaceTables": "",
+      "playSpaceCost": "",
+      "playSpacePrice": "",
+      "playSpaceRestrictions": "",
+      "playSpaceReserve": "",
+      "removed": {
+        "fromRegion": "twincities",
+        "date": "2026-06-28",
+        "reason": "Confirmed via form submission that they do not sell Warhammer / Games Workshop models."
+      }
+    }
+  ]
+}
