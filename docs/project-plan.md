@@ -61,8 +61,10 @@ Counts reflect `data/<region>.json` at this pass; `unconfirmed` = listed on the
 official GW Store Finder and awaiting an outreach response (default-include
 policy). The workflow itself:
 
-1. **Discover stores** — pull the official GW Store Finder for the city and
-   tier each candidate. Use the full process in
+1. **Discover stores** — read the official GW Store Finder from the local cache
+   (`storefinder/storefinder-<date>.json`; refresh with
+   `node scripts/pull-storefinder.js` if older than ~1 month) and tier each
+   candidate for the city. Use the full process in
    [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md)
    (Phase A pull + Phase B verify/tier, default-include policy). Record findings
    in `research-process/results/<region>.md`.

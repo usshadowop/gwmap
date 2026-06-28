@@ -37,10 +37,13 @@ This skill orchestrates existing pieces — read them, don't reinvent them:
 ### 1. Discover stores — Phases A, B *and* C
 - Follow `step1-store-finder.md` exactly. **A city isn't done until A, B, and C
   all run** — Phase C (off-Store-Finder stockist search) is the easy one to skip.
-- Pull the GW Store Finder, haversine-filter (never by state code), verify/tier,
-  and write every store into `data/<slug>.json` as `category: "unconfirmed"` per
-  the default-include policy, using the full unified schema (copy an existing
-  entry's complete key set). Use the Store Finder's `_geoloc` coords directly.
+- Read the GW Store Finder from the **local cache** (`storefinder/storefinder-<date>.json`;
+  re-pull with `node scripts/pull-storefinder.js` only if it's older than ~1
+  month — don't hit the live API every session), haversine-filter (never by state
+  code), verify/tier, and write every store into `data/<slug>.json` as
+  `category: "unconfirmed"` per the default-include policy, using the full unified
+  schema (copy an existing entry's complete key set). Use the Store Finder's
+  `_geoloc` coords directly.
 - Record what was found in `docs/research-process/results/<slug>.md`.
 - **Pre-seeding the data file here is what makes auto-publish routing work** —
   form-sync matches a later submission to the store already sitting in this file.
