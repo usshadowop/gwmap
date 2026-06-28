@@ -11,177 +11,106 @@ _Last updated: 2026-06-27_
 
 ## Current state
 
-- **Site is live and healthy** at warhammerdiscounts.com. Six city regions (Twin
-  Cities, Colorado Springs, Denver, Duluth, Rochester, Mankato), per-state
-  combined views (`location/minnesota/`, `location/colorado/`), and the All
-  Cities combined view. Landing page groups cities under clickable state headers.
-- **"Begin city outreach" is now a one-command workflow.** The
-  `begin-city-outreach` skill (`.claude/skills/begin-city-outreach/SKILL.md`)
-  drives: scaffold region if new → discovery (A/B/C) → compile contacts →
-  generate prefilled links (`scripts/prefill-link.js`) → draft outreach emails
-  (Gmail `create_draft`, **drafts only**). Submissions auto-publish.
-- **Contact-email files exist for the two warmest regions** (new this session,
-  both merged to `main`):
-  - `docs/outreach/twincities-contacts.md` — full pass, mostly site-verified.
-  - `docs/outreach/coloradosprings-contacts.md` — rapid search pass, **not yet
-    verified** (4 email leads + phone/social-only stores).
-- **Auto-publish works for any city now.** `form-sync.gs` no longer hardcodes
-  Twin Cities — on each submission it scans every `data/<region>.json`, finds the
-  store (pre-seeded during discovery), updates that file, and opens a PR.
-  Unmatched submissions land in the default region flagged `[triage]`.
-  - ✅ **Routing is now confirmed live** (2026-06-27). The region-routing
-    `form-sync.gs` was pasted in and verified by a real submission — it updated a
-    store in place in the correct region file, and a name-mismatch submission
-    correctly hit the `[triage]` fallback.
-  - ✅ **Apps Script re-paste DONE (2026-06-27).** The latest `form-sync.gs` is
-    pasted in, so all current logic is live: region routing, the button-visibility
-    fix, stale-note replacement, and the new auto-removal of the "Store email
-    confirmation sent on <date>" outreach marker on form submission.
-- **Outreach email system matured (2026-06-27).** Two templates now exist:
-  `outreach-email-template.md` (verified stores) and the new
-  `outreach-email-unconfirmed-template.md` (unconfirmed/found-not-verified
-  stores, "Confirm Your Listing" button). Both use a bulletproof table+`bgcolor`
-  button (Gmail strips `background` off bare `<a>` → invisible button), carry a
-  sender-identity intro line, and sign off `Jon@warhammerstores.com`.
-- **Branch hygiene:** "Automatically delete head branches" is ON, so merged PR
-  branches clean themselves up. The last working branch
-  (`claude/cool-hamilton-8y0kcp`) was fully merged via PRs #26 + #27 and is
-  closed out; only `main` should remain.
-
-## Mid-flight / open items
-
-- **Twin Cities outreach drafts created (2026-06-27).** Gmail drafts exist for all
-  18 approved contacts (15 single-store + 3 multi-store chain emails: Dreamers
-  Vault ×7, Tower Games ×2, Hub Hobby ×2 — 26 stores). Drafts only; the user
-  reviews/sends manually. The no-email stores (#10–22) were exported to
-  `docs/outreach/twincities-no-email-stores.csv` for the user to run email
-  research (Gemini); once emails come back, draft those too. **Games By James**
-  is still parked in "further research required" (unverified lead + GW-stocking
-  itself unconfirmed).
-- **Colorado Springs contacts — verify.** All emails there are unverified search
-  leads. Next: confirm the 4 leads (Gamer's Haven, Petrie's, Valkyrie's Loft,
-  Chaos Games) against each store's own site, dig the phone/social-only set, and
-  confirm whether **Kev J Art** (looks like a solo artist) and **Squatch Bros
-  Retro Arcade** are genuine GW stockists at all.
-- ✅ **`form-sync.gs` re-paste DONE (2026-06-27)** — latest script is live in Apps
-  Script (routing + button-visibility + stale-note + outreach-marker auto-removal).
-  Raw, if it ever needs re-pasting again:
-  `https://raw.githubusercontent.com/usshadowop/gwmap/main/scripts/apps-script/form-sync.gs`.
-- **Live end-to-end form test — partially done.** A real submission routed +
-  auto-published correctly, and the `[triage]` fallback was observed firing. Not
-  yet exercised: the full matrix (see `form-sync-operations.md` "Open item") —
-  one pass through each discount branch + an update that leaves the Maps-link
-  blank.
-- **Multi-store / shared-email outreach template — ✅ built (2026-06-27).**
-  `docs/form/outreach-email-multistore-template.md`: one email per chain owner
-  listing every location, each with its own prefilled "Verify" button. Note: the
-  form is per-store (one submission = one store), so a true single combined-form
-  submission isn't possible — the template bundles per-store links instead, and
-  says so. Already used for the Dreamers Vault / Tower Games / Hub Hobby drafts.
-
-## Next up (priority order)
-
-1. **Twin Cities outreach — drafts done; await Gemini email research** for the
-   #10–22 no-email stores (CSV exported), then draft those + Games By James. The
-   18 approved-contact drafts are ready in Gmail for the user to send.
-2. **Colorado Springs outreach** — verify the contacts file first (above), then
-   links + drafts. 13 unconfirmed.
-3. **Denver outreach** — discovery (A+B+C) done; needs contacts + drafts. 25
-   unconfirmed.
-4. **New cities** — say "begin city outreach &lt;city&gt;" and the skill scaffolds
-   + discovers + drafts from scratch.
+- **Site is live and healthy** at warhammerdiscounts.com. Regions: Twin Cities,
+  Colorado Springs, Denver, Duluth, Rochester, Mankato, plus per-state combined
+  views (`location/minnesota/`, `location/colorado/`) and the All Cities view.
+  Landing page groups cities under clickable state headers.
+- **Footer** is now a single **"Have a request?"** link (consolidated Google
+  Form) + Site Info, across every page and the `new-city.js` templates.
+- **Site rebranded** "Games Workshop" / "GW" → "Warhammer" in all user-facing
+  copy (titles, store text, templates). A bottom-right **mailto envelope icon**
+  (jon@warhammerstores.com) appears on every page via `js/site-info.js`.
+- **Form → PR automation is fully live.** `form-sync.gs` is **freshly re-pasted
+  into Apps Script (2026-06-27)** — so region routing, the bulletproof button,
+  stale-note replacement, AND the new auto-removal of the
+  `Store email confirmation sent on <date>` marker on form submission are all
+  active. No re-paste pending.
+- **Outreach process is documented as a repeatable runbook:**
+  [`research-process/step1-store-finder.md`](research-process/step1-store-finder.md)
+  (discovery A/B/C) and
+  [`research-process/step2-outreach.md`](research-process/step2-outreach.md)
+  (contacts → prefilled links → pick template → draft). Three email templates:
+  standard (`outreach-email-template.md`), unconfirmed (`…-unconfirmed-…`), and
+  multi-store/chain (`…-multistore-…`, with a forward-to-each-location line).
 
 ## Per-region status snapshot
 
 | Region | Stores | Outreach |
 |---|---|---|
-| Twin Cities | 44 | contacts compiled (review of no-email stores pending); test stores removed 2026-06-27 |
-| Colorado Springs | 13 | contacts gathered (unverified search pass); all 13 unconfirmed |
-| Denver | 27 | barely started — 2 no-discount, 25 unconfirmed |
-| Duluth | 4 | stockists confirmed, discounts unverified |
-| Rochester | 1 | stockist confirmed, discount unverified |
-| Mankato | 3 | 2 stockists confirmed, discounts unverified |
+| Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
+| St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
+| Colorado Springs | 13 | Discovery done; **all 13 unconfirmed**. Contacts CSV exported (`docs/outreach/coloradosprings-stores.csv`) for an email-research pass — **next city up**. |
+| Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
+| Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
+| Rochester | 1 | Stockist confirmed, discount unverified. |
+| Mankato | 3 | Stockists confirmed, discounts unverified. |
 
-(Authoritative counts live in `data/<region>.json`; this table is a snapshot.)
+(Authoritative counts live in `data/<region>.json`; this is a snapshot.)
+
+## Twin Cities outreach — detail
+
+- **Confirmed via email/phone this session:** Battleground Cafe (form), Games By
+  James (phone → `loyalty`, points program), both Lewis Game Shops (phone →
+  `loyalty`, stamp program; Monticello + St Cloud).
+- **Removed:** All Systems Go Games — replied they don't carry Warhammer
+  (exclusion recorded in `results/twincities.md`).
+- **Emailed, awaiting form response:** the bulk of TC stores carry the
+  `Store email confirmation sent on 2026-06-27.` note marker (auto-clears on form
+  submit now that form-sync is re-pasted).
+- **Still open:** **Rockhopper Comics** — Facebook outreach sent, awaiting reply
+  (only remaining no-email store; sheet in `twincities-no-email-outreach.md`).
+- Contacts source of truth: `docs/outreach/twincities-contacts.md`. Live
+  sent/not-emailed snapshot: `docs/outreach/email-status.md`.
+
+## Next up (priority order)
+
+1. **Colorado Springs outreach** — the CSV is out for email research. As emails
+   come back: record in a `coloradosprings-contacts.md`, generate prefilled links
+   (`node scripts/prefill-link.js coloradosprings`), and draft (all 13 are
+   `unconfirmed` → use the **unconfirmed** "Confirm Your Listing" template).
+   Mark each sent store with the `Store email confirmation sent on <date>` note.
+2. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
+3. **Twin Cities loose ends** — Rockhopper reply; flip any store that submits the
+   form (auto-published) from its email-marker note to verified.
+4. **New cities** — "begin city outreach <city>" scaffolds + discovers + drafts.
+
+## Conventions worth remembering
+
+- **Confirmation notes:** a store confirmed directly (not via form) gets
+  `Verified by store via phone on <YYYY-MM-DD>` (mirrors form-sync's
+  `Verified by store via form on <date>`); put stock/discount/loyalty in their
+  own fields, not the note.
+- **Email-sent marker:** `Store email confirmation sent on <date>` appended to a
+  store's `note` when outreach is sent; `form-sync.gs` strips it on form submit.
+- **Template choice:** confirmed tier → standard; `unconfirmed` → unconfirmed
+  variant; chain (one inbox, many stores) → multi-store variant.
+- **Branch hygiene:** work on `claude/site-housekeeping-szxr7i`, but **start each
+  change from fresh `main`** (squash-merges auto-delete the remote branch, so
+  re-creating off `origin/main` avoids merge-conflict churn). PRs merged this
+  session: #40–#52.
+- **Ship:** branch → PR → squash-merge into `main` (deploy runs on merge; no
+  `[skip ci]`). Data changes must pass `node scripts/validate-stores.js`.
 
 ## Session log
 
-> Normally this file is overwritten wholesale each session. This section is an
-> appended log of recent sessions for continuity; future sessions can fold older
-> entries into "Current state" and drop them.
+### 2026-06-27 (outreach + housekeeping session)
 
-### 2026-06-27 (later session)
-
-- **Site housekeeping** (PR #40, merged/live): added a floating bottom-right
-  contact envelope icon (`mailto:jon@warhammerstores.com`) injected via the shared
-  `js/site-info.js`; rebranded visible "Games Workshop" / standalone "GW" → "Warhammer"
-  across page titles, `data/*.json` store text, and the `new-city.js` templates.
-  Discovery docs / process intentionally left referencing "Games Workshop" so web
-  searches still find stockists.
-- **Multi-store outreach template built** + Twin Cities CSV: new
-  `docs/form/outreach-email-multistore-template.md` (chain owners) and
-  `docs/outreach/twincities-no-email-stores.csv` (#10–22 for email research).
-- **Twin Cities outreach drafts created**: 18 Gmail drafts (15 single + 3 chain),
-  26 stores, drafts only. Verified present in Drafts.
-
-### 2026-06-27
-
-- **End-to-end pipeline test with sample stores (now removed).** Spun up two
-  Twin Cities test stores — *Jon's Store* (10%, confirmed) and *Northern Front
-  Games* (unconfirmed) — to exercise the full outreach → form-sync → publish
-  flow: generated prefilled links + Gmail drafts for both, submitted live, and
-  confirmed routing/auto-publish works (a real submission updated NFG in place to
-  `category 15`; a name-mismatch submission correctly hit the `[triage]`
-  fallback). Both test stores + their contact rows removed afterward (PR #38);
-  Twin Cities back to 44 real stores. (Test Gmail drafts may still be in Drafts.)
-- **New unconfirmed-store outreach template** (PR #33):
-  `docs/form/outreach-email-unconfirmed-template.md` — variant for
-  `category: unconfirmed` stores ("Confirm Your Listing" button, found-not-
-  verified framing). Cross-linked from the main template + added to the
-  CLAUDE.md doc map.
-- **Outreach email tweaks** (PR #32): sender-identity intro line ("I'm Jon H.
-  owner of warhammerstores.com…") and sign-off changed to
-  `Jon@warhammerstores.com`.
-- **Invisible-button fix** (PR #31): Gmail strips `background` off bare `<a>`
-  tags → white-on-white button. Switched the outreach template button and both
-  `form-sync.gs` approval-email buttons to a bulletproof table + `bgcolor`.
-- **Stale-note fix** (PR #37): `form-sync.gs` no longer carries the unconfirmed
-  "found on Store Finder / not verified" seed note forward onto a verified store
-  — on the unconfirmed→confirmed transition it's replaced with "Verified by store
-  via form on <date>"; genuine human-written notes still preserved.
-- ⚠️ **Apps Script re-paste pending (button + note fixes only).** Routing is live;
-  these two fixes go live on the next paste of the latest `form-sync.gs`.
-- **Known gap, intentionally unbuilt:** a renamed form submission won't match its
-  pre-seeded pin (match is name-based), so it triages as a duplicate instead of
-  updating in place. Discussed fixes (a stable prefilled listing-id field;
-  verified-submitter-email cross-reference — weak alone because chains share one
-  email) but chose **not** to implement; triage handled case-by-case for now.
-- **Working branch:** `claude/determined-wozniak-0rebqp` (PRs #30–38, all
-  squash-merged). Reminder: rebase/reset onto fresh `main` per PR — reusing a
-  branch across squash-merges causes the conflict churn seen this session.
+- Site housekeeping: Warhammer rebrand, mailto icon, footer "Have a request?".
+- Twin Cities outreach run end-to-end: contacts compiled, drafts generated
+  (single / unconfirmed / chain templates) and sent; no-email stores worked by
+  phone/FB; built `email-status.md`, the no-email CSV, and the no-email
+  outreach sheet.
+- Confirmations folded in: Battleground Cafe, Games By James (loyalty), both
+  Lewis shops (loyalty). Removed All Systems Go (doesn't carry Warhammer).
+- St Cloud Lewis split into its own region file (MN/All Cities only).
+- Built `step2-outreach.md`; multi-store template; documented marker + phone-
+  confirmation note conventions.
+- `form-sync.gs` re-pasted into Apps Script (clears the long-standing pending
+  item) + added marker auto-removal.
+- Colorado Springs contacts CSV exported for email research.
 
 ### 2026-06-26
 
-- **Per-state pages + nested landing page** (PR #24, merged): added
-  `location/minnesota/` and `location/colorado/` combined views; landing page now
-  groups cities under clickable state headers (state → cities, alphabetical).
-  `new-city.js` updated to slot new cities under their state + create the state
-  page/group when the state is new (name arg is now `"City, ST"`).
-- **"Begin city outreach" workflow** (PR #25, merged): `form-sync.gs` now routes
-  each submission to the `data/<region>.json` that already holds the store (scan
-  + match; `[triage]` fallback to the default region). Added
-  `scripts/prefill-link.js` (record → prefilled form URL) and the
-  `begin-city-outreach` skill (discover → contacts → prefilled-link drafts).
-- **Branch hygiene:** enabled "Automatically delete head branches"; merged PR
-  branches now self-delete, ending the squash-divergence churn. Old stale
-  branches deleted. Note: branch deletion can't be done from the AI side (token
-  lacks the permission) — the repo setting handles it instead.
-- **Apps Script re-paste is the gating manual step.** The region-routing
-  `form-sync.gs` is merged in the repo but only goes live once re-pasted into the
-  Apps Script editor. Until then the live automation still writes only to
-  `data/twincities.json`.
-- **In flight:** contact emails are being generated in a separate chat; once
-  done, run a live end-to-end test with one sample store (submit → confirm it
-  opens a PR routed to the correct region file, correct `category`/Yes-No, and
-  `address`/`mapsUrl` in their separate fields). A sample store not pre-seeded in
-  any region file should land in Twin Cities flagged `[triage]` — expected.
+- Per-state pages + nested landing page (PR #24). "Begin city outreach" workflow
+  + region routing in `form-sync.gs` + `prefill-link.js` + the skill (PR #25).
+  Enabled "Automatically delete head branches."
