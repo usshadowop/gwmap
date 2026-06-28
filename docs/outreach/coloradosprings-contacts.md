@@ -1,11 +1,9 @@
 # Colorado Springs — store contact emails (for outreach)
 
-Outreach pass for the verification emails. A second contact list (sourced via
-Gemini) was cross-checked against each store's own site/contact page before
-trusting any address — see "Verify, don't trust" in `CLAUDE.md`. One Gemini
-claim (Kev J Art "Closed") was directly **disproved** by fetching the live
-site, which is why nothing here is treated as confirmed without a direct
-source check or two independent passes agreeing.
+Outreach pass for the verification emails. Two independent contact lists
+(one rapid web-search pass, one from a Google Doc the maintainer compiled via
+Gemini) were cross-checked against each store's own site/contact page before
+trusting any address — see "Verify, don't trust" in `CLAUDE.md`.
 
 _Last gathered: 2026-06-28._
 
@@ -39,9 +37,17 @@ These stay on phone/social/contact-form outreach for now rather than a guessed e
 | Theo's Toys & Games (Manitou Springs) | (719) 247-8126 · [theostoys.com](https://www.theostoys.com/) — built-in contact form, no email |
 | Squatch Bros. Retro Arcade (Cripple Creek) | (719) 419-1539 — phone only; retro arcade, GW-stocking doubtful |
 
-## Corrected this pass
+## Removed
 
-- **Kev J Art (Fort Carson)** — Gemini claimed "Closed." **False:** direct fetch of kevjart.com shows an active site, currently taking commissions. Still flagged from the prior pass as likely an individual artist (Kevin A. Johnson) rather than a genuine storefront — whether they're a real GW stockist at all is still unconfirmed, separate from the (incorrect) closure claim. No email available either way (contact form + phone only).
+- **Kev J Art (Fort Carson)** — removed from `data/coloradosprings.json`
+  entirely (was `kev-j-art-fort-carson`). A Gemini-sourced list initially
+  claimed the business was "Closed," which a direct site fetch disproved (the
+  site is live and taking commissions) — but the maintainer confirmed
+  separately that Kev J Art no longer sells Warhammer models, which is the
+  actual disqualifying fact. Treated as a contradicting-evidence exclusion
+  under `CLAUDE.md`'s default-include policy (not a generic "unconfirmed,"
+  but a known non-stockist), so it's dropped rather than left in as
+  unconfirmed.
 
 ## Excluded (Games Workshop corporate — no owner outreach)
 

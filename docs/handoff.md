@@ -39,7 +39,7 @@ _Last updated: 2026-06-28_
 |---|---|---|
 | Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
 | St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
-| Colorado Springs | 13 | Discovery done; **all 13 unconfirmed**. Contacts verified this session — **4 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More), awaiting maintainer send. 5 stores deferred (unverified/contradicted emails), 2 phone/contact-form only, 1 corrected (Kev J Art — not closed), 1 GW-corporate excluded. |
+| Colorado Springs | 12 | Discovery done; **all 12 unconfirmed**. Contacts verified this session — **4 drafts created** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More), awaiting maintainer send. 5 stores deferred (unverified/contradicted emails), 2 phone/contact-form only, 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
 | Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
 | Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
@@ -72,10 +72,12 @@ _Last updated: 2026-06-28_
   `data/coloradosprings.json` (not added yet, since nothing's sent).
 - **A user-supplied (Gemini-generated) contact list for all 13 stores was
   cross-checked against primary sources before trusting any address** — per
-  `CLAUDE.md`'s "verify, don't trust" rule. One claim was caught and corrected:
-  **Kev J Art was asserted "Closed" — false**, the site is live and taking
-  commissions (still dubious as a genuine storefront/GW stockist for other
-  reasons, but not closed).
+  `CLAUDE.md`'s "verify, don't trust" rule. The list's "Kev J Art is Closed"
+  claim turned out to be literally false (site is live, taking commissions),
+  but the maintainer separately confirmed Kev J Art **no longer sells
+  Warhammer models** — the actual disqualifying fact — so it was **removed
+  from `data/coloradosprings.json` entirely** (12 stores now), not just left
+  `unconfirmed`.
 - **5 stores deferred** — Gemini's email guess either conflicted with a prior
   independent guess (Gamer's Haven) or was contradicted/unverifiable against
   the store's own site (Hobby Smith, Van's Comics, Impact Sports Cards, J & J
@@ -117,12 +119,19 @@ _Last updated: 2026-06-28_
 ### 2026-06-28 (Colorado Springs outreach)
 
 - Verified a Gemini-generated contact list for all 13 Colorado Springs stores
-  against each store's own site/contact page rather than trusting it outright;
-  caught and corrected a false "Kev J Art is closed" claim.
+  (also supplied as a Google Doc) against each store's own site/contact page
+  rather than trusting it outright.
 - Created 4 Gmail drafts (unconfirmed template) for the stores with
   site-verified or two-source-corroborated emails: Tabletop Citadel, Petrie's
   Family Games, Valkyrie's Loft, Chaos Games and More. 5 stores deferred
   (unverified/contradicted email guesses), 2 phone/contact-form only.
+- **Removed Kev J Art** from `data/coloradosprings.json` (13 → 12 stores) —
+  the Gemini list's "Closed" claim was disproved by a direct site check, but
+  the maintainer confirmed separately the store no longer sells Warhammer
+  models, which is the real reason for exclusion. Updated
+  `coloradosprings-stores.csv`, `coloradosprings-contacts.md`,
+  `research-process/results/coloradosprings.md`, and `email-status.md` to
+  match; re-ran `validate-stores.js` clean.
 - Rewrote `docs/outreach/coloradosprings-contacts.md` with the verification
   detail per store.
 
