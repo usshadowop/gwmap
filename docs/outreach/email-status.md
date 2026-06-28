@@ -8,7 +8,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 | Region | Sent | Not emailed | Excluded | Total |
 |---|---|---|---|---|
-| Twin Cities | 33 | 8 | 2 | 43 |
+| Twin Cities | 32 | 8 | 2 | 42 |
 | coloradosprings | 0 | 13 | 0 | 13 |
 | denver | 0 | 27 | 0 | 27 |
 | duluth | 0 | 4 | 0 | 4 |
@@ -17,7 +17,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 ## Twin Cities — detail
 
-### Sent (33)
+### Sent (32)
 - Hub Hobby Richfield  (15)
 - Hub Hobby Little Canada  (15)
 - Scale Model Supplies  (15)
@@ -50,7 +50,6 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - Midwest Jedi  (unconfirmed)
 - VB Games and More  (unconfirmed)
 - Dubois Station LLC  (unconfirmed)
-- Galaxy Games  (unconfirmed)
 
 ### Not emailed — no email, phone/form/social only (8)
 - Lewis Game Shop  (loyalty)
@@ -65,6 +64,9 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 ### Excluded — GW corporate (2)
 - Warhammer: Fountain Place  (none)
 - Warhammer Saint Anthony  (none)
+
+### Removed (1)
+- Galaxy Games — confirmed via form they do **not** sell Warhammer / GW models; removed from `data/twincities.json` on 2026-06-28 and archived to root-level `removed-stores.json` (for a future general hobby-store project).
 
 ## Other regions — outreach not started (all stores not emailed)
 
