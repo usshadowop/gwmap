@@ -136,6 +136,33 @@ function toGameSystems_(v) {
 }
 
 /**
+ * Build the note for a form submission. Every submission is a fresh
+ * confirmation straight from the store, so the card should always carry a dated
+ * "Verified by store via form on <date>." line — that's how a visitor gauges how
+ * current a store's data is. Keep any human-written note and append the line to
+ * the bottom; strip machine-generated markers that no longer apply (the
+ * Store-Finder "new listing" seed note and the pending-outreach
+ * "Store email confirmation sent" marker); and drop any earlier form-verification
+ * line so a re-submission refreshes the date instead of stacking duplicates.
+ * Confirmation lines from other channels (phone/email) are left intact.
+ */
+function noteWithFormVerification_(existingNote) {
+  var verifyLine = 'Verified by store via form on ' +
+    new Date().toISOString().slice(0, 10) + '.';
+  var note = String(existingNote || '');
+  // The auto-generated "found on the Store Finder / not yet verified" seed note
+  // is no longer true once the store verifies — drop it entirely.
+  if (/^New listing — found on the official Warhammer Store Finder/.test(note)) {
+    note = '';
+  }
+  note = note
+    .replace(/\s*Store email confirmation sent on \d{4}-\d{2}-\d{2}\.?/g, '')
+    .replace(/\s*Verified by store via form on \d{4}-\d{2}-\d{2}\.?/g, '')
+    .trim();
+  return note ? (note + ' ' + verifyLine) : verifyLine;
+}
+
+/**
  * Derive the map category from the Q5 answer and the % value.
  * Returns { category, snappedFrom } where snappedFrom is the original
  * percentage when an off-grid value (not 15 or 10) was snapped to the
@@ -303,23 +330,12 @@ function onFormSubmit(e) {
     ['lat', 'lng', 'website', 'phone', 'preorderUrl'].forEach(function (k) {
       entry[k] = existing[k];
     });
-    // Preserve a human-written note, but when an owner verifies a previously
-    // unconfirmed store, the auto-generated "found on the Store Finder / not yet
-    // verified" seed note is no longer true — replace it with a dated
-    // verification note instead of carrying the stale text forward.
-    var seedNote = /^New listing — found on the official Warhammer Store Finder/.test(existing.note || '');
-    if (existing.category === 'unconfirmed' && seedNote) {
-      entry.note = 'Verified by store via form on ' + new Date().toISOString().slice(0, 10);
-    } else {
-      entry.note = existing.note;
-    }
-    // The outreach "Store email confirmation sent on <date>" marker only tracks
-    // pending outreach — once the store responds via the form, drop it.
-    if (entry.note) {
-      entry.note = entry.note
-        .replace(/\s*Store email confirmation sent on \d{4}-\d{2}-\d{2}\.?/g, '')
-        .trim();
-    }
+    // Every form submission is a fresh confirmation straight from the store, so
+    // stamp (or refresh) the dated "Verified by store via form on <date>." line.
+    // The helper keeps any human-written note, drops stale machine markers (the
+    // Store-Finder seed note + the pending-outreach marker), and avoids stacking
+    // duplicate form-verification dates.
+    entry.note = noteWithFormVerification_(existing.note);
     // mapsUrl IS collected now, but the question is OPTIONAL — only overwrite
     // when the submission actually provides a link, so a blank answer can't
     // wipe a previously verified pin URL.
@@ -330,6 +346,8 @@ function onFormSubmit(e) {
     // outreach. Land it in the default region and flag for triage so a human
     // can confirm it's real and move it to the right city.
     needsTriage = true;
+    // A brand-new store still self-submitted the form — stamp it as verified.
+    entry.note = noteWithFormVerification_('');
     target = regionFiles.find(function (f) { return f.path === DEFAULT_FILE_PATH; });
     if (!target) {
       console.error("Default region file " + DEFAULT_FILE_PATH + " not found; cannot route submission.");
