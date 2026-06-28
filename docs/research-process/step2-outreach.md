@@ -88,6 +88,17 @@ facebook, instagram, contact_form, discord, notes`). These are the stores worth 
 second, deeper email-research pass (e.g. piping the CSV through another tool)
 before deciding to contact them by phone/social instead.
 
+### A.6 Duplicate stores across regions (two-state metros)
+A two-state metro (step1-store-finder.md "Two-state metros") seeds the same
+physical store into two region files with two distinct `id`s. Before drafting
+an email, check whether that store already has an outreach record under its
+other region — its twin entry's `note` already carrying `Store email
+confirmation sent on <date>` or `Verified by store via ...`. If so, **don't
+draft or send a second email to the same inbox.** Instead, note in the new
+region's contacts file that outreach was already covered via the other region
+(name + date), and once a reply/form submission lands, copy the result into
+both region's entries by hand (no automated sync).
+
 ---
 
 ## Phase B — Generate prefilled links
