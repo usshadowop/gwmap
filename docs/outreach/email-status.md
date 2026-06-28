@@ -68,7 +68,7 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 
 ## Other regions — outreach not started (all stores not emailed)
 
-### coloradosprings (13)
+### coloradosprings (12)
 - Warhammer - Colorado Springs  (unconfirmed)
 - Gamer's Haven  (unconfirmed)
 - Hobby Smith  (unconfirmed)
@@ -80,7 +80,6 @@ _Generated 2026-06-27 from the Gmail Sent folder + Drafts, cross-referenced agai
 - Chaos Games and More  (unconfirmed)
 - Impact Sports Cards & Collectibles  (unconfirmed)
 - Theo's Toys & Games  (unconfirmed)
-- Kev J Art  (unconfirmed)
 - Squatch Bros. Retro Arcade  (unconfirmed)
 
 ### denver (27)

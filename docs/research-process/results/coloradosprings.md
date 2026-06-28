@@ -5,7 +5,7 @@ The process doc records *how* to find stores; this file records *what was
 actually found* for this region.
 
 **Method.** Started from the authoritative Games Workshop directory pulled from
-`https://www.warhammer.com/api/storefinder` (8,219 stores; 13 fall within ~40 mi
+`https://www.warhammer.com/api/storefinder` (8,219 stores; 13 fell within ~40 mi
 of Colorado Springs). Each was cross-checked against general web search, store
 websites/Facebook, Yelp, gaming-store locators (wargames.com, CMON, Wizards,
 DakkaDakka), local news (Colorado Springs Gazette) and Reddit, then tiered by
@@ -15,8 +15,8 @@ how well its *Games-Workshop-selling status* is corroborated. Discounts are
 
 - **Center point**: downtown Colorado Springs (38.8339, -104.8214)
 - **Radius**: ~40 miles (straight-line)
-- **Output file**: `data/coloradosprings.json` (13 stores)
-- **Last run**: 2026-06 (Phase C re-run + Phase B refresh 2026-06-24)
+- **Output file**: `data/coloradosprings.json` (12 stores)
+- **Last run**: 2026-06 (Kev J Art removed 2026-06-28; Phase C re-run + Phase B refresh 2026-06-24)
 
 ---
 
@@ -34,14 +34,23 @@ how well its *Games-Workshop-selling status* is corroborated. Discounts are
 | **J & J Games N Hobbies** | 6324 S Highway 85-87, Fountain 80817 | 8.0 mi | "Great selection of Warhammer models" | jnjgamesnhobbies.com |
 | **Chaos Games and More** | 4065 Club Manor Dr, Pueblo 81008 | ~40 mi | GW (40k) stockist | CMON locator, chaosgamesandmore.com, Yelp, FB |
 
-## Tier B — On the GW Store Finder, but GW-selling status NOT independently confirmed (4)
+## Tier B — On the GW Store Finder, but GW-selling status NOT independently confirmed (3)
 
 | Store | Address | ~Dist | What the web actually says | Sources |
 |---|---|---|---|---|
 | **Impact Sports Cards & Collectibles** | 416 S 8th St, Colorado Springs 80905 | 1.2 mi | Sports cards / TCG / sealed wax — no GW mention found | impactsportscards.com, Yelp |
 | **Theo's Toys & Games** | 934 Manitou Ave Ste 103, Manitou Springs 80829 | 5.5 mi | Family toy & board-game store — no GW mention found | theostoys.com, Yelp |
-| **Kev J Art** | 6110 Martinez St, Fort Carson 80913 | 6.8 mi | No retail web presence found — possibly home-based/trade account | (Store Finder only) |
 | **Squatch Bros. Retro Arcade** | 246 E Bennett Ave, Cripple Creek 80813 | 20.1 mi | Retro pinball arcade — no GW mention found | pinballmap, Yelp |
+
+## Removed — confirmed non-stockist (1)
+
+- **Kev J Art** (6110 Martinez St, Fort Carson 80913) — on the GW Store Finder
+  and originally carried as Tier B `unconfirmed` (no retail web presence found,
+  possibly home-based/trade account). **Removed 2026-06-28**: maintainer
+  confirmed directly that Kev J Art no longer sells Warhammer models. This is
+  a contradicting-evidence exclusion under the default-include policy (a known
+  non-stockist, not merely an unconfirmed lead), so the entry was dropped from
+  `data/coloradosprings.json` rather than kept as `unconfirmed`.
 
 ## Tier C / Phase C — Off-list discovery (re-run 2026-06-24, 0 added)
 
@@ -104,10 +113,10 @@ already current:
 
 ## Output
 
-- Repo data file: `data/coloradosprings.json` (13 stores, schema matches
+- Repo data file: `data/coloradosprings.json` (12 stores, schema matches
   `data/twincities.json`; all `unconfirmed`, incl. the official GW store, which
-  carries a full-retail / no-discount `discount` note). No stores added or
-  removed this pass.
+  carries a full-retail / no-discount `discount` note). Kev J Art removed
+  2026-06-28 (confirmed non-stockist — see above).
 - **Definition of done:** Phase A ✅, Phase B ✅ (+ 2026-06-24 refresh), Phase C
   ✅ (re-run 2026-06-24 with named candidates above), results file ✅. City is
   fully researched per the step1 checklist.

@@ -1,38 +1,53 @@
 # Colorado Springs — store contact emails (for outreach)
 
-Quick pass for the verification-email outreach. Emails here are **search-only
-leads** (web-search summaries, not yet verified against each store's own contact
-page) — confirm before relying. Stores with no email use phone/social.
+Outreach pass for the verification emails. Two independent contact lists
+(one rapid web-search pass, one from a Google Doc the maintainer compiled via
+Gemini) were cross-checked against each store's own site/contact page before
+trusting any address — see "Verify, don't trust" in `CLAUDE.md`.
 
-_Last gathered: 2026-06-26 (rapid pass — needs verification)_
+_Last gathered: 2026-06-28._
 
-## Search-only leads (unverified)
+## Approved — ready for outreach (drafts sent this pass)
 
-| Store | Email | Phone |
+| Store | Email | Source |
 |---|---|---|
-| Gamer's Haven (Colorado Springs) | `gamershavenco@gmail.com` | (719) 531-9863 |
-| Petrie's Family Games (Colorado Springs) | `PetriesFG@gmail.com` (also seen: `play@petriesgames.com`) | (719) 522-1099 |
-| Valkyrie's Loft Toys and Games (Monument) | `info@valkyriesloft.games` | (719) 375-0482 |
-| Chaos Games and More (Pueblo) | `john@chaosgamesandmore.com` | (719) 542-1237 |
+| Tabletop Citadel | `tabletopcitadelco@gmail.com` | **Site-verified** — quoted directly off tabletopcitadelcos.com's contact section |
+| Petrie's Family Games | `PetriesFG@gmail.com` | **Site-verified** — quoted directly off petriesgames.com footer |
+| Valkyrie's Loft Toys and Games (Monument) | `info@valkyriesloft.games` | **Maintainer-approved** — agreed by two independent passes (prior session + Gemini); site is a JS-rendered SPA WebFetch couldn't read (capability gap, not a contradiction) |
+| Chaos Games and More (Pueblo) | `john@chaosgamesandmore.com` | **Maintainer-approved** — agreed by two independent passes; official Contact Us page loaded but didn't surface an email in the fetched excerpt (capability gap) |
+| Gamer's Haven | `Mgr.GamersHavenco@gmail.com` | **Maintainer-approved, sent on guess** — own `/contact` page shows only a form + phone (no literal email confirmed); conflicts with an earlier independent guess (`gamershavenco@gmail.com`, no "Mgr." prefix). Maintainer opted to send anyway (low-risk bounce) rather than wait on further verification. |
+| Hobby Smith | `hobbysmithinfo@gmail.com` | **Maintainer-approved, sent on guess** — sourced from Facebook; FB page is login-walled so unconfirmed (capability gap, not disproof). |
+| Van's Comics Games Cards | `vanscomics@gmail.com` | **Maintainer-approved, sent on guess** — fetching vansccg.com actually resolved to an unrelated store in Ridgeland, MS, so the domain didn't confirm this email either way. |
+| Impact Sports Cards & Collectibles | `info@impactsportscards.com` | **Maintainer-approved, sent on guess** — the store's own `/pages/contact` page lists phone/address/socials and explicitly **no email**, a direct contradiction; sent anyway per maintainer call. |
+| J & J Games N Hobbies | `azrielsdad@yahoo.com` | **Maintainer-approved, sent on guess** — personal Yahoo address unconnected to the business domain, weak sourcing ("distributor networks"); sent anyway per maintainer call. |
 
-## No email found — phone / social / contact form
+All 9 are `category: unconfirmed` → unconfirmed-listing template used. Gmail drafts created 2026-06-28 (verified via `list_drafts`, no duplicates: 4 in the first pass, 5 more after the maintainer chose to accept the unverified guesses). `Store email confirmation sent on 2026-06-28.` appended to each store's `note` in `data/coloradosprings.json`.
+
+## No email — phone / social / contact form
 
 | Store | Best contact |
 |---|---|
-| Hobby Smith (Colorado Springs) | (719) 715-3198 · [Facebook](https://www.facebook.com/thehobbysmith) / [IG @_hobbysmith_](https://www.instagram.com/_hobbysmith_/) |
-| Van's Comics Games Cards (Colorado Springs) | (719) 896-5841 · [vansccg.com](https://vansccg.com/) / [square site](https://vanscomics.square.site/) (email redacted in directories) |
-| Tabletop Citadel (Colorado Springs) | (719) 639-1472 · [tabletopcitadelcos.com](https://tabletopcitadelcos.com/) / Facebook |
-| J & J Games N Hobbies (Fountain) | (719) 392-2050 · [jnjgamesnhobbies.com](https://jnjgamesnhobbies.com/) / Facebook |
-| Impact Sports Cards & Collectibles (Colorado Springs) | (719) 344-9973 · [contact page](https://impactsportscards.com/pages/contact) |
-| Theo's Toys & Games (Manitou Springs) | (719) 247-8126 · [theostoys.com](https://www.theostoys.com/) |
-| Squatch Bros. Retro Arcade (Cripple Creek) | (719) 419-1539 — retro arcade; GW-stocking doubtful |
-| Kev J Art (Fort Carson) | [kevjart.com](https://kevjart.com/) / [Facebook](https://www.facebook.com/KevJArt/) — appears to be an individual artist (Kevin A. Johnson), not a storefront; verify it's a real GW stockist |
+| Theo's Toys & Games (Manitou Springs) | (719) 247-8126 · [theostoys.com](https://www.theostoys.com/) — built-in contact form, no email |
+| Squatch Bros. Retro Arcade (Cripple Creek) | **Phone-confirmed 2026-06-28** — promoted to `category: none`. Carries Warhammer models, no discount; some clearance/trade options available; ~50–100 units of stock; no play space. `note` set to `Verified by store via phone on 2026-06-28.` |
+
+## Removed
+
+- **Kev J Art (Fort Carson)** — removed from `data/coloradosprings.json`
+  entirely (was `kev-j-art-fort-carson`). A Gemini-sourced list initially
+  claimed the business was "Closed," which a direct site fetch disproved (the
+  site is live and taking commissions) — but the maintainer confirmed
+  separately that Kev J Art no longer sells Warhammer models, which is the
+  actual disqualifying fact. Treated as a contradicting-evidence exclusion
+  under `CLAUDE.md`'s default-include policy (not a generic "unconfirmed,"
+  but a known non-stockist), so it's dropped rather than left in as
+  unconfirmed.
 
 ## Excluded (Games Workshop corporate — no owner outreach)
 
 - **Warhammer — Colorado Springs** (2912 N Powers Blvd) — GW-owned retail store.
 
 ---
-**Next:** verify the 4 search-only emails against each store's own site, dig the
-"no email found" set (Facebook About pages / contact forms), and confirm whether
-Kev J Art and Squatch Bros are genuine GW stockists.
+**Next:** maintainer reviews/sends the 4 drafts; mark each with `Store email
+confirmation sent on <date>` in `data/coloradosprings.json` once actually sent.
+Deeper research pass for Gamer's Haven / Hobby Smith / Van's / Impact Sports /
+J&J if email outreach is wanted for them; otherwise phone/social.

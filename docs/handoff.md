@@ -7,7 +7,7 @@ this is not an append-only log or an archive. For durable rules read
 [`project-plan.md`](project-plan.md). This file is just: where we left off,
 what's mid-flight, and what to do next.
 
-_Last updated: 2026-06-27_
+_Last updated: 2026-06-28_
 
 ## Current state
 
@@ -39,7 +39,7 @@ _Last updated: 2026-06-27_
 |---|---|---|
 | Twin Cities | 43 | **Essentially complete** — every store with an email has been **sent** (drafts only → user sent ~24 emails incl. chains); no-email stores worked by phone/FB/contact-form. ~33 sent, ~8 no-email, 2 GW-corporate excluded. |
 | St Cloud | 1 | Lewis – St Cloud, own `data/stcloud.json` (>40 mi from Mpls; shows on MN + All Cities views, **not** Twin Cities). Phone-confirmed `loyalty`. |
-| Colorado Springs | 13 | Discovery done; **all 13 unconfirmed**. Contacts CSV exported (`docs/outreach/coloradosprings-stores.csv`) for an email-research pass — **next city up**. |
+| Colorado Springs | 12 | Discovery done; **1 confirmed (`none`), 11 unconfirmed**. **Squatch Bros. phone-confirmed** (carries Warhammer, no discount, clearance/trade options, ~50–100 units, no play space). **9 email drafts created + marked sent** (Tabletop Citadel, Petrie's, Valkyrie's Loft, Chaos Games and More + Gamer's Haven, Hobby Smith, Van's Comics, Impact Sports, J&J — last 5 sent on unverified-guess emails per maintainer call). Theo's Toys remains phone/contact-form only, 1 GW-corporate excluded. Kev J Art removed (confirmed no longer sells Warhammer). |
 | Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. No outreach yet. |
 | Duluth | 4 | Stockists confirmed, discounts unverified (all unconfirmed). |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
@@ -62,13 +62,40 @@ _Last updated: 2026-06-27_
 - Contacts source of truth: `docs/outreach/twincities-contacts.md`. Live
   sent/not-emailed snapshot: `docs/outreach/email-status.md`.
 
+## Colorado Springs outreach — detail (2026-06-28)
+
+- **9 Gmail drafts created** (unconfirmed-listing template, "Confirm Your
+  Listing" button): Tabletop Citadel, Petrie's Family Games, Valkyrie's Loft,
+  Chaos Games and More (verified/corroborated emails), plus Gamer's Haven,
+  Hobby Smith, Van's Comics Games Cards, Impact Sports Cards & Collectibles,
+  J & J Games N Hobbies (emails that didn't hold up against a direct site
+  check — maintainer chose to send anyway, treating a bounce as low-risk
+  rather than waiting on further verification). Verified via `list_drafts` —
+  one each, no duplicates. **Marked sent** — `Store email confirmation sent on
+  2026-06-28.` appended to each of the 9 stores' `note` in
+  `data/coloradosprings.json`.
+- **Squatch Bros. Retro Arcade phone-confirmed (2026-06-28)** — promoted from
+  `unconfirmed` to `category: "none"`. Carries Warhammer models, no discount;
+  some clearance/trade options available; ~50–100 units of stock; no play
+  space. `note` set to `Verified by store via phone on 2026-06-28.`
+- **A user-supplied (Gemini-generated) contact list for all 13 stores was
+  cross-checked against primary sources before trusting any address** — per
+  `CLAUDE.md`'s "verify, don't trust" rule. The list's "Kev J Art is Closed"
+  claim turned out to be literally false (site is live, taking commissions),
+  but the maintainer separately confirmed Kev J Art **no longer sells
+  Warhammer models** — the actual disqualifying fact — so it was **removed
+  from `data/coloradosprings.json` entirely** (12 stores now), not just left
+  `unconfirmed`.
+- **1 store** stays phone/contact-form only (Theo's Toys & Games) — no email
+  exists for it.
+- Full writeup: `docs/outreach/coloradosprings-contacts.md`.
+
 ## Next up (priority order)
 
-1. **Colorado Springs outreach** — the CSV is out for email research. As emails
-   come back: record in a `coloradosprings-contacts.md`, generate prefilled links
-   (`node scripts/prefill-link.js coloradosprings`), and draft (all 13 are
-   `unconfirmed` → use the **unconfirmed** "Confirm Your Listing" template).
-   Mark each sent store with the `Store email confirmation sent on <date>` note.
+1. **Await replies** to the 9 Colorado Springs outreach emails (already sent
+   and marked in `data/coloradosprings.json`); flip each to its confirmed
+   category as form responses come in. Theo's Toys & Games remains
+   phone/social-only (no email exists for it).
 2. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
 3. **Twin Cities loose ends** — Rockhopper reply; flip any store that submits the
    form (auto-published) from its email-marker note to verified.
@@ -92,6 +119,28 @@ _Last updated: 2026-06-27_
   `[skip ci]`). Data changes must pass `node scripts/validate-stores.js`.
 
 ## Session log
+
+### 2026-06-28 (Colorado Springs outreach)
+
+- Verified a Gemini-generated contact list for all 13 Colorado Springs stores
+  (also supplied as a Google Doc) against each store's own site/contact page
+  rather than trusting it outright.
+- Created 9 Gmail drafts (unconfirmed template): 4 for stores with
+  site-verified/corroborated emails (Tabletop Citadel, Petrie's Family Games,
+  Valkyrie's Loft, Chaos Games and More); 5 more for stores whose emails
+  didn't hold up against a direct site check (Gamer's Haven, Hobby Smith,
+  Van's Comics, Impact Sports Cards, J & J Games) — maintainer chose to send
+  on the unverified guess anyway rather than wait. 2 stores have no email at
+  all (Theo's Toys, Squatch Bros.) and stay phone/contact-form only.
+- **Removed Kev J Art** from `data/coloradosprings.json` (13 → 12 stores) —
+  the Gemini list's "Closed" claim was disproved by a direct site check, but
+  the maintainer confirmed separately the store no longer sells Warhammer
+  models, which is the real reason for exclusion. Updated
+  `coloradosprings-stores.csv`, `coloradosprings-contacts.md`,
+  `research-process/results/coloradosprings.md`, and `email-status.md` to
+  match; re-ran `validate-stores.js` clean.
+- Rewrote `docs/outreach/coloradosprings-contacts.md` with the verification
+  detail per store.
 
 ### 2026-06-27 (outreach + housekeeping session)
 
