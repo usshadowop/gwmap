@@ -148,6 +148,27 @@ function statePageHtml(stateName, slug, center, zoom) {
 `;
 }
 
+// Add a supplement's data URL to the All Cities combined view if it isn't
+// already there (idempotent; mirrors gen-state-storefinder.js's
+// ensureStateDataUrl). Supplements are pre-deduped against their state's curated
+// city files, and All Cities loads those same city files, so no pin is doubled.
+function ensureAllCitiesDataUrl(supplementBase) {
+  const allCitiesPath = path.join(ROOT, 'location', 'allcities', 'index.html');
+  const lines = fs.readFileSync(allCitiesPath, 'utf8').split('\n');
+  if (lines.some(l => l.includes(`data/${supplementBase}.json`))) return false;
+
+  const openIdx = lines.findIndex(l => l.includes('window.GWMAP_DATA_URLS = ['));
+  if (openIdx === -1) fail('Could not find window.GWMAP_DATA_URLS in location/allcities/index.html.');
+  const closeIdx = lines.findIndex((l, i) => i > openIdx && l.trim() === '];');
+  if (closeIdx === -1) fail('Could not find the closing "];" for GWMAP_DATA_URLS in location/allcities/index.html.');
+  const lastEntryIdx = closeIdx - 1;
+  if (!lines[lastEntryIdx].trim().endsWith(',')) lines[lastEntryIdx] = `${lines[lastEntryIdx]},`;
+  const indent = lines[lastEntryIdx].match(/^\s*/)[0];
+  lines.splice(closeIdx, 0, `${indent}'../../data/${supplementBase}.json'`);
+  fs.writeFileSync(allCitiesPath, lines.join('\n'));
+  return true;
+}
+
 // Link a state from the landing page's region nav, inserted alphabetically by
 // display name, if it isn't already present. State-only entries carry no city
 // sublist; existing curated groups (Colorado, Minnesota) are left untouched.
@@ -199,7 +220,7 @@ function main() {
   }
 
   const codes = Object.keys(groups).sort((a, b) => STATE_NAMES[a].localeCompare(STATE_NAMES[b]));
-  let created = 0, linked = 0;
+  let created = 0, linked = 0, allCitiesAdded = 0;
 
   for (const code of codes) {
     const stateName = STATE_NAMES[code];
@@ -218,6 +239,7 @@ function main() {
     execFileSync('node', [path.join(__dirname, 'gen-state-storefinder.js'), code], { stdio: 'pipe' });
 
     if (ensureStateOnLanding(stateName, slug)) linked++;
+    if (ensureAllCitiesDataUrl(`${slug}-storefinder`)) allCitiesAdded++;
   }
 
   console.log(`Generated state pages from ${path.basename(snapshotPath)}:`);
@@ -225,6 +247,7 @@ function main() {
   console.log(`  ${created} new state page(s) scaffolded, ${codes.length - created} already existed`);
   console.log(`  ${codes.length} store-finder supplement(s) (re)built and wired`);
   console.log(`  ${linked} new landing-page link(s) added`);
+  console.log(`  ${allCitiesAdded} supplement(s) added to the All Cities view`);
 }
 
 main();

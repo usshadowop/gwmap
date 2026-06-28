@@ -15,10 +15,12 @@
  * "none" — we already know they sell at full retail — matching how the city
  * files store them, so they stay visible and accurately categorized.
  *
- * Dedup is against the city files the state page already loads: a snapshot entry
- * is treated as already-covered if it sits within ~120 m of a city store, or its
- * normalized name matches one (the fallback for city stores with no coordinates).
- * City data files are never modified — they stay the authoritative pin.
+ * Dedup: a snapshot entry is treated as already-covered if it sits within ~120 m
+ * of ANY curated city store repo-wide (so a border store curated under an
+ * adjacent state's metro doesn't double-pin on the combined All Cities view), or
+ * if its normalized name matches one of THIS state's city stores (the fallback
+ * for curated stores with no coordinates). City data files are never modified —
+ * they stay the authoritative pin.
  *
  * Usage:
  *   node scripts/gen-state-storefinder.js <ST>     e.g. node scripts/gen-state-storefinder.js MN
@@ -147,6 +149,24 @@ function readStateCityFiles(statePath, supplementBase) {
   return bases;
 }
 
+// Collect coordinates of EVERY curated city store repo-wide (any data/*.json
+// that isn't a generated *-storefinder.json supplement). Proximity dedup runs
+// against these, not just this state's city files: a border store curated under
+// an adjacent state's metro (e.g. a Wisconsin store in data/twincities.json)
+// would otherwise reappear in this state's supplement and double-pin on the
+// All Cities combined view, which loads both files.
+function readAllCuratedPoints() {
+  const points = [];
+  for (const f of fs.readdirSync(DATA_DIR)) {
+    if (!f.endsWith('.json') || /-storefinder\.json$/.test(f)) continue;
+    const stores = JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8'));
+    for (const s of stores) {
+      if (typeof s.lat === 'number' && typeof s.lng === 'number') points.push([s.lat, s.lng]);
+    }
+  }
+  return points;
+}
+
 // Add the supplement's data URL to the state page's GWMAP_DATA_URLS array if it
 // isn't already there (mirrors scripts/new-city.js addDataUrl, but idempotent).
 function ensureStateDataUrl(statePath, supplementBase) {
@@ -230,10 +250,11 @@ function main() {
     return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
   });
 
+  // Name dedup is scoped to THIS state's city files (the fallback for curated
+  // stores with no coordinates); proximity dedup is repo-wide so cross-border
+  // curated stores don't double-pin on the All Cities view.
   const cityNameKeys = new Set(cityStores.map(s => nameKey(s.name)));
-  const cityPoints = cityStores
-    .filter(s => typeof s.lat === 'number' && typeof s.lng === 'number')
-    .map(s => [s.lat, s.lng]);
+  const curatedPoints = readAllCuratedPoints();
 
   // Covered = matches an existing pin (or one we've already kept this run).
   function isCovered(s, keptKeys, keptPoints) {
@@ -242,7 +263,7 @@ function main() {
     const geo = s._geoloc || {};
     const lat = num(geo.lat), lng = num(geo.lng);
     if (lat == null || lng == null) return false;
-    for (const [pLat, pLng] of [...cityPoints, ...keptPoints]) {
+    for (const [pLat, pLng] of [...curatedPoints, ...keptPoints]) {
       if (haversine(lat, lng, pLat, pLng) <= DEDUP_METERS) return true;
     }
     return false;
