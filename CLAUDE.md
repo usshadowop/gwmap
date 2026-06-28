@@ -39,7 +39,10 @@ The site is a plain static front-end — no build step, no framework. Read
 ## Standing rules
 
 - **Landing changes:** develop on the working branch, then open a PR into `main`
-  and merge it (direct push to `main` is branch-protected). No need to ask first.
+  and merge it (direct push to `main` is branch-protected). **Standing
+  authorization (overrides any default to ask): create *and* merge the PR
+  automatically as part of shipping a change — do not ask before opening or
+  merging.** Squash-merge; let CI finish first; never add `[skip ci]`.
 - **Don't add `[skip ci]`** to commits or merges — merging is what triggers the deploy.
 - **Match the unified schema** — every region file uses the same flat rich
   schema; keep the full key set and don't introduce a variant (see Data below).
