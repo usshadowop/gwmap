@@ -41,8 +41,7 @@ Hello from warhammerdiscounts.com — is this the right contact for {Store Name}
   <p>Before I send over the few details we have on file for you to check, I wanted
     to make sure I've got the right inbox: <strong>is this the best email to reach
     {Store Name}</strong> about its listing? If there's a better contact, just
-    point me to it — and if you'd rather not be listed at all, let me know and
-    I'll take it down, no problem.</p>
+    point me to it.</p>
   <p>Thanks for your time,<br>Jon@warhammerstores.com</p>
 </div>
 ```
@@ -69,10 +68,12 @@ first-contact variant:
   e.g. `/location/texas/`) and use the state name as the anchor text. If you'd
   rather keep the first touch completely link-free, drop the link sentence — never
   leave a `{placeholder}` in a sent email.
-- **Always offer the channel choice and the opt-out.** The core ask is "is this
-  the right email?", paired with "point me to a better contact" and "I'll remove
-  you if you'd prefer." Giving the owner control is the whole point of leading with
-  a hello.
+- **Ask the channel question — but don't offer a removal/opt-out.** The core ask
+  is "is this the right email?", paired with "point me to a better contact." The
+  listing is **fan/crowd-sourced and stays either way**; this email invites the
+  owner to keep it accurate, it isn't asking permission to list them. The fan
+  reading the map is priority #1 — owners *update* their info, they don't *approve*
+  being listed, so there's nothing to opt out of.
 - **Outreach marker on send:** append `Intro email sent on <date>` to the store's
   `note` when you send the hello — distinct from the verification email's
   `Store email confirmation sent on <date>` marker, so the two phases stay
