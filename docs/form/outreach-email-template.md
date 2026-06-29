@@ -16,6 +16,10 @@ who distrusts a form/button link (phishing concern), use the
 question in the email body for a plain reply — no form link or button (and no
 auto-publish; you transcribe the reply by hand).
 
+To warm up a cold contact first, an optional
+[intro / "hello" email](outreach-email-intro-template.md) introduces the project
+and confirms the inbox (no form or button) *before* this verification email.
+
 Outreach emails are generated and sent manually (per
 [`../project-plan.md`](../project-plan.md) — "resists automation by design;
 personalized cold outreach beats bulk"). Use this template every time so the

@@ -136,6 +136,13 @@ one inbox? then (2) is the store confirmed or unconfirmed?**
 | **Owner wary of a form/button link** (phishing concern) | [`outreach-email-inline-template.md`](../form/outreach-email-inline-template.md) | *(none — every question is in the email body; owner replies)* |
 
 Key points:
+- **Optionally lead with a hello (Phase 0).** For a cold contact likely to read a
+  form button as phishing, send the short first-contact
+  [`outreach-email-intro-template.md`](../form/outreach-email-intro-template.md)
+  first — it introduces Jon + the project and just asks "is this the right email?"
+  (no form, no button). Once the owner confirms the channel or replies, follow up
+  with the right verification template from the table above. Mark it
+  `Intro email sent on <date>` so it isn't re-sent.
 - **The inline variant trades automation for trust.** It has no form link or
   button, so it sidesteps the "looks like phishing" reaction — but a free-form
   reply doesn't go through `form-sync.gs`, so there's **no auto-publish**: read the
