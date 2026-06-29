@@ -49,6 +49,26 @@ naming all three; each location's `note` is still marked individually.
 
 So **17 stores** were contacted via **15 drafts** (14 single + 1 bundled Colpar's).
 
+### Additional / alternate inboxes also emailed (2026-06-29)
+
+Secondary addresses the Gemini pass listed in its `notes` for stores already
+emailed above. A second intro draft was created for each (DRAFTS ONLY) to widen
+the chance of reaching the right person. No extra `note` marker in
+`data/denver.json` — each store already carries `Intro email sent on 2026-06-29.`
+from its primary-inbox draft.
+
+| Store | Additional email(s) | Source / note |
+|---|---|---|
+| Timbuk Toys | `Buyer@timbuktoys.com` | wholesale/buyer inbox (timbuktoys.com) |
+| Total Escape Games | `orders@totalescapegames.com` | orders inbox (totalescapegames.com) |
+| Atomic Goblin Games | `orders@atomicgoblingames.com` | orders inbox (atomicgoblingames.com) |
+| Coffee Cat Comics | `info@coffeecatcomics.com`, `sales@coffeecatcomics.com` | alternate inboxes (one draft, both recipients) |
+| Newcastle Comics | `steve@newcastlecomics.com` | Longmont local-delivery contact |
+| Retro Gaming of Denver | `legal@retrogamingofdenver.com` | also listed on their site |
+
+**6 additional drafts** (covering 7 addresses). Not drafted: Advantage Games'
+`brosephur23@…` — a partial address with no domain, unusable as given.
+
 ## No email found — need a later pass (phone / form / social only)
 
 Gemini returned no usable public email for these 8. Not emailed this wave; best
@@ -71,7 +91,8 @@ alternative contact noted. They stay `category: unconfirmed` and listed.
 - **Warhammer - Boulder** (4800 Baseline Rd, Boulder) — GW-owned.
 
 ---
-**Next:** maintainer reviews/sends the 15 intro drafts (10–20/day). When an owner
+**Next:** maintainer reviews/sends the 21 intro drafts (15 primary + 6 alternate
+inboxes; 10–20/day). When an owner
 replies confirming the channel, follow up with the
 [`unconfirmed` verification template](../form/outreach-email-unconfirmed-template.md)
 ("Confirm Your Listing" button) and swap the `Intro email sent` marker for
