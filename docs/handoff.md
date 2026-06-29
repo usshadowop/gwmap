@@ -14,132 +14,133 @@ _Last updated: 2026-06-29_
 
 ## Current state
 
-- **Site is live, healthy, and now NATIONWIDE** at warhammerdiscounts.com. Every
-  US state + DC has its own map page (`location/<state>/`), all linked
-  alphabetically from the landing page, and the **All Cities** view spans the
-  whole country. Curated city/region pages (Twin Cities, Colorado Springs,
-  Denver, Duluth, Rochester, Mankato, St Cloud) are unchanged. All four PRs this
-  session (#65–#68) merged to `main` and **deployed green**.
-- **New this session — every form submission stamps a "Verified by store via form
-  on <date>." note** (PR #65). `scripts/apps-script/form-sync.gs` now refreshes
-  that dated line on *every* submission (update/new/triage), appended below any
-  human note, with stale machine markers (Store-Finder seed note,
-  `Store email confirmation sent` marker) stripped and no duplicate dates on
-  re-submission. It renders via the existing `popup-note` line — no UI change.
-  **The user has pasted the updated `form-sync.gs` into the live Apps Script
-  project**, so it's active. Dumpster Cat Games was backfilled (its form PR #64
-  merged before this fix existed).
-- **New this session — nationwide state pages + Store Finder supplements** (PR
-  #66). New idempotent driver **`scripts/gen-all-state-pages.js`**: for every US
-  state in the snapshot it scaffolds `location/<state>/index.html` if missing
-  (median-centered, outlier-robust + fitted zoom), runs `gen-state-storefinder.js`
-  per state, and links it on the landing page. 50 states + DC, ~2,500 stores.
-- **New this session — All Cities wired nationwide + cross-border dedup fix** (PR
-  #67). `gen-all-state-pages.js` now also wires each supplement into
-  `location/allcities/` (idempotent). `gen-state-storefinder.js` proximity dedup
-  went **repo-wide** so a border store curated under an adjacent state's metro
-  (e.g. a WI store in `data/twincities.json`) no longer double-pins on All Cities.
-- **New this session — fixed dedup silently dropping same-named stores** (PR #68).
-  The supplement generator had been deduping by **name**, collapsing every
-  official "Games Workshop"/"Warhammer" store (and other same-named chains) to one
-  per state — **130 of 190 official GW stores nationwide were missing** (the bug
-  that surfaced "Games Workshop - Union Landing"). Name matching is now strictly
-  the coordinate-less fallback; stores with coordinates dedup by **proximity
-  only**. All 190 official stores now accounted for (185 as `none` supplement
-  pins, 5 coincide with curated MN/CO pins).
-- **New this session — first-contact "hello" outreach email** (PRs #70–#71).
-  `docs/form/outreach-email-intro-template.md`: a short trust-first first touch
-  (no form/button) that introduces the project and asks if it's the right inbox —
-  sent *before* the verification email. No removal/opt-out (the listing is
-  fan-sourced and stays; the fan reading the map is priority #1 — owners *update*
-  their info, they don't *approve* being listed). Marker `Intro email sent on <date>`.
+- **Site is live, healthy, and NATIONWIDE** at warhammerdiscounts.com — every US
+  state + DC has a map page, the All Cities view spans the country, and curated
+  city pages (Twin Cities, Colorado Springs, **Denver**, Duluth, Rochester,
+  Mankato, St Cloud) are intact. Nothing structural changed this session.
+- **This session was all about Denver outreach + discount data.** Two PRs merged
+  to `main` and deployed green:
+  - **PR #73 — Denver intro outreach wave 1.** Generated the first-contact
+    "hello" intro emails for the 25 independent Denver shops (intro template:
+    no form, no button). **15 Gmail drafts** (14 single-store + 1 bundled for
+    Colpar's HobbyTown's shared inbox covering Lakewood/Aurora/Littleton).
+    Appended `Intro email sent on 2026-06-29.` to all 17 emailed stores' notes;
+    added [`../outreach/denver-contacts.md`](../outreach/denver-contacts.md)
+    (emails + sources + confidence, 8 no-email stores, 2 excluded GW stores).
+  - **PR #74 — Denver discount/stock fold-in (Gemini pass).** Applied a Gemini
+    web-search pass of discount/stock details. **Category upgrades** (maintainer
+    chose to trust the pass): Gamers Guild→`15`, Denver Central Games→`10`,
+    Mythic Games→`10`, Retro Gaming→`15`, The Wizard's Chest→`loyalty`, Atomic
+    Goblin→`10`. Stores that carry Warhammer but have no reported discount stayed
+    `unconfirmed` with enriched notes (Total Escape, Colpar's ×3, Crit Castle,
+    Mind Goblin, Advantage). PlayForge kept `unconfirmed` (reported little/no GW
+    stock; no removal). Every one of the 14 touched entries carries two
+    transparency markers: a dated `reported via web-search pass on 2026-06-29
+    (not independently store-verified)` line **and** `Pending confirmation of
+    details from store or user submission.`
+- **After PR #74, 6 more intro drafts** were created for the **alternate/secondary
+  inboxes** the Gemini contact pass listed (Timbuk `Buyer@`, Total Escape
+  `orders@`, Atomic Goblin `orders@`, Coffee Cat `info@`+`sales@`, Newcastle
+  `steve@`, Retro Gaming `legal@`). Recorded in `denver-contacts.md`. This change
+  (contacts doc + this handoff) is **committed locally on the working branch but
+  NOT yet pushed** — see "Mid-flight" below.
+
+## Mid-flight (needs a push)
+
+- **Unpushed local commit on `claude/game-store-contacts-rm1x9v`:** the
+  `denver-contacts.md` "additional inboxes" update + this handoff rewrite. The 6
+  alternate-inbox Gmail drafts are already created. **Decide: push live (PR →
+  squash-merge) or keep batching.** (Data file `data/denver.json` was NOT changed
+  by the additional-inbox step — those stores are already marked intro-sent.)
+
+## Gmail drafts staged (DRAFTS ONLY — never auto-sent)
+
+- **Denver: 21 intro "hello" drafts** awaiting maintainer review/send (10–20/day):
+  15 primary-inbox + 6 alternate-inbox. Subject: `Hello from warhammerdiscounts.com
+  — is this the right contact for <Store>?`
+- **Twin Cities + Colorado Springs: ~35 inline resend drafts** from prior sessions
+  (still not sent). Dreamers Vault is the multi-store-layout sample worth a look.
 
 ## Per-region status snapshot (curated regions)
 
 | Region | Stores | Outreach |
 |---|---|---|
-| Twin Cities | 42 | Confirmed: Battleground (form), Lewis (phone), Games By James (phone), **Dumpster Cat (form, this session — `15`)**. Galaxy Games removed. Inline resend drafts staged (not sent). |
+| Twin Cities | 42 | Confirmed: Battleground (form), Lewis (phone), Games By James (phone), Dumpster Cat (form, `15`). Inline resend drafts staged (not sent). |
 | St Cloud | 1 | Lewis – St Cloud. Phone-confirmed `loyalty`. |
 | Colorado Springs | 12 | Button outreach sent; inline resends drafted (not sent) for the 9 emailable `unconfirmed`. Squatch Bros `none`; Theo's phone-only. |
-| Denver | 27 | Discovery (A+B+C) done; 2 no-discount (GW-owned), 25 unconfirmed. **Email generation is the NEXT TASK** — Gemini→Claude flow staged in [`../outreach/denver-email-discovery.md`](../outreach/denver-email-discovery.md). |
+| **Denver** | 27 | **Discovery A+B+C done. Discounts folded in (Gemini pass): 2×`15`, 3×`10`, 1×`loyalty`, 2×`none` (GW corporate), 19×`unconfirmed`. 21 intro drafts staged (not sent). All discount/stock entries marked "pending confirmation."** |
 | Duluth | 4 | Stockists confirmed, discounts unverified. |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
 | Mankato | 3 | Stockists confirmed, discounts unverified. |
 
 Plus **50 state + DC store-finder supplements** (`data/<state>-storefinder.json`,
-~2,500 `unconfirmed`/`none` pins) — generated, not hand-edited. Authoritative
-counts live in `data/<region>.json`.
+~2,500 `unconfirmed`/`none` pins) — generated, not hand-edited.
 
 ## Next up (priority order)
 
-1. **Denver email generation — THE NEXT TASK.** Two-step flow staged in
-   [`../outreach/denver-email-discovery.md`](../outreach/denver-email-discovery.md):
-   **(a)** paste that doc's **Step 1** prompt into **Gemini** to find public
-   contact emails for the 25 unconfirmed Denver shops (let Gemini's web search
-   absorb the token cost); **(b)** paste the doc's **Step 2** handoff + Gemini's
-   JSON into a fresh **Claude** session to draft the first-contact "hello" intro
-   emails (Gmail drafts only — never send), mark each `Intro email sent on <date>`
-   in `data/denver.json`, log contacts in `docs/outreach/denver-contacts.md`, and
-   ship via PR. Skip the 2 GW-owned `Warhammer -` stores. Wave 2 (the unconfirmed
-   verification email) follows once owners reply.
-2. **Review + send the inline resend drafts** (35 in Gmail Drafts, Twin Cities +
-   Colorado Springs). User sends manually, 10–20/day. Dreamers Vault is the
-   multi-store-layout sample worth a look first.
-3. **As email replies come in:** transcribe by hand into `data/<region>.json`
-   (set real `category`, add `Verified by store via email on <YYYY-MM-DD>`, strip
-   the `Store email confirmation sent on <date>` marker), then branch → PR → merge.
-   **No auto-publish for inline/intro replies** (only form/button submissions auto-publish).
-4. **Fold the user's edited copy into `outreach-email-inline-template.md`** so the
-   repo doc matches what actually went out (subject, intro, 1–22 numbering,
-   phase-3 note). Still has pre-edit wording.
-5. **Storefinder cache refresh** ~2026-07-28 (`scripts/pull-storefinder.js`), then
-   **re-run `node scripts/gen-all-state-pages.js`** to refresh all state pages +
-   supplements + All Cities in one shot.
-6. **Doc nit:** templates sign off `Jon@warhammerstores.com` but the
+1. **Push the mid-flight commit** (additional-inbox contacts doc + this handoff)
+   once the user says go.
+2. **Review + send the staged Gmail drafts** — 21 Denver intro + ~35 TC/CO Springs
+   inline resends. Maintainer sends manually, 10–20/day.
+3. **Denver wave 2 — `unconfirmed` verification emails.** Once an owner replies to
+   an intro, follow up with the
+   [`unconfirmed` template](../form/outreach-email-unconfirmed-template.md)
+   ("Confirm Your Listing" button). Per `prefill-link.js`.
+4. **As email replies come in (Denver especially):** transcribe by hand into
+   `data/denver.json` — set the real `category`, add `Verified by store via email
+   on <YYYY-MM-DD>`, and **drop the `reported via web-search…` + `Pending
+   confirmation…` caveats** for that store. Branch → PR → merge. **No auto-publish
+   for intro/inline replies** (only form/button submissions auto-publish).
+5. **Denver no-email stores (8)** need a deeper contact pass or phone outreach if
+   wanted: Twist & Shout, Bad Habit Hobbies, Atomic Games West, HobbyTown USA
+   Westminster, Advantage Games, Mythic Games, Do Gooder Games Cafe, Collectormania.
+6. **Fold the user's edited copy into `outreach-email-inline-template.md`** (still
+   pre-edit wording).
+7. **Storefinder cache refresh** ~2026-07-28 (`scripts/pull-storefinder.js`), then
+   **re-run `node scripts/gen-all-state-pages.js`**.
+8. **Doc nit:** templates sign off `Jon@warhammerstores.com` but the
    `begin-city-outreach` skill says `Jon@warhammerdiscounts.com` in one spot.
 
 ## Conventions worth remembering
 
-- **All-states regen is one command:** `node scripts/gen-all-state-pages.js`
-  (idempotent) rebuilds every state page + supplement and re-wires the landing
-  page and All Cities. Run it after each monthly snapshot re-pull. Per-state:
-  `node scripts/gen-state-storefinder.js <ST>`.
-- **Supplement dedup is PROXIMITY-based (~120 m, repo-wide curated + kept-this-run).**
-  Name matching is *only* the fallback for coordinate-less curated stores — do
-  **not** reintroduce name-based dedup of stores that have coordinates, or you'll
-  re-collapse same-named chains like the official "Games Workshop"/"Warhammer"
-  stores (the PR #68 bug). Generated `*-storefinder.json` are not hand-edited;
-  curate in the city file instead.
-- **`form-sync.gs` is a repo MIRROR of the live Google Apps Script.** Editing the
-  repo file does nothing until it's pasted into the Apps Script editor. Every form
-  submission now stamps `Verified by store via form on <date>.`
-- **Confirmation notes:** direct confirmation → `Verified by store via <channel>
-  on <YYYY-MM-DD>`; outreach-sent marker → `Store email confirmation sent on <date>`.
+- **This session the user asked to batch changes and be asked before going live**
+  ("I'll tell you to push live"). That overrode CLAUDE.md's standing
+  "create+merge automatically" rule *for this session*. Confirm the user's
+  preference at the start of the next session before auto-merging.
+- **Map rendering only shows `discount` (bold), the new-release/pre-order tags,
+  website/phone, and `note`.** `discountDetails`/`loyaltyDetails`/
+  `discountExclusions` are stored + round-tripped by `form-sync.gs` but **never
+  displayed** — put fan-facing text in `discount`/`note`. Marker color +
+  default visibility come from `category` (`unconfirmed` is hidden behind the
+  "Show unconfirmed stores" toggle).
+- **Outreach markers:** intro → `Intro email sent on <date>`; verification-sent →
+  `Store email confirmation sent on <date>`; direct confirmation → `Verified by
+  store via <channel> on <YYYY-MM-DD>`. Form submissions also stamp `Verified by
+  store via form on <date>` (via the live Apps Script).
 - **Ship:** branch → PR → squash-merge into `main` (deploy runs on merge; no
-  `[skip ci]`). **Create and merge the PR without asking** (standing rule). Data
-  PRs must pass `node scripts/validate-stores.js`. Note: after a squash-merge,
-  continuing on the same branch leaves history diverged and bloats the next PR
-  diff — reset the branch onto `origin/main` before the next commit.
-- **All Cities is intentionally nationwide now** (was deferred until states had
-  supplements). State supplement pins are mostly `unconfirmed` (hidden behind the
-  map toggle); GW-owned stores show as `none` by default.
+  `[skip ci]`). Data PRs must pass `node scripts/validate-stores.js`. After a
+  squash-merge, **reset the working branch onto `origin/main`** before the next
+  commit (the merged branch is auto-deleted on GitHub, so the next push recreates
+  it — a plain `git push -u` works, no force needed).
+- **All-states regen is one command:** `node scripts/gen-all-state-pages.js`
+  (idempotent). Supplement dedup is PROXIMITY-based; don't reintroduce name-based
+  dedup (PR #68 bug). Generated `*-storefinder.json` are not hand-edited.
+- **`form-sync.gs` is a repo MIRROR of the live Apps Script** — editing the repo
+  file does nothing until pasted into the Apps Script editor.
+- **Commit-signing note:** this environment has no GPG/SSH signing key, so commits
+  show as "Unverified" on GitHub (committer email is still correct,
+  `noreply@anthropic.com`). The stop-hook flags this; nothing to fix — and never
+  amend the GitHub squash-merge commit (`noreply@github.com`) that becomes the
+  branch tip after `reset --hard origin/main`.
 
 ## Session log
 
-### 2026-06-28/29 (form-verify stamping + nationwide expansion)
+### 2026-06-29 (Denver outreach + discounts)
 
-- **PR #65** — every form submission stamps/refreshes a dated "Verified by store
-  via form" note (`form-sync.gs` + helper); backfilled Dumpster Cat. User pasted
-  the new script into live Apps Script.
-- **PR #66** — `gen-all-state-pages.js`; per-state pages + supplements for all 50
-  states + DC, linked on the landing page.
-- **PR #67** — wired all supplements into All Cities; made proximity dedup
-  repo-wide to kill cross-border double-pins (3 WI + 1 NE).
-- **PR #68** — fixed name-based dedup that was dropping 130/190 official GW stores
-  (surfaced by "Games Workshop - Union Landing"); dedup is now proximity-only
-  except the coordinate-less curated fallback.
-- **PR #70** — added the first-contact "hello" intro outreach email template.
-- **PR #71** — dropped the removal opt-out from it (fan-sourced listing stays).
-- **Staged Denver email generation** as the next task: `docs/outreach/denver-email-discovery.md`
-  holds the Gemini email-search prompt (25 unconfirmed stores embedded) + the
-  Claude draft-generation handoff.
+- **PR #73** — Denver intro wave 1: 15 intro drafts (incl. 1 bundled Colpar's);
+  `Intro email sent on 2026-06-29.` markers; new `denver-contacts.md`.
+- **PR #74** — Denver discount/stock fold-in from a Gemini pass: 6 category
+  upgrades (2×`15`, 3×`10`, 1×`loyalty`), enriched `unconfirmed` notes, and dated
+  "reported via web-search" + "pending confirmation" caveats on all 14 entries.
+- **Post-#74 (mid-flight, unpushed):** 6 alternate-inbox intro drafts created;
+  `denver-contacts.md` updated; this handoff rewritten.
