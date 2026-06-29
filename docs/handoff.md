@@ -47,6 +47,12 @@ _Last updated: 2026-06-29_
   the coordinate-less fallback; stores with coordinates dedup by **proximity
   only**. All 190 official stores now accounted for (185 as `none` supplement
   pins, 5 coincide with curated MN/CO pins).
+- **New this session — first-contact "hello" outreach email** (PRs #70–#71).
+  `docs/form/outreach-email-intro-template.md`: a short trust-first first touch
+  (no form/button) that introduces the project and asks if it's the right inbox —
+  sent *before* the verification email. No removal/opt-out (the listing is
+  fan-sourced and stays; the fan reading the map is priority #1 — owners *update*
+  their info, they don't *approve* being listed). Marker `Intro email sent on <date>`.
 
 ## Per-region status snapshot (curated regions)
 
@@ -55,7 +61,7 @@ _Last updated: 2026-06-29_
 | Twin Cities | 42 | Confirmed: Battleground (form), Lewis (phone), Games By James (phone), **Dumpster Cat (form, this session — `15`)**. Galaxy Games removed. Inline resend drafts staged (not sent). |
 | St Cloud | 1 | Lewis – St Cloud. Phone-confirmed `loyalty`. |
 | Colorado Springs | 12 | Button outreach sent; inline resends drafted (not sent) for the 9 emailable `unconfirmed`. Squatch Bros `none`; Theo's phone-only. |
-| Denver | 27 | Discovery (A+B+C) done; 2 no-discount, 25 unconfirmed. **No outreach yet — biggest unstarted curated region.** |
+| Denver | 27 | Discovery (A+B+C) done; 2 no-discount (GW-owned), 25 unconfirmed. **Email generation is the NEXT TASK** — Gemini→Claude flow staged in [`../outreach/denver-email-discovery.md`](../outreach/denver-email-discovery.md). |
 | Duluth | 4 | Stockists confirmed, discounts unverified. |
 | Rochester | 1 | Stockist confirmed, discount unverified. |
 | Mankato | 3 | Stockists confirmed, discounts unverified. |
@@ -66,17 +72,26 @@ counts live in `data/<region>.json`.
 
 ## Next up (priority order)
 
-1. **Review + send the inline resend drafts** (35 in Gmail Drafts, Twin Cities +
+1. **Denver email generation — THE NEXT TASK.** Two-step flow staged in
+   [`../outreach/denver-email-discovery.md`](../outreach/denver-email-discovery.md):
+   **(a)** paste that doc's **Step 1** prompt into **Gemini** to find public
+   contact emails for the 25 unconfirmed Denver shops (let Gemini's web search
+   absorb the token cost); **(b)** paste the doc's **Step 2** handoff + Gemini's
+   JSON into a fresh **Claude** session to draft the first-contact "hello" intro
+   emails (Gmail drafts only — never send), mark each `Intro email sent on <date>`
+   in `data/denver.json`, log contacts in `docs/outreach/denver-contacts.md`, and
+   ship via PR. Skip the 2 GW-owned `Warhammer -` stores. Wave 2 (the unconfirmed
+   verification email) follows once owners reply.
+2. **Review + send the inline resend drafts** (35 in Gmail Drafts, Twin Cities +
    Colorado Springs). User sends manually, 10–20/day. Dreamers Vault is the
    multi-store-layout sample worth a look first.
-2. **As email replies come in:** transcribe by hand into `data/<region>.json`
+3. **As email replies come in:** transcribe by hand into `data/<region>.json`
    (set real `category`, add `Verified by store via email on <YYYY-MM-DD>`, strip
    the `Store email confirmation sent on <date>` marker), then branch → PR → merge.
-   **No auto-publish for inline replies** (only form/button submissions auto-publish).
-3. **Fold the user's edited copy into `outreach-email-inline-template.md`** so the
+   **No auto-publish for inline/intro replies** (only form/button submissions auto-publish).
+4. **Fold the user's edited copy into `outreach-email-inline-template.md`** so the
    repo doc matches what actually went out (subject, intro, 1–22 numbering,
    phase-3 note). Still has pre-edit wording.
-4. **Denver outreach** — discovery done; needs contacts + drafts (25 unconfirmed).
 5. **Storefinder cache refresh** ~2026-07-28 (`scripts/pull-storefinder.js`), then
    **re-run `node scripts/gen-all-state-pages.js`** to refresh all state pages +
    supplements + All Cities in one shot.
@@ -123,3 +138,8 @@ counts live in `data/<region>.json`.
 - **PR #68** — fixed name-based dedup that was dropping 130/190 official GW stores
   (surfaced by "Games Workshop - Union Landing"); dedup is now proximity-only
   except the coordinate-less curated fallback.
+- **PR #70** — added the first-contact "hello" intro outreach email template.
+- **PR #71** — dropped the removal opt-out from it (fan-sourced listing stays).
+- **Staged Denver email generation** as the next task: `docs/outreach/denver-email-discovery.md`
+  holds the Gemini email-search prompt (25 unconfirmed stores embedded) + the
+  Claude draft-generation handoff.
