@@ -428,6 +428,22 @@ header p {
   font-size: 0.85rem;
 }
 
+.lightbox-date {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #fff;
+  background: rgba(26, 26, 26, 0.7);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  max-width: calc(100vw - 6rem);
+}
+
+.lightbox-date[hidden] {
+  display: none;
+}
+
 @media (max-width: 600px) {
   #legend {
     gap: 0.75rem;

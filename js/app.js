@@ -12,6 +12,19 @@ const CATEGORY_Z_INDEX_OFFSET = Object.fromEntries(
   CATEGORIES.map((c, i) => [c.key, (CATEGORIES.length - i) * 10000])
 );
 
+// Stock-photo filenames lead with the capture date as YYYYMMDD (e.g.
+// "20260629_124449.jpg"). Pull it out and format it for the lightbox caption so
+// viewers can gauge how fresh a photo is. Returns '' if no date is parseable.
+const STOCK_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function stockPhotoDate(key) {
+  const file = String(key || '').split('/').pop() || '';
+  const m = file.match(/^(\d{4})(\d{2})(\d{2})/);
+  if (!m) return '';
+  const month = STOCK_MONTHS[parseInt(m[2], 10) - 1];
+  if (!month) return '';
+  return `${month} ${parseInt(m[3], 10)}, ${m[1]}`;
+}
+
 // Single full-screen lightbox shared by every "Stock photos" link. Built in JS
 // (like the mail FAB) so it works on every region page without editing each
 // HTML shell. A link carries its image keys in data-images; clicking opens the
@@ -27,6 +40,7 @@ const stockLightbox = (() => {
   overlay.setAttribute('role', 'dialog');
   overlay.setAttribute('aria-label', 'Store stock photos');
   overlay.innerHTML = `
+    <div class="lightbox-date"></div>
     <button type="button" class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
     <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">&#8249;</button>
     <img class="lightbox-img" alt="Store stock photo">
@@ -35,6 +49,7 @@ const stockLightbox = (() => {
 
   const imgEl = overlay.querySelector('.lightbox-img');
   const counterEl = overlay.querySelector('.lightbox-counter');
+  const dateEl = overlay.querySelector('.lightbox-date');
   const prevBtn = overlay.querySelector('.lightbox-prev');
   const nextBtn = overlay.querySelector('.lightbox-next');
   const closeBtn = overlay.querySelector('.lightbox-close');
@@ -42,6 +57,9 @@ const stockLightbox = (() => {
   function render() {
     imgEl.src = `${IMAGE_BASE_URL}/${images[index]}`;
     counterEl.textContent = `${index + 1} / ${images.length}`;
+    const date = stockPhotoDate(images[index]);
+    dateEl.textContent = date ? `Photo taken on: ${date}` : '';
+    dateEl.hidden = !date;
     const multi = images.length > 1;
     prevBtn.hidden = !multi;
     nextBtn.hidden = !multi;
