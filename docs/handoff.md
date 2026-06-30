@@ -29,8 +29,18 @@ _Last updated: 2026-06-30_
   - **#78** — trimmed Dreamers Vault to 5 after the owner-curation pass.
   - **#79** — added **Hub Hobby Richfield (6)** and **Tower Games Minneapolis
     (8)** photos.
-- **Outreach state is unchanged since 2026-06-29** (no outreach work this
-  session) — see "Carry-forward outreach" below.
+- **Two form submissions auto-published after the handoff (#81, #82):** Hub Hobby
+  Richfield and Hub Hobby Little Canada both verified via the Google Form — now
+  `category: 15`, `Verified by store via form on 2026-06-30`, with
+  discount-exclusion/details and `affiliation` filled in. **Hub Hobby Richfield's
+  6 `stockImages` were preserved through the form update** — confirms the
+  form-sync `Object.assign({}, existing, entry)` design works in production
+  (the form never sends `stockImages`, so the existing value survives). Note:
+  both had `address` blanked (the form doesn't collect/preserve it) — pins still
+  work off the preserved `lat`/`lng` + `mapsUrl`, but the popup address line is
+  now empty for these two.
+- **Outreach state is otherwise unchanged since 2026-06-29** (no outreach work
+  this session) — see "Carry-forward outreach" below.
 
 ## Stock-photos system — how it works (NEW; read before touching photos)
 
@@ -149,3 +159,6 @@ _Last updated: 2026-06-30_
 - **Infra:** stood up R2 bucket `gwmap-images`, custom domain
   `img.warhammerstores.com`, rclone with a bucket-scoped token +
   `no_check_bucket = true`, folder convention `<region>/<store-id>/stock/`.
+- **#81 / #82** — form submissions (auto-published, not hand-authored): Hub Hobby
+  Richfield and Hub Hobby Little Canada verified via the Google Form. Richfield's
+  6 `stockImages` survived the merge.
