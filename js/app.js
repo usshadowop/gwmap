@@ -56,6 +56,10 @@ function buildPopupHtml(store, { showName = true } = {}) {
 
   const mapsUrl = store.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
 
+  const stockPhotosLink = store.stockImages && store.stockImages.length
+    ? `<p><a href="${IMAGE_BASE_URL}/${store.stockImages[0]}" target="_blank" rel="noopener">Stock photos</a></p>`
+    : '';
+
   return `
     <div class="popup-content">
       ${showName ? `<h3>${store.name}</h3>` : ''}
@@ -64,9 +68,7 @@ function buildPopupHtml(store, { showName = true } = {}) {
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
       ${store.phone ? `<p>${store.phone}</p>` : ''}
-      ${store.stockImages && store.stockImages.length
-        ? `<p><a href="${IMAGE_BASE_URL}/${store.stockImages[0]}" target="_blank" rel="noopener">Stock photos</a></p>`
-        : ''}
+      ${stockPhotosLink}
       ${preorderBox}
       <p><a href="${mapsUrl}" target="_blank" rel="noopener">View on Google Maps</a></p>
       ${store.note ? `<p class="popup-note">${store.note}</p>` : ''}

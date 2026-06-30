@@ -62,6 +62,9 @@ function validateFile(file) {
     if ('gameSystems' in store && !Array.isArray(store.gameSystems)) {
       errors.push(`${where}: "gameSystems" must be an array`);
     }
+    if ('stockImages' in store && !Array.isArray(store.stockImages)) {
+      errors.push(`${where}: "stockImages" must be an array`);
+    }
   });
 
   return errors;

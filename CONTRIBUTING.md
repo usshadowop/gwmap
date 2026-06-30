@@ -88,7 +88,9 @@ instead of an edit to every store. Stock photos are hosted in Cloudflare R2
 under `<region>/<store-id>/stock/<filename>`, so an entry's key looks like
 `"twincities/hub-hobby-richfield/stock/photo1.jpg"`. The card links to the
 first image in the array; leave the array empty (`[]`) until photos exist for
-that store.
+that store. Keys must be **URL-safe** — lowercase, no spaces (e.g. use
+`stock/`, not `Stock/` or `Play Space/`) — since they're placed into the link
+href as-is without escaping.
 
 Additional flat fields are also carried on each entry for upcoming phases
 (`affiliation`, `discountExclusions`, `discountDetails`, `loyaltyDetails`,
