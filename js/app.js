@@ -1,3 +1,5 @@
+const IMAGE_BASE_URL = 'https://img.warhammerstores.com';
+
 const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },
   { key: '10', color: '#3498db', label: '10% discount' },
@@ -9,6 +11,89 @@ const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color])
 const CATEGORY_Z_INDEX_OFFSET = Object.fromEntries(
   CATEGORIES.map((c, i) => [c.key, (CATEGORIES.length - i) * 10000])
 );
+
+// Single full-screen lightbox shared by every "Stock photos" link. Built in JS
+// (like the mail FAB) so it works on every region page without editing each
+// HTML shell. A link carries its image keys in data-images; clicking opens the
+// overlay and pages through them. Mirrors the .modal-overlay [hidden] idiom.
+const stockLightbox = (() => {
+  let images = [];
+  let index = 0;
+  let lastTrigger = null;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.hidden = true;
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-label', 'Store stock photos');
+  overlay.innerHTML = `
+    <button type="button" class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <img class="lightbox-img" alt="Store stock photo">
+    <button type="button" class="lightbox-btn lightbox-next" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox-counter"></div>`;
+
+  const imgEl = overlay.querySelector('.lightbox-img');
+  const counterEl = overlay.querySelector('.lightbox-counter');
+  const prevBtn = overlay.querySelector('.lightbox-prev');
+  const nextBtn = overlay.querySelector('.lightbox-next');
+  const closeBtn = overlay.querySelector('.lightbox-close');
+
+  function render() {
+    imgEl.src = `${IMAGE_BASE_URL}/${images[index]}`;
+    counterEl.textContent = `${index + 1} / ${images.length}`;
+    const multi = images.length > 1;
+    prevBtn.hidden = !multi;
+    nextBtn.hidden = !multi;
+    counterEl.hidden = !multi;
+  }
+  function step(delta) {
+    index = (index + delta + images.length) % images.length;
+    render();
+  }
+  function open(imgs, trigger) {
+    if (!imgs || !imgs.length) return;
+    images = imgs;
+    index = 0;
+    lastTrigger = trigger || null;
+    overlay.hidden = false;
+    render();
+    closeBtn.focus();
+  }
+  function close() {
+    overlay.hidden = true;
+    imgEl.removeAttribute('src');
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => step(-1));
+  nextBtn.addEventListener('click', () => step(1));
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', e => {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+
+  // Body may not exist yet if this script is in <head>; append on DOM ready.
+  if (document.body) document.body.appendChild(overlay);
+  else document.addEventListener('DOMContentLoaded', () => document.body.appendChild(overlay));
+
+  return { open };
+})();
+
+// Delegated so dynamically-rendered popup/list links work without per-element wiring.
+document.addEventListener('click', e => {
+  const trigger = e.target.closest('.stock-photos-link');
+  if (!trigger) return;
+  e.preventDefault();
+  let imgs;
+  try { imgs = JSON.parse(trigger.getAttribute('data-images')); }
+  catch { return; }
+  stockLightbox.open(imgs, trigger);
+});
 
 function renderLegend() {
   const legend = document.getElementById('legend');
@@ -54,6 +139,10 @@ function buildPopupHtml(store, { showName = true } = {}) {
 
   const mapsUrl = store.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
 
+  const stockPhotosLink = store.stockImages && store.stockImages.length
+    ? `<p><a href="#" class="stock-photos-link" data-images='${JSON.stringify(store.stockImages)}'>Stock photos${store.stockImages.length > 1 ? ` (${store.stockImages.length})` : ''}</a></p>`
+    : '';
+
   return `
     <div class="popup-content">
       ${showName ? `<h3>${store.name}</h3>` : ''}
@@ -62,6 +151,7 @@ function buildPopupHtml(store, { showName = true } = {}) {
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
       ${store.phone ? `<p>${store.phone}</p>` : ''}
+      ${stockPhotosLink}
       ${preorderBox}
       <p><a href="${mapsUrl}" target="_blank" rel="noopener">View on Google Maps</a></p>
       ${store.note ? `<p class="popup-note">${store.note}</p>` : ''}

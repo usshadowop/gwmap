@@ -30,7 +30,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "crossroad-collectibles-llc-sf",
@@ -63,7 +64,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "dungeons-and-dugouts-sf",
@@ -96,7 +98,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "fox-fable-haven-sf",
@@ -129,7 +132,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "friendly-ghost-games-sf",
@@ -162,7 +166,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "game-crossing-sf",
@@ -195,7 +200,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "games-of-chance-sf",
@@ -228,7 +234,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "heroes-realm-sf",
@@ -261,7 +268,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "puzzle-s-games-and-hobbies-sf",
@@ -294,7 +302,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "the-dugout-sf",
@@ -327,7 +336,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "the-wyoming-game-vault-sf",
@@ -360,7 +370,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "triumvirate-sf",
@@ -393,7 +404,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "warhammer-sf",
@@ -426,6 +438,7 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   }
 ]

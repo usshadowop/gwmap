@@ -30,7 +30,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "gamers-haven-colorado-springs",
@@ -63,7 +64,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "hobby-smith-colorado-springs",
@@ -96,7 +98,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "vans-comics-games-cards-colorado-springs",
@@ -129,7 +132,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "tabletop-citadel-colorado-springs",
@@ -162,7 +166,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "petries-family-games-colorado-springs",
@@ -195,7 +200,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "valkyries-loft-monument",
@@ -228,7 +234,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "jj-games-n-hobbies-fountain",
@@ -261,7 +268,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "chaos-games-and-more-pueblo",
@@ -294,7 +302,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "impact-sports-cards-colorado-springs",
@@ -327,7 +336,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "theos-toys-manitou-springs",
@@ -360,7 +370,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "squatch-bros-retro-arcade-cripple-creek",
@@ -393,6 +404,7 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   }
 ]

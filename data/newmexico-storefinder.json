@@ -30,7 +30,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "alien-city-games-sf",
@@ -63,7 +64,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "bricks-boards-llc-sf",
@@ -96,7 +98,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "cafe-anime-sf",
@@ -129,7 +132,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "decked-trading-cards-sf",
@@ -162,7 +166,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "duke-city-games-sf",
@@ -195,7 +200,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "ettin-games-abq-sf",
@@ -228,7 +234,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "frozen-star-ltd-company-sf",
@@ -261,7 +268,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "hammersmiths-guild-sf",
@@ -294,7 +302,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "holloman-hobby-stop-llc-sf",
@@ -327,7 +336,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "lost-viking-games-sf",
@@ -360,7 +370,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "mesa-top-games-toys-sf",
@@ -393,7 +404,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "pile-of-games-sf",
@@ -426,7 +438,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "rocket-city-gaming-lounge-sf",
@@ -459,7 +472,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "slice-dice-pizzeria-sf",
@@ -492,7 +506,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "tavern-of-souls-gaming-llc-sf",
@@ -525,7 +540,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "thunderbird-games-sf",
@@ -558,7 +574,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "treasure-hunt-games-sf",
@@ -591,7 +608,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "warhammer-sf",
@@ -624,7 +642,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "wzkd-games-southside-sf",
@@ -657,7 +676,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "zia-comics-sf",
@@ -690,6 +710,7 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   }
 ]

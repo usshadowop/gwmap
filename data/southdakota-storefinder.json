@@ -30,7 +30,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "brookings-book-company-sf",
@@ -63,7 +64,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "dragon-s-den-gaming-sf",
@@ -96,7 +98,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "flashbax-sf",
@@ -129,7 +132,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "heroes-villains-sf",
@@ -162,7 +166,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "heroes-magic-sports-cards-sf",
@@ -195,7 +200,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "hobbytown-sioux-falls-sf",
@@ -228,7 +234,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "lookout-games-sf",
@@ -261,7 +268,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "office-emporium-llc-sf",
@@ -294,7 +302,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "raw-books-sf",
@@ -327,7 +336,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "robo-briks-grafix-sf",
@@ -360,7 +370,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "the-guild-hall-sf",
@@ -393,7 +404,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "turbulent-games-sf",
@@ -426,7 +438,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "turbulent-games-east-sf",
@@ -459,7 +472,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "warhammer-sf",
@@ -492,7 +506,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "warhammer-sioux-falls-sf",
@@ -525,6 +540,7 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   }
 ]

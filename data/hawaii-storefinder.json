@@ -30,7 +30,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "dragon-s-lair-mililani-sf",
@@ -63,7 +64,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "happy-sea-toys-collectibles-sf",
@@ -96,7 +98,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "miniq-anime-shop-sf",
@@ -129,7 +132,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "other-realms-ltd-sf",
@@ -162,7 +166,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "request-music-sf",
@@ -195,7 +200,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "the-armchair-adventurer-sf",
@@ -228,7 +234,8 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   },
   {
     "id": "westside-comics-and-games-sf",
@@ -261,6 +268,7 @@
     "playSpaceCost": "",
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
-    "playSpaceReserve": ""
+    "playSpaceReserve": "",
+    "stockImages": []
   }
 ]
