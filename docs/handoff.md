@@ -10,137 +10,142 @@ what's mid-flight, and what to do next.
 **Note:** update this file only at the end of a session, when the user asks —
 not mid-session.
 
-_Last updated: 2026-06-29_
+_Last updated: 2026-06-30_
 
 ## Current state
 
-- **Site is live, healthy, and NATIONWIDE** at warhammerdiscounts.com — every US
-  state + DC has a map page, the All Cities view spans the country, and curated
-  city pages (Twin Cities, Colorado Springs, **Denver**, Duluth, Rochester,
-  Mankato, St Cloud) are intact. Nothing structural changed this session.
-- **This session was all about Denver outreach + discount data.** Two PRs merged
-  to `main` and deployed green:
-  - **PR #73 — Denver intro outreach wave 1.** Generated the first-contact
-    "hello" intro emails for the 25 independent Denver shops (intro template:
-    no form, no button). **15 Gmail drafts** (14 single-store + 1 bundled for
-    Colpar's HobbyTown's shared inbox covering Lakewood/Aurora/Littleton).
-    Appended `Intro email sent on 2026-06-29.` to all 17 emailed stores' notes;
-    added [`../outreach/denver-contacts.md`](../outreach/denver-contacts.md)
-    (emails + sources + confidence, 8 no-email stores, 2 excluded GW stores).
-  - **PR #74 — Denver discount/stock fold-in (Gemini pass).** Applied a Gemini
-    web-search pass of discount/stock details. **Category upgrades** (maintainer
-    chose to trust the pass): Gamers Guild→`15`, Denver Central Games→`10`,
-    Mythic Games→`10`, Retro Gaming→`15`, The Wizard's Chest→`loyalty`, Atomic
-    Goblin→`10`. Stores that carry Warhammer but have no reported discount stayed
-    `unconfirmed` with enriched notes (Total Escape, Colpar's ×3, Crit Castle,
-    Mind Goblin, Advantage). PlayForge kept `unconfirmed` (reported little/no GW
-    stock; no removal). Every one of the 14 touched entries carries two
-    transparency markers: a dated `reported via web-search pass on 2026-06-29
-    (not independently store-verified)` line **and** `Pending confirmation of
-    details from store or user submission.`
-- **After PR #74, 6 more intro drafts** were created for the **alternate/secondary
-  inboxes** the Gemini contact pass listed (Timbuk `Buyer@`, Total Escape
-  `orders@`, Atomic Goblin `orders@`, Coffee Cat `info@`+`sales@`, Newcastle
-  `steve@`, Retro Gaming `legal@`). Recorded in `denver-contacts.md`. This change
-  (contacts doc + this handoff) is **committed locally on the working branch but
-  NOT yet pushed** — see "Mid-flight" below.
+- **Site is live, healthy, and NATIONWIDE.** The map site is
+  warhammerdiscounts.com; store **stock photos are hosted on Cloudflare R2**,
+  served via **img.warhammerstores.com**. Nothing structural changed on the map
+  itself this session.
+- **This session built the store stock-photos system** — 4 PRs merged &
+  deployed green (#76–#79):
+  - **#76** — new `stockImages` schema field across all 58 data files + a
+    "Stock photos" **lightbox gallery** in `app.js` + an `IMAGE_BASE_URL`
+    constant. `gen-state-storefinder.js`, `validate-stores.js`, and
+    `CONTRIBUTING.md` updated to match.
+  - **#77** — synced Dreamers Vault to R2 (dropped accidental terrain shots) and
+    added a **"Photo taken on: &lt;date&gt;"** caption parsed from the filename.
+  - **#78** — trimmed Dreamers Vault to 5 after the owner-curation pass.
+  - **#79** — added **Hub Hobby Richfield (6)** and **Tower Games Minneapolis
+    (8)** photos.
+- **Outreach state is unchanged since 2026-06-29** (no outreach work this
+  session) — see "Carry-forward outreach" below.
 
-## Mid-flight (needs a push)
+## Stock-photos system — how it works (NEW; read before touching photos)
 
-- **Unpushed local commit on `claude/game-store-contacts-rm1x9v`:** the
-  `denver-contacts.md` "additional inboxes" update + this handoff rewrite. The 6
-  alternate-inbox Gmail drafts are already created. **Decide: push live (PR →
-  squash-merge) or keep batching.** (Data file `data/denver.json` was NOT changed
-  by the additional-inbox step — those stores are already marked intro-sent.)
+- **Hosting:** Cloudflare R2 bucket **`gwmap-images`**, public via custom domain
+  **`img.warhammerstores.com`** (the `warhammerstores.com` zone is on Cloudflare,
+  R2-proxied). Zero egress cost.
+- **Folder convention:** `<region>/<store-id>/stock/<filename>` — e.g.
+  `twincities/hub-hobby-richfield/stock/20260629_135842.jpg`. The `<store-id>`
+  **must** match the `id` in `data/<region>.json`. Keys must be **URL-safe**
+  (lowercase, no spaces — app.js interpolates them into the href unescaped).
+- **Data:** each store carries a `stockImages` array of **host-relative keys**
+  (NOT full URLs). `app.js` prepends `IMAGE_BASE_URL`
+  (`https://img.warhammerstores.com`) at render time, so moving the host later is
+  a one-line change. Empty `[]` ⇒ no link rendered.
+- **Render:** a single **"Stock photos (N)"** link on the card opens a
+  full-screen lightbox — prev/next, photo counter, Esc/arrow-key/backdrop close,
+  focus restore. Filenames lead with `YYYYMMDD_HHMMSS`; the lightbox shows
+  **"Photo taken on: Mon D, YYYY"** parsed from that prefix (`stockPhotoDate()` +
+  `STOCK_MONTHS` in `app.js`). Built in `app.js` like the mail FAB, so it works
+  on every region page without editing each HTML shell.
+- **rclone (uploads happen on the maintainer's machine, never in-session):**
+  remote `r2` (type `s3`, provider `Cloudflare`), **bucket-scoped** token, with
+  **`no_check_bucket = true`** — REQUIRED, or uploads 403 on `CreateBucket`
+  (scoped tokens can't create/list buckets). `rclone lsd r2:` (no bucket) also
+  403s by design; always target `r2:gwmap-images`.
+  - Upload: `rclone copy "<localdir>" r2:gwmap-images/twincities/<store-id>/stock --progress`
+  - List:   `rclone lsf r2:gwmap-images/twincities/<store-id>/stock`
+  - Delete: `rclone deletefile r2:gwmap-images/twincities/<store-id>/stock/<file>`
+- **Workflow to add/curate photos:** (1) upload to R2 with rclone, (2) `lsf` the
+  folder, (3) paste the filenames to Claude (it can't see the local `G:` drive)
+  → it sets `stockImages` in `data/<region>.json`, (4) branch → PR → merge. Keep
+  the data array in sync with the bucket or the lightbox shows dead-URL frames.
 
-## Gmail drafts staged (DRAFTS ONLY — never auto-sent)
+## Photos live so far (all Twin Cities)
 
-- **Denver: 21 intro "hello" drafts** awaiting maintainer review/send (10–20/day):
-  15 primary-inbox + 6 alternate-inbox. Subject: `Hello from warhammerdiscounts.com
-  — is this the right contact for <Store>?`
-- **Twin Cities + Colorado Springs: ~35 inline resend drafts** from prior sessions
-  (still not sent). Dreamers Vault is the multi-store-layout sample worth a look.
+| Store | Photos |
+|---|---|
+| Dreamers Vault Games St. Louis Park | 5 |
+| Hub Hobby Richfield | 6 |
+| Tower Games Minneapolis | 8 |
 
-## Per-region status snapshot (curated regions)
+## Mid-flight / cleanup
 
-| Region | Stores | Outreach |
-|---|---|---|
-| Twin Cities | 42 | Confirmed: Battleground (form), Lewis (phone), Games By James (phone), Dumpster Cat (form, `15`). Inline resend drafts staged (not sent). |
-| St Cloud | 1 | Lewis – St Cloud. Phone-confirmed `loyalty`. |
-| Colorado Springs | 12 | Button outreach sent; inline resends drafted (not sent) for the 9 emailable `unconfirmed`. Squatch Bros `none`; Theo's phone-only. |
-| **Denver** | 27 | **Discovery A+B+C done. Discounts folded in (Gemini pass): 2×`15`, 3×`10`, 1×`loyalty`, 2×`none` (GW corporate), 19×`unconfirmed`. 21 intro drafts staged (not sent). All discount/stock entries marked "pending confirmation."** |
-| Duluth | 4 | Stockists confirmed, discounts unverified. |
-| Rochester | 1 | Stockist confirmed, discount unverified. |
-| Mankato | 3 | Stockists confirmed, discounts unverified. |
-
-Plus **50 state + DC store-finder supplements** (`data/<state>-storefinder.json`,
-~2,500 `unconfirmed`/`none` pins) — generated, not hand-edited.
+- **Nothing uncommitted** — all four PRs are merged to `main`.
+- **`.keep` placeholders** still sit in `hub-hobby-richfield/stock/` and
+  `tower-games-minneapolis/stock/` (created to make the empty folders show in the
+  dashboard). Harmless — `app.js` only loads keys explicitly listed in
+  `stockImages`, so `.keep` is never requested — but delete when convenient:
+  `rclone deletefile r2:gwmap-images/twincities/<store-id>/stock/.keep`.
+- Photos are ~4 MB straight off the phone. No cost issue (R2 egress is free),
+  but optionally resize to ~1600px for snappier mobile loads.
+- Date caption format is "Mon D, YYYY" — change `stockPhotoDate()`/`STOCK_MONTHS`
+  in `app.js` if a different format is wanted.
 
 ## Next up (priority order)
 
-1. **Push the mid-flight commit** (additional-inbox contacts doc + this handoff)
-   once the user says go.
-2. **Review + send the staged Gmail drafts** — 21 Denver intro + ~35 TC/CO Springs
-   inline resends. Maintainer sends manually, 10–20/day.
-3. **Denver wave 2 — `unconfirmed` verification emails.** Once an owner replies to
-   an intro, follow up with the
-   [`unconfirmed` template](../form/outreach-email-unconfirmed-template.md)
-   ("Confirm Your Listing" button). Per `prefill-link.js`.
-4. **As email replies come in (Denver especially):** transcribe by hand into
-   `data/denver.json` — set the real `category`, add `Verified by store via email
-   on <YYYY-MM-DD>`, and **drop the `reported via web-search…` + `Pending
-   confirmation…` caveats** for that store. Branch → PR → merge. **No auto-publish
-   for intro/inline replies** (only form/button submissions auto-publish).
-5. **Denver no-email stores (8)** need a deeper contact pass or phone outreach if
-   wanted: Twist & Shout, Bad Habit Hobbies, Atomic Games West, HobbyTown USA
-   Westminster, Advantage Games, Mythic Games, Do Gooder Games Cafe, Collectormania.
-6. **Fold the user's edited copy into `outreach-email-inline-template.md`** (still
-   pre-edit wording).
-7. **Storefinder cache refresh** ~2026-07-28 (`scripts/pull-storefinder.js`), then
-   **re-run `node scripts/gen-all-state-pages.js`**.
-8. **Doc nit:** templates sign off `Jon@warhammerstores.com` but the
+1. **More stock photos** as the maintainer uploads them — same
+   upload → `lsf` → paste filenames → wire → PR flow.
+2. **Carry-forward outreach (unchanged since 2026-06-29):**
+   - **Send the staged Gmail drafts** — 21 Denver intro + ~35 TC/CO Springs
+     inline resends (drafts only; maintainer sends 10–20/day).
+   - **Denver wave 2** — `unconfirmed` verification emails once an owner replies
+     to an intro (`unconfirmed` template, "Confirm Your Listing").
+   - **Transcribe email replies** into `data/denver.json`: set the real
+     `category`, add `Verified by store via email on <date>`, drop the
+     `reported via web-search…` + `Pending confirmation…` caveats. No
+     auto-publish for intro/inline replies (only form/button submissions
+     auto-publish).
+   - **Denver 8 no-email stores** — deeper contact/phone pass if wanted.
+   - **Fold the user's edited copy** into `outreach-email-inline-template.md`.
+3. **Storefinder cache refresh** ~2026-07-28 (`scripts/pull-storefinder.js`),
+   then re-run `node scripts/gen-all-state-pages.js`.
+4. **Doc nit:** templates sign off `Jon@warhammerstores.com` but the
    `begin-city-outreach` skill says `Jon@warhammerdiscounts.com` in one spot.
 
 ## Conventions worth remembering
 
-- **This session the user asked to batch changes and be asked before going live**
-  ("I'll tell you to push live"). That overrode CLAUDE.md's standing
-  "create+merge automatically" rule *for this session*. Confirm the user's
-  preference at the start of the next session before auto-merging.
-- **Map rendering only shows `discount` (bold), the new-release/pre-order tags,
-  website/phone, and `note`.** `discountDetails`/`loyaltyDetails`/
-  `discountExclusions` are stored + round-tripped by `form-sync.gs` but **never
-  displayed** — put fan-facing text in `discount`/`note`. Marker color +
-  default visibility come from `category` (`unconfirmed` is hidden behind the
-  "Show unconfirmed stores" toggle).
-- **Outreach markers:** intro → `Intro email sent on <date>`; verification-sent →
-  `Store email confirmation sent on <date>`; direct confirmation → `Verified by
-  store via <channel> on <YYYY-MM-DD>`. Form submissions also stamp `Verified by
-  store via form on <date>` (via the live Apps Script).
 - **Ship:** branch → PR → squash-merge into `main` (deploy runs on merge; no
   `[skip ci]`). Data PRs must pass `node scripts/validate-stores.js`. After a
   squash-merge, **reset the working branch onto `origin/main`** before the next
-  commit (the merged branch is auto-deleted on GitHub, so the next push recreates
-  it — a plain `git push -u` works, no force needed).
+  commit (the merged head branch auto-deletes on GitHub).
+- **This session the user said "go live" / "push live" and approved auto-merge**
+  — the CLAUDE.md standing "create + merge automatically" rule was in effect
+  (confirm again next session before auto-merging).
+- **UI changes are NOT covered by CI** (it only runs `validate-stores.js` on
+  data). Verify in a browser. This session used a headless Chromium (Playwright
+  at `/opt/pw-browsers/chromium`; global playwright under
+  `/opt/node22/lib/node_modules`, run with `NODE_PATH` set) against
+  `python3 -m http.server`, **fulfilling Leaflet + images from local copies**
+  because the sandbox browser's proxy blocks unpkg/tiles/the image host (curl
+  reaches them, Chromium doesn't).
+- **Map rendering shows only** `discount` (bold), the new-release/pre-order tags,
+  website/phone, `note`, and now the **Stock photos** link. `category` drives pin
+  color + default visibility (`unconfirmed` hidden behind the toggle).
+- **`form-sync.gs` is a repo MIRROR** of the live Apps Script — editing the repo
+  file does nothing until pasted into the Apps Script editor. A form submission
+  **preserves `stockImages`** (it's never in the form `entry`, so the
+  `Object.assign({}, existing, entry)` merge keeps it).
+- **Commit-signing** shows "Unverified" on GitHub (no GPG/SSH key) — expected,
+  nothing to fix; never amend the GitHub squash-merge commit.
 - **All-states regen is one command:** `node scripts/gen-all-state-pages.js`
-  (idempotent). Supplement dedup is PROXIMITY-based; don't reintroduce name-based
-  dedup (PR #68 bug). Generated `*-storefinder.json` are not hand-edited.
-- **`form-sync.gs` is a repo MIRROR of the live Apps Script** — editing the repo
-  file does nothing until pasted into the Apps Script editor.
-- **Commit-signing note:** this environment has no GPG/SSH signing key, so commits
-  show as "Unverified" on GitHub (committer email is still correct,
-  `noreply@anthropic.com`). The stop-hook flags this; nothing to fix — and never
-  amend the GitHub squash-merge commit (`noreply@github.com`) that becomes the
-  branch tip after `reset --hard origin/main`.
+  (idempotent). Supplement dedup is PROXIMITY-based. Generated
+  `*-storefinder.json` are not hand-edited.
 
 ## Session log
 
-### 2026-06-29 (Denver outreach + discounts)
+### 2026-06-30 (Stock-photos system)
 
-- **PR #73** — Denver intro wave 1: 15 intro drafts (incl. 1 bundled Colpar's);
-  `Intro email sent on 2026-06-29.` markers; new `denver-contacts.md`.
-- **PR #74** — Denver discount/stock fold-in from a Gemini pass: 6 category
-  upgrades (2×`15`, 3×`10`, 1×`loyalty`), enriched `unconfirmed` notes, and dated
-  "reported via web-search" + "pending confirmation" caveats on all 14 entries.
-- **Post-#74 (mid-flight, unpushed):** 6 alternate-inbox intro drafts created;
-  `denver-contacts.md` updated; this handoff rewritten.
+- **#76** — `stockImages` schema field across all 58 data files; "Stock photos"
+  lightbox gallery + `IMAGE_BASE_URL` in `app.js`; validation/generator/docs
+  updated.
+- **#77** — Dreamers Vault R2 sync (terrain shots removed) + "Photo taken on:
+  &lt;date&gt;" caption from the `YYYYMMDD` filename prefix.
+- **#78** — Dreamers Vault trimmed to its 5 curated photos.
+- **#79** — Hub Hobby Richfield (6) + Tower Games Minneapolis (8) photos wired in.
+- **Infra:** stood up R2 bucket `gwmap-images`, custom domain
+  `img.warhammerstores.com`, rclone with a bucket-scoped token +
+  `no_check_bucket = true`, folder convention `<region>/<store-id>/stock/`.
