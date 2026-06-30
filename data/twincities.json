@@ -2,7 +2,7 @@
   {
     "id": "hub-hobby-richfield",
     "name": "Hub Hobby Richfield",
-    "address": "",
+    "address": "6410 Penn Ave S, Richfield, MN 55423",
     "lat": 44.886687,
     "lng": -93.309187,
     "category": "15",
@@ -43,7 +43,7 @@
   {
     "id": "hub-hobby-little-canada",
     "name": "Hub Hobby Little Canada",
-    "address": "",
+    "address": "82 Minnesota Ave, Little Canada, MN 55117",
     "lat": 45.009563,
     "lng": -93.103688,
     "category": "15",

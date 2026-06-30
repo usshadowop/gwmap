@@ -340,6 +340,10 @@ function onFormSubmit(e) {
     // when the submission actually provides a link, so a blank answer can't
     // wipe a previously verified pin URL.
     if (!entry.mapsUrl) entry.mapsUrl = existing.mapsUrl;
+    // Same for address: the question is optional, so a store re-verifying without
+    // re-typing its address must not blank a previously set one. A non-blank
+    // answer still updates it (lets a store correct a wrong/stale address).
+    if (!entry.address) entry.address = existing.address;
     target.stores[idx] = Object.assign({}, existing, entry);
   } else {
     // No existing store matched — this submission didn't come from our seeded
