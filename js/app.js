@@ -1,4 +1,4 @@
-const IMAGE_BASE_URL = 'https://img.warhammerdiscounts.com';
+const IMAGE_BASE_URL = 'https://img.warhammerstores.com';
 
 const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },

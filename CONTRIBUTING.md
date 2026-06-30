@@ -82,7 +82,7 @@ blank — but keep the key present so every entry has the same shape.
 | `stockImages` | array of strings | "Stock photos" link (shown when non-empty) |
 
 `stockImages` holds **keys relative to a base image host**, not full URLs — the
-host (`IMAGE_BASE_URL` in `js/app.js`, currently `https://img.warhammerdiscounts.com`)
+host (`IMAGE_BASE_URL` in `js/app.js`, currently `https://img.warhammerstores.com`)
 is prepended at render time, so moving the host later is a one-line change
 instead of an edit to every store. Stock photos are hosted in Cloudflare R2
 under `<region>/<store-id>/stock/<filename>`, so an entry's key looks like
