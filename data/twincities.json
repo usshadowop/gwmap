@@ -31,7 +31,14 @@
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
     "playSpaceReserve": "",
-    "stockImages": []
+    "stockImages": [
+      "twincities/hub-hobby-richfield/stock/20260629_135842.jpg",
+      "twincities/hub-hobby-richfield/stock/20260629_135904.jpg",
+      "twincities/hub-hobby-richfield/stock/20260629_135925.jpg",
+      "twincities/hub-hobby-richfield/stock/20260629_135933.jpg",
+      "twincities/hub-hobby-richfield/stock/20260629_135940.jpg",
+      "twincities/hub-hobby-richfield/stock/20260629_140453.jpg"
+    ]
   },
   {
     "id": "hub-hobby-little-canada",
@@ -588,7 +595,16 @@
     "playSpacePrice": "",
     "playSpaceRestrictions": "",
     "playSpaceReserve": "",
-    "stockImages": []
+    "stockImages": [
+      "twincities/tower-games-minneapolis/stock/20260629_134106.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134114.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134120.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134141.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134153.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134201.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134208.jpg",
+      "twincities/tower-games-minneapolis/stock/20260629_134223.jpg"
+    ]
   },
   {
     "id": "tower-games-bloomington",
