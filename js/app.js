@@ -1,3 +1,5 @@
+const IMAGE_BASE_URL = 'https://img.warhammerdiscounts.com';
+
 const CATEGORIES = [
   { key: '15', color: '#2ecc71', label: '15% discount' },
   { key: '10', color: '#3498db', label: '10% discount' },
@@ -62,6 +64,9 @@ function buildPopupHtml(store, { showName = true } = {}) {
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
       ${store.phone ? `<p>${store.phone}</p>` : ''}
+      ${store.stockImages && store.stockImages.length
+        ? `<p><a href="${IMAGE_BASE_URL}/${store.stockImages[0]}" target="_blank" rel="noopener">Stock photos</a></p>`
+        : ''}
       ${preorderBox}
       <p><a href="${mapsUrl}" target="_blank" rel="noopener">View on Google Maps</a></p>
       ${store.note ? `<p class="popup-note">${store.note}</p>` : ''}

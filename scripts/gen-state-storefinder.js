@@ -62,7 +62,7 @@ const SCHEMA_KEYS = [
   'preorders', 'preorderUrl', 'preorderLinkText', 'mapsUrl', 'website', 'phone',
   'affiliation', 'note', 'gameSystems', 'stockLevel', 'discord', 'facebook',
   'instagram', 'twitter', 'otherSocials', 'playSpaceTables', 'playSpaceCost',
-  'playSpacePrice', 'playSpaceRestrictions', 'playSpaceReserve'
+  'playSpacePrice', 'playSpaceRestrictions', 'playSpaceReserve', 'stockImages'
 ];
 
 const NON_GW_DISCOUNT = 'Discount status unknown — not yet researched. Call store to confirm their Warhammer discount policy.';
@@ -222,7 +222,8 @@ function toStore(s, id) {
     playSpaceCost: '',
     playSpacePrice: '',
     playSpaceRestrictions: '',
-    playSpaceReserve: ''
+    playSpaceReserve: '',
+    stockImages: []
   };
   // Emit keys in canonical order.
   const ordered = {};

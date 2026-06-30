@@ -46,7 +46,8 @@ are required; the rest can stay blank:
   "playSpaceCost": "",
   "playSpacePrice": "",
   "playSpaceRestrictions": "",
-  "playSpaceReserve": ""
+  "playSpaceReserve": "",
+  "stockImages": []
 }
 ```
 
@@ -78,6 +79,16 @@ blank — but keep the key present so every entry has the same shape.
 | `website` | string | website link |
 | `phone` | string | phone number |
 | `note` | string | extra note under the popup |
+| `stockImages` | array of strings | "Stock photos" link (shown when non-empty) |
+
+`stockImages` holds **keys relative to a base image host**, not full URLs — the
+host (`IMAGE_BASE_URL` in `js/app.js`, currently `https://img.warhammerdiscounts.com`)
+is prepended at render time, so moving the host later is a one-line change
+instead of an edit to every store. Stock photos are hosted in Cloudflare R2
+under `<region>/<store-id>/stock/<filename>`, so an entry's key looks like
+`"twincities/hub-hobby-richfield/stock/photo1.jpg"`. The card links to the
+first image in the array; leave the array empty (`[]`) until photos exist for
+that store.
 
 Additional flat fields are also carried on each entry for upcoming phases
 (`affiliation`, `discountExclusions`, `discountDetails`, `loyaltyDetails`,
