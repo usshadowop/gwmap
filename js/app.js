@@ -139,15 +139,22 @@ function createPinIcon(color) {
 }
 
 function buildPopupHtml(store, { showName = true } = {}) {
+  // The "Discount applies to …" tags describe a discount, so only show them when
+  // the store actually has one. A store that merely takes pre-orders (no discount)
+  // still gets the pre-order box below, but not the discount tag.
+  const hasDiscount = store.category === '15' || store.category === '10' || store.category === 'loyalty';
   const tags = [];
-  if (store.newReleases) {
+  if (store.newReleases && hasDiscount) {
     tags.push('<li>✓ Discount applies to new releases</li>');
   }
-  if (store.preorders) {
+  if (store.preorders && hasDiscount) {
     tags.push('<li>✓ Discount applies to pre-orders</li>');
   }
 
-  const preorderBox = store.preorders
+  // Show the pre-order box whenever the store takes pre-orders or has instructions,
+  // independent of whether the discount applies to pre-orders.
+  const hasPreorderInfo = store.preorders || store.preorderUrl || store.preorderLinkText;
+  const preorderBox = hasPreorderInfo
     ? `<div class="popup-preorder-box"><div class="popup-preorder-title">Pre-order instructions</div>${
         store.preorderUrl
           ? `<a href="${store.preorderUrl}" target="_blank" rel="noopener">${store.preorderLinkText || 'Pre-order instructions'}</a>`
