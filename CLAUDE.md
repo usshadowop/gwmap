@@ -94,6 +94,7 @@ The site is a plain static front-end — no build step, no framework. Read
 ## Documentation map
 
 - [`docs/handoff.md`](docs/handoff.md) — session handoff: where the last session left off, what's next (read first; overwrite when done).
+- [`docs/gemini-handoff.md`](docs/gemini-handoff.md) — cross-tool onboarding doc (written so another model, e.g. Gemini in Google AI Studio, can pick up the whole project cold): file structure, data model, deploy loop, and gotchas.
 - [`README.md`](README.md) — architecture, running locally, adding a region.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — store schema + how to add a store.
 - [`docs/project-plan.md`](docs/project-plan.md) — high-level roadmap (setup + per-city workflow).
