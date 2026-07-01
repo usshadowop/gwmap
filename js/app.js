@@ -12,6 +12,26 @@ const CATEGORY_Z_INDEX_OFFSET = Object.fromEntries(
   CATEGORIES.map((c, i) => [c.key, (CATEGORIES.length - i) * 10000])
 );
 
+// --- Distance-to-stores state ---
+let allLoadedStores = [];   // populated after loadStores() resolves coordinates
+let userLocation = null;    // { lat, lng } or null
+let userMarker = null;      // Leaflet marker or null
+
+// Haversine formula — returns distance in miles between two lat/lng points.
+function haversineMiles(lat1, lng1, lat2, lng2) {
+  const R = 3958.8; // Earth radius in miles
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function formatDistance(miles) {
+  return miles < 10 ? `~${miles.toFixed(1)} mi` : `~${Math.round(miles)} mi`;
+}
+
 // Stock-photo filenames lead with the capture date as YYYYMMDD (e.g.
 // "20260629_124449.jpg"). Pull it out and format it for the lightbox caption so
 // viewers can gauge how fresh a photo is. Returns '' if no date is parseable.
@@ -168,10 +188,16 @@ function buildPopupHtml(store, { showName = true } = {}) {
     ? `<p><a href="#" class="stock-photos-link" data-images='${JSON.stringify(store.stockImages)}'>Stock photos${store.stockImages.length > 1 ? ` (${store.stockImages.length})` : ''}</a></p>`
     : '';
 
+  // Distance from user location (if set and store has resolved coords).
+  const distanceHtml = (userLocation && store._resolvedLat != null && store._resolvedLng != null)
+    ? `<p class="popup-distance">📍 ${formatDistance(haversineMiles(userLocation.lat, userLocation.lng, store._resolvedLat, store._resolvedLng))} from you</p>`
+    : '';
+
   return `
     <div class="popup-content">
       ${showName ? `<h3>${store.name}</h3>` : ''}
       <p>${store.address}</p>
+      ${distanceHtml}
       <p><strong>${store.discount}</strong></p>
       ${tags.length ? `<ul class="popup-tags">${tags.join('')}</ul>` : ''}
       ${store.website ? `<p><a href="${store.website}" target="_blank" rel="noopener">Website</a></p>` : ''}
@@ -200,7 +226,31 @@ function renderStoreList(stores) {
   if (!list) {
     return;
   }
-  list.innerHTML = groupStoresByCategory(stores).map(group => `
+
+  // When user location is set, compute distances and sort by distance within
+  // each category group. Otherwise, keep alphabetical order.
+  const storesWithDist = stores.map(store => {
+    if (userLocation && store._resolvedLat != null && store._resolvedLng != null) {
+      return { ...store, _distance: haversineMiles(userLocation.lat, userLocation.lng, store._resolvedLat, store._resolvedLng) };
+    }
+    return { ...store, _distance: null };
+  });
+
+  const groups = CATEGORIES
+    .map(cat => ({
+      ...cat,
+      stores: storesWithDist
+        .filter(store => store.category === cat.key)
+        .sort((a, b) => {
+          if (a._distance != null && b._distance != null) return a._distance - b._distance;
+          if (a._distance != null) return -1;
+          if (b._distance != null) return 1;
+          return a.name.localeCompare(b.name);
+        })
+    }))
+    .filter(group => group.stores.length > 0);
+
+  list.innerHTML = groups.map(group => `
     <li class="category-group">
       <details>
         <summary>
@@ -213,6 +263,7 @@ function renderStoreList(stores) {
               <details>
                 <summary>
                   <span class="store-entry-name">${store.name}</span>
+                  ${store._distance != null ? `<span class="distance-badge">${formatDistance(store._distance)}</span>` : ''}
                 </summary>
                 ${buildPopupHtml(store, { showName: false })}
               </details>
@@ -261,6 +312,7 @@ async function loadStores(map, oms, unconfirmedLayer) {
   const stores = (await Promise.all(responses.map(r => r.json()))).flat();
   const cache = loadGeocodeCache();
   const bounds = [];
+  const storeMarkers = [];  // track markers for popup refresh on distance search
 
   renderStoreList(stores);
 
@@ -269,11 +321,17 @@ async function loadStores(map, oms, unconfirmedLayer) {
       const { lat, lng } = (store.lat != null && store.lng != null)
         ? { lat: store.lat, lng: store.lng }
         : await geocode(store.address, cache);
+
+      // Save resolved coordinates on the store object for distance calculations.
+      store._resolvedLat = lat;
+      store._resolvedLng = lng;
+
       const color = CATEGORY_COLORS[store.category] || CATEGORY_COLORS.none;
       const zIndexOffset = CATEGORY_Z_INDEX_OFFSET[store.category] ?? 0;
       const marker = L.marker([lat, lng], { icon: createPinIcon(color), zIndexOffset });
       const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
       marker.bindPopup(buildPopupHtml(store), { maxWidth: popupMaxWidth, autoPanPadding: [20, 20] });
+      storeMarkers.push({ store, marker });
       if (oms) {
         marker.off('click');
         oms.addMarker(marker);
@@ -292,9 +350,114 @@ async function loadStores(map, oms, unconfirmedLayer) {
   if (bounds.length) {
     map.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
   }
+
+  // Save loaded stores globally so the distance search can re-render the list.
+  allLoadedStores = stores;
+
+  // Function to refresh all popup content (called when user location changes).
+  function refreshPopups() {
+    for (const { store, marker } of storeMarkers) {
+      const popupMaxWidth = Math.min(Math.max(window.innerWidth * 0.6, 220), 320);
+      marker.setPopupContent(buildPopupHtml(store));
+    }
+  }
+
+  // Wire up the distance search bar.
+  initDistanceSearch(map, refreshPopups);
+}
+
+// --- Distance search bar (injected into the header at runtime) ---
+
+function injectDistanceSearchBar() {
+  const header = document.querySelector('header');
+  if (!header) return;
+  const bar = document.createElement('div');
+  bar.className = 'distance-search';
+  bar.innerHTML = `
+    <input type="text" id="distance-address" placeholder="Enter your address to see distances…" aria-label="Your address">
+    <button type="button" id="distance-search-btn">🔍 Search</button>
+    <button type="button" id="distance-clear-btn" class="distance-clear-btn" hidden>✕ Clear</button>
+  `;
+  header.appendChild(bar);
+}
+
+function createUserIcon() {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="14" fill="#3498db" stroke="#fff" stroke-width="3"/>
+      <circle cx="16" cy="16" r="5" fill="#fff"/>
+    </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: 'pin-icon',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
+  });
+}
+
+function initDistanceSearch(map, refreshPopups) {
+  const input = document.getElementById('distance-address');
+  const searchBtn = document.getElementById('distance-search-btn');
+  const clearBtn = document.getElementById('distance-clear-btn');
+  if (!input || !searchBtn || !clearBtn) return;
+
+  async function doSearch() {
+    const address = input.value.trim();
+    if (!address) return;
+
+    searchBtn.textContent = '…';
+    searchBtn.disabled = true;
+
+    try {
+      const cache = loadGeocodeCache();
+      const coords = await geocode(address, cache);
+      userLocation = coords;
+
+      // Place or move the user marker.
+      if (userMarker) {
+        userMarker.setLatLng([coords.lat, coords.lng]);
+      } else {
+        userMarker = L.marker([coords.lat, coords.lng], { icon: createUserIcon(), zIndexOffset: 99999 }).addTo(map);
+        userMarker.bindPopup('<div class="popup-content"><strong>Your location</strong></div>');
+      }
+
+      // Re-render the store list with distances and refresh popup content.
+      renderStoreList(allLoadedStores);
+      refreshPopups();
+
+      clearBtn.hidden = false;
+    } catch (err) {
+      alert('Could not find that address. Please try a more specific address.');
+      console.error('Distance search error:', err);
+    } finally {
+      searchBtn.textContent = '🔍 Search';
+      searchBtn.disabled = false;
+    }
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      doSearch();
+    }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    userLocation = null;
+    if (userMarker) {
+      map.removeLayer(userMarker);
+      userMarker = null;
+    }
+    input.value = '';
+    clearBtn.hidden = true;
+    renderStoreList(allLoadedStores);
+    refreshPopups();
+  });
 }
 
 renderLegend();
+injectDistanceSearchBar();
 
 const map = L.map('map').setView(window.GWMAP_CENTER || [44.95, -93.15], window.GWMAP_ZOOM || 10);
 
