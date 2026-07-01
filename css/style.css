@@ -36,6 +36,7 @@ header p {
   gap: 0.4rem;
   margin-top: 0.6rem;
   align-items: center;
+  max-width: 480px;
 }
 
 .distance-search input {
