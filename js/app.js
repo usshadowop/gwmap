@@ -263,7 +263,7 @@ function renderStoreList(stores) {
               <details>
                 <summary>
                   <span class="store-entry-name">${store.name}</span>
-                  ${store._distance != null ? `<span class="distance-badge">${formatDistance(store._distance)}</span>` : ''}
+                  ${store._distance != null ? `<span class="distance-badge">${formatDistance(store._distance)} to store</span>` : ''}
                 </summary>
                 ${buildPopupHtml(store, { showName: false })}
               </details>
