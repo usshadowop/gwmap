@@ -376,6 +376,7 @@ function injectDistanceSearchBar() {
   bar.innerHTML = `
     <input type="text" id="distance-address" placeholder="Enter your address to see distances…" aria-label="Your address">
     <button type="button" id="distance-search-btn">🔍 Search</button>
+    <button type="button" id="distance-locate-btn" title="Use my location">📍</button>
     <button type="button" id="distance-clear-btn" class="distance-clear-btn" hidden>✕ Clear</button>
   `;
   header.appendChild(bar);
@@ -398,8 +399,9 @@ function createUserIcon() {
 function initDistanceSearch(map, refreshPopups) {
   const input = document.getElementById('distance-address');
   const searchBtn = document.getElementById('distance-search-btn');
+  const locateBtn = document.getElementById('distance-locate-btn');
   const clearBtn = document.getElementById('distance-clear-btn');
-  if (!input || !searchBtn || !clearBtn) return;
+  if (!input || !searchBtn || !locateBtn || !clearBtn) return;
 
   async function doSearch() {
     const address = input.value.trim();
@@ -424,6 +426,7 @@ function initDistanceSearch(map, refreshPopups) {
       // Re-render the store list with distances and refresh popup content.
       renderStoreList(allLoadedStores);
       refreshPopups();
+      map.setView([coords.lat, coords.lng], 12);
 
       clearBtn.hidden = false;
     } catch (err) {
@@ -442,6 +445,45 @@ function initDistanceSearch(map, refreshPopups) {
       doSearch();
     }
   });
+
+  if (!navigator.geolocation) {
+    locateBtn.style.display = 'none';
+  } else {
+    locateBtn.addEventListener('click', () => {
+      locateBtn.textContent = '…';
+      locateBtn.disabled = true;
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          userLocation = { lat, lng };
+          input.value = "Current Location";
+
+          if (userMarker) {
+            userMarker.setLatLng([lat, lng]);
+          } else {
+            userMarker = L.marker([lat, lng], { icon: createUserIcon(), zIndexOffset: 99999 }).addTo(map);
+            userMarker.bindPopup('<div class="popup-content"><strong>Your location</strong></div>');
+          }
+
+          renderStoreList(allLoadedStores);
+          refreshPopups();
+          map.setView([lat, lng], 12);
+
+          clearBtn.hidden = false;
+          locateBtn.textContent = '📍';
+          locateBtn.disabled = false;
+        },
+        err => {
+          alert('Could not determine your location. Please check your browser permissions.');
+          console.error('Geolocation error:', err);
+          locateBtn.textContent = '📍';
+          locateBtn.disabled = false;
+        },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+      );
+    });
+  }
 
   clearBtn.addEventListener('click', () => {
     userLocation = null;
